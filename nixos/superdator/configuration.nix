@@ -4,12 +4,19 @@
   ...
 }: {
   imports = [
-    ./users.nix
-    ./services.nix
+    ./locale.nix
+    ./nix-settings-autoupdate.nix
     ./programs.nix
+    ./security.nix
+    ./services.nix
+    ./users.nix
   ];
 
+  # Set the hostname for rebuilding
   networking.hostName = "superdator";
 
-  system.stateVersion = "24.05";
+  # Use UTC as time zone
+  time.timeZone = "Etc/UTC";
+
+  system.stateVersion = "23.11";
 }
