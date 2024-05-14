@@ -11,12 +11,12 @@
     nixpkgs,
     ...
   } @ inputs: let
-    system = "x86_64-linux";
-    pkgs = import nixpkgs {inherit system;};
+    #system = "x86_64-linux";
+    #pkgs = import nixpkgs {inherit system;};
     inherit (self) outputs;
   in {
     nixosConfigurations = {
-      superdator = pkgs.lib.nixosSystem {
+      superdator = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [./nixos/superdator/configuration.nix];
       };
