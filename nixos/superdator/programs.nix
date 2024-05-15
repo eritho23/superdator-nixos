@@ -25,6 +25,7 @@
     bat
     fastfetch
     ripgrep
+    nethogs
   ];
 
   virtualisation.podman.enable = true;
