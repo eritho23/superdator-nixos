@@ -5,6 +5,7 @@
   ...
 }: {
   imports = [
+    ./desktop.nix
     ./locale.nix
     ./nix-settings-autoupdate.nix
     ./programs.nix
