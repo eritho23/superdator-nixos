@@ -16,6 +16,6 @@ In order to utilize the flake, you of course need to install `nix`. Then, to
 build a test VM with `qemu`, the follwing commands can be used.
 
 ```bash
-nix build .#nixosConfigurations.<HOSTNAME>.config.system.vm
+nix build .#nixosConfigurations.<HOSTNAME>.config.system.build.vm
 
 ```
