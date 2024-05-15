@@ -6,4 +6,6 @@
     font = "Lat2-Terminus16";
     keyMap = "se-lat6";
   };
+  # Set keyboard options for X
+  services.xserver.xkb.layout = "se";
 }
