@@ -6,11 +6,11 @@
       xfce.enable = true;
     };
     displayManager = {
-      defaultSession = "xfce";
       lightdm = {
         enable = true;
         greeters.gtk.enable = true;
       };
     };
   };
+  services.displayManager.defaultSession = "xfce";
 }

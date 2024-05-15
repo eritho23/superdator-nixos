@@ -30,7 +30,8 @@
 
   virtualisation.podman = {
     enable = true;
-    enableNvidia = true;
     dockerCompat = true;
   };
+  # Enable Nvidia support in containers
+  # virtualisation.containers.cdi.dynamic.nvidia.enable = true;
 }
