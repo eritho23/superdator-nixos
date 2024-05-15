@@ -1,5 +1,5 @@
 {
-  security.sudo-rs.enable = true;
+  security.sudo.enable = true;
 
   networking.firewall.enable = true;
 }
