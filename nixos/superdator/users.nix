@@ -1,22 +1,42 @@
-{pkgs, ...}: {
+{pkgs, ...}: 
+{
   users.users."erre" = {
     isNormalUser = true;
-    uid = 1009;
+    uid = 1001;
     initialPassword = "1234";
     extraGroups = ["wheel"];
-    # packages = with pkgs; [bat fzf ripgrep helix];
+    packages = with pkgs; [helix];
   };
 
-  # users.users."temp-debian" = {
-  #   isNormalUser = true;
-  #   uid = 1010;
-  #   initialPassword = "debian";
-  #   packages = [
-  #     (pkgs.writeShellScriptBin "debian-container" ''
-  #       ${pkgs.podman}/bin/podman run --rm docker.io/library/debian:12 bash
+  users.users."malte" = {
+    isNormalUser = true;
+    uid = 1002;
+    initialPassword = "4567";
+    extraGroups = ["wheel"];
+    # packages = with pkgs; [];
+  };
 
-  #       exit 0
-  #     '')
-  #   ];
-  # };
+  users.users."nojus" = {
+    isNormalUser = true;
+    uid = 1003;
+    initialPassword = "abcd";
+    extraGroups = ["wheel"];
+    # packages = with pkgs; [];
+  };
+
+  users.users."jakobi" = {
+    isNormalUser = true;
+    uid = 1004;
+    initialPassword = "efgh";
+    extraGroups = ["wheel"];
+    # packages = with pkgs; [];
+  };
+
+  users.users."kjell-urban" = {
+    isNormalUser = true;
+    uid = 1005;
+    initialPassword = "racecar";
+    extraGroups = ["wheel"];
+    # packages = with pkgs; [];
+  };
 }
