@@ -28,5 +28,9 @@
     nethogs
   ];
 
-  virtualisation.podman.enable = true;
+  virtualisation.podman = {
+    enable = true;
+    enableNvidia = true;
+    dockerCompat = true;
+  };
 }
