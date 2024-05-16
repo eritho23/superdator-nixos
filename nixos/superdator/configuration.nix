@@ -20,6 +20,10 @@
   # Use UTC as time zone
   time.timeZone = "Etc/UTC";
 
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.grub.enable = lib.mkDefault false;
+  boot.loader.efi.canTouchEfiVariables = true;
+
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   system.stateVersion = "23.11";
 }
