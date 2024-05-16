@@ -3,7 +3,8 @@
     fzf.fuzzyCompletion = true;
     htop.enable = true;
     starship.enable = true;
-    vim.defaultEditor = true;
+    neovim.defaultEditor = true;
+    git.enable = true;
   };
 
   # Setup a fancy MOTD
@@ -12,7 +13,7 @@
     settings = {
       banner = {
         color = "green";
-        command = "${pkgs.figlet}/bin/figlet Joakim Flink";
+        command = "${pkgs.figlet}/bin/figlet Superdator";
       };
       uptime.prefix = "Server uptime: ";
       filesystems.root = "/";
@@ -26,6 +27,7 @@
     fastfetch
     ripgrep
     nethogs
+    file
   ];
 
   virtualisation.podman = {
