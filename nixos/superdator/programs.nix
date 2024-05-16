@@ -3,7 +3,10 @@
     fzf.fuzzyCompletion = true;
     git.enable = true;
     htop.enable = true;
-    neovim.defaultEditor = true;
+    neovim = {
+      defaultEditor = true;
+      enable = true;
+    };
     starship.enable = true;
   };
 
