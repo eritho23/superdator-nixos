@@ -1,10 +1,10 @@
 {pkgs, ...}: {
   programs = {
     fzf.fuzzyCompletion = true;
-    htop.enable = true;
-    starship.enable = true;
-    neovim.defaultEditor = true;
     git.enable = true;
+    htop.enable = true;
+    neovim.defaultEditor = true;
+    starship.enable = true;
   };
 
   # Setup a fancy MOTD
