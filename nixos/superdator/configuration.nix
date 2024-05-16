@@ -6,6 +6,7 @@
 }: {
   imports = [
     ./desktop.nix
+    # ./hardware-configuration.nix
     ./locale.nix
     ./nix-settings-autoupdate.nix
     ./programs.nix
