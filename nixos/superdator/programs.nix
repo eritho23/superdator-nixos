@@ -40,8 +40,4 @@
   };
   # Enable Nvidia support in containers
   virtualisation.podman.enableNvidia = true;
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [
-      "nvidia_x11"
-    ];
 }
