@@ -19,3 +19,8 @@ build a test VM with `qemu`, the follwing commands can be used.
 nix build .#nixosConfigurations.<HOSTNAME>.config.system.build.vm
 
 ```
+
+## TODO
+- Consolidate users and permissions
+- Fix Nvidia in Podman
+- Upgrade to NixOS 24.05 (when released)
