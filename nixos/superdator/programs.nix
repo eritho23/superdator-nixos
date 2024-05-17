@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, lib, ...}: {
   programs = {
     fzf.fuzzyCompletion = true;
     git.enable = true;
@@ -31,6 +31,7 @@
     ripgrep
     nethogs
     file
+    pciutils
   ];
 
   virtualisation.podman = {
@@ -38,5 +39,9 @@
     dockerCompat = true;
   };
   # Enable Nvidia support in containers
-  # virtualisation.containers.cdi.dynamic.nvidia.enable = true;
+  virtualisation.podman.enableNvidia = true;
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [
+      "nvidia_x11"
+    ];
 }
