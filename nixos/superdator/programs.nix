@@ -35,6 +35,7 @@
     lm_sensors
     nethogs
     pciutils
+    podman-compose
     ripgrep
   ];
 
