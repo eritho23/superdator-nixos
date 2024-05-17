@@ -9,6 +9,7 @@
     ./hardware-configuration.nix
     ./locale.nix
     ./nix-settings-autoupdate.nix
+    ./nvidia.nix
     ./programs.nix
     ./security.nix
     ./services.nix
