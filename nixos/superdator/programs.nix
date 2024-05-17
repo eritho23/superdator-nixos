@@ -31,10 +31,11 @@
   environment.systemPackages = with pkgs; [
     bat
     fastfetch
-    ripgrep
-    nethogs
     file
+    lm_sensors
+    nethogs
     pciutils
+    ripgrep
   ];
 
   virtualisation.podman = {
