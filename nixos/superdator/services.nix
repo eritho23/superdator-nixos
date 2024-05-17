@@ -8,4 +8,9 @@
       AllowGroups = ["ssh-access"];
     };
   };
+
+  services.cockpit = {
+    openFirewall = true;
+    enable = true;
+  };
 }
