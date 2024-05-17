@@ -25,6 +25,9 @@
     };
   };
 
+  ### TEMP: STEAM for testing
+  programs.steam.enable = true;
+
   environment.systemPackages = with pkgs; [
     bat
     fastfetch
