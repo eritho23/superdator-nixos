@@ -11,7 +11,7 @@
   nix.settings.extra-experimental-features = [ "nix-command" "flakes" ];
 
   system.autoUpgrade = {
-    enable = false; # TODO: Enable?
+    enable = true;
     dates = "Mon 01:00";
     allowReboot = true;
     flake = "github:eritho23/superdator-nixos";
