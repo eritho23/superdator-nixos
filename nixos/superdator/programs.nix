@@ -16,7 +16,7 @@
     settings = {
       banner = {
         color = "green";
-        command = "${pkgs.figlet}/bin/figlet Superdator";
+        command = "${pkgs.figlet}/bin/figlet The Powerhouse";
       };
       uptime.prefix = "Server uptime: ";
       filesystems.root = "/";

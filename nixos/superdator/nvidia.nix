@@ -1,4 +1,4 @@
-{config, lib, pkgs, ...}:
+{config, ...}:
 {
   hardware.opengl = {
     enable = true;
@@ -11,5 +11,6 @@
   hardware.nvidia = {
     modesetting.enable = true;
     nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 }
