@@ -4,15 +4,16 @@
     isNormalUser = true;
     uid = 1001;
     initialPassword = "1234";
-    extraGroups = ["wheel"];
+    extraGroups = ["wheel" "ssh-access"];
     packages = with pkgs; [helix];
+    openssh.authorizedKeys.keys = [];
   };
 
   users.users."malte" = {
     isNormalUser = true;
     uid = 1002;
     initialPassword = "4567";
-    extraGroups = ["wheel"];
+    extraGroups = ["wheel" "ssh-access"];
     # packages = with pkgs; [];
   };
 
@@ -20,7 +21,7 @@
     isNormalUser = true;
     uid = 1003;
     initialPassword = "abcd";
-    extraGroups = ["wheel"];
+    extraGroups = ["wheel" "ssh-access"];
     # packages = with pkgs; [];
   };
 
@@ -39,4 +40,6 @@
     extraGroups = ["wheel"];
     # packages = with pkgs; [];
   };
+
+  users.groups."ssh-access" = {};
 }
