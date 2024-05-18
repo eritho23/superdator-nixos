@@ -18,7 +18,7 @@
     nixosConfigurations = {
       superdator = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
-        modules = [./nixos/superdator/configuration.nix];
+        modules = [./nixos/configuration.nix];
       };
     };
   };

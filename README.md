@@ -6,7 +6,7 @@ This repo contains the NixOS configuration for a _super_ computer.
 
 - The root of the repo has a Nix `flake.nix` with the NixOS configuration
   for the `superdator`.
-- In `nixos/`, there should be one directory per hostname (currently one).
+- In `nixos/`, the NixOS configuration is available.
 - Inside a directory, a `configuration.nix` independent of any flake should
   be present.
 
