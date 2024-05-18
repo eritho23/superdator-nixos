@@ -4,6 +4,8 @@
   inputs = {
     # Input stable nixpkgs for use in the OS
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11-small";
+    # Unstable packages for things like tailscale
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
 
   outputs = {
@@ -16,6 +18,9 @@
     inherit (self) outputs;
   in {
     nixosConfigurations = {
+      # Add overlays
+      overlays = import ./overlays {inherit inputs;};
+      # Configuration for the NixOS system
       superdator = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [./nixos/configuration.nix];
