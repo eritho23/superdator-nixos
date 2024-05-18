@@ -21,11 +21,6 @@
     overlays = import ./overlays {inherit inputs;};
 
     nixosConfigurations = {
-<<<<<<< HEAD
-=======
-      # Add overlays
-      overlays = import ./overlays {inherit inputs;};
->>>>>>> 9b33a6f (add experiental overlay)
       # Configuration for the NixOS system
       superdator = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
