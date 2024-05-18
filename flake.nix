@@ -17,9 +17,10 @@
     #pkgs = import nixpkgs {inherit system;};
     inherit (self) outputs;
   in {
+    # Add overlays
+    overlays = import ./overlays {inherit inputs;};
+
     nixosConfigurations = {
-      # Add overlays
-      overlays = import ./overlays {inherit inputs;};
       # Configuration for the NixOS system
       superdator = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
