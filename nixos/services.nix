@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   services.openssh = {
     allowSFTP = true;
     enable = true;
@@ -22,5 +22,6 @@
   services.tailscale = {
     enable = true;
     openFirewall = true;
+    package = pkgs.unstable.tailscale;
   };
 }
