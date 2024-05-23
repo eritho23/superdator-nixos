@@ -41,5 +41,5 @@
     dockerCompat = true;
   };
   # Enable Nvidia support in containers
-  virtualisation.podman.enableNvidia = true;
+  hardware.nvidia-container-toolkit.enable = true;
 }
