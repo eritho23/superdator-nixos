@@ -7,8 +7,8 @@
     options = "--delete-older-than 7d";
   };
 
-  # Enable flakes and the new nix command line on the server  
-  nix.settings.extra-experimental-features = [ "nix-command" "flakes" ];
+  # Enable flakes and the new nix command line on the server
+  nix.settings.extra-experimental-features = ["nix-command" "flakes"];
 
   system.autoUpgrade = {
     enable = true;

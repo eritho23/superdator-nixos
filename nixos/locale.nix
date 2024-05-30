@@ -1,5 +1,4 @@
-{pkgs, ...}:
-{
+{pkgs, ...}: {
   # Set options for the tty
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
@@ -11,6 +10,6 @@
   services.xserver.xkb.layout = "se";
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = ["FiraCode"]; })
+    (nerdfonts.override {fonts = ["FiraCode"];})
   ];
 }

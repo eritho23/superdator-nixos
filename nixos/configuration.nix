@@ -10,6 +10,7 @@
     # ./desktop.nix
     ./hardware-configuration.nix
     ./locale.nix
+    ./networking.nix
     ./nix-settings-autoupdate.nix
     ./nvidia.nix
     ./programs.nix
@@ -24,9 +25,13 @@
   # Use UTC as time zone
   time.timeZone = "Etc/UTC";
 
+  # Boot loader
   boot.loader.systemd-boot.enable = true;
   boot.loader.grub.enable = lib.mkDefault false;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # Use systemd initrd
+  boot.initrd.systemd.enable = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 

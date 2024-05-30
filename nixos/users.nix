@@ -1,5 +1,4 @@
-{pkgs, ...}: 
-{
+{pkgs, ...}: {
   users.users."erre" = {
     isNormalUser = true;
     uid = 1001;

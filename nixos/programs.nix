@@ -1,4 +1,8 @@
-{pkgs, lib, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   programs = {
     fzf.fuzzyCompletion = true;
     git.enable = true;
