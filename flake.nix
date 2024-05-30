@@ -13,8 +13,8 @@
     nixpkgs,
     ...
   } @ inputs: let
-    #system = "x86_64-linux";
-    #pkgs = import nixpkgs {inherit system;};
+    system = "x86_64-linux";
+    pkgs = import nixpkgs {inherit system;};
     inherit (self) outputs;
   in {
     # Add overlays
@@ -26,6 +26,10 @@
         specialArgs = {inherit inputs outputs;};
         modules = [./nixos/configuration.nix];
       };
+    };
+
+    devShells."${system}".default = pkgs.mkShell {
+      packages = with pkgs; [helix nil bat alejandra git nixos-generators];
     };
   };
 }
