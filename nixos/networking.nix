@@ -22,7 +22,7 @@
   systemd.network.enable = lib.mkDefault true;
 
   systemd.network.networks."10-lan" = {
-    matchConfig.Name = "ens1";
+    matchConfig.Name = "eno1";
 
     address = ["10.21.1.100/16"];
     gateway = ["10.21.1.1"];
