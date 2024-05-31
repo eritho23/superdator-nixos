@@ -14,10 +14,11 @@
   };
   services.xserver.displayManager.defaultSession = "xfce";
 
-  /* Add sound to desktop */
+  /*
+  Add sound to desktop
+  */
   services.pipewire = {
     enable = true;
     pulse.enable = true;
   };
-
 }

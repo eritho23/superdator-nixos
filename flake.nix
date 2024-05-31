@@ -3,7 +3,7 @@
 
   inputs = {
     # Input stable nixpkgs for use in the OS
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11-small";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05-small";
     # Unstable packages for things like tailscale
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
@@ -13,8 +13,8 @@
     nixpkgs,
     ...
   } @ inputs: let
-    #system = "x86_64-linux";
-    #pkgs = import nixpkgs {inherit system;};
+    system = "x86_64-linux";
+    pkgs = import nixpkgs {inherit system;};
     inherit (self) outputs;
   in {
     # Add overlays
@@ -26,6 +26,10 @@
         specialArgs = {inherit inputs outputs;};
         modules = [./nixos/configuration.nix];
       };
+    };
+
+    devShells."${system}".default = pkgs.mkShell {
+      packages = with pkgs; [helix nil bat alejandra git nixos-generators];
     };
   };
 }

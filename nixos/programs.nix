@@ -1,4 +1,8 @@
-{pkgs, lib, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   programs = {
     fzf.fuzzyCompletion = true;
     git.enable = true;
@@ -41,5 +45,5 @@
     dockerCompat = true;
   };
   # Enable Nvidia support in containers
-  virtualisation.podman.enableNvidia = true;
+  hardware.nvidia-container-toolkit.enable = true;
 }
