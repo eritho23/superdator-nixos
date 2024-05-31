@@ -25,8 +25,8 @@
     matchConfig.Name = "eno1";
     matchConfig.MACAddress = "10:7c:61:0b:8b:68";
 
-    address = ["10.21.1.100/16"];
-    gateway = ["10.21.1.1"];
+    address = ["10.22.1.100/16"];
+    gateway = ["10.22.1.1"];
     dns = ["10.21.1.2" "10.21.1.3"];
   };
 }
