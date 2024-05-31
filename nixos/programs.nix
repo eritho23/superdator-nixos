@@ -12,6 +12,7 @@
       enable = true;
     };
     starship.enable = true;
+    tmux.enable = true;
   };
 
   # Setup a fancy MOTD
@@ -31,6 +32,7 @@
 
   environment.systemPackages = with pkgs; [
     bat
+    dust
     fastfetch
     file
     lm_sensors
@@ -38,6 +40,7 @@
     pciutils
     podman-compose
     ripgrep
+    wget
   ];
 
   virtualisation.podman = {
