@@ -37,5 +37,7 @@
 
   nixpkgs.overlays = [outputs.overlays.unstable-packages];
 
+  system.copySystemConfiguration = true;
+
   system.stateVersion = "23.11";
 }
