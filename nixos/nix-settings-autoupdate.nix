@@ -10,6 +10,9 @@
   # Enable flakes and the new nix command line on the server
   nix.settings.extra-experimental-features = ["nix-command" "flakes"];
 
+  # Add connect timeout to nix
+  nix.settings.connect-timeout = 5;
+
   system.autoUpgrade = {
     enable = true;
     dates = "Mon 01:00";
