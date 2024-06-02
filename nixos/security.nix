@@ -1,7 +1,9 @@
 {
   security.sudo.enable = true;
+  security.sudo.execWheelOnly = true;
   security.sudo.extraConfig = ''
     Defaults env_reset,pwfeedback
+    Defaults lecture = never
   '';
 
   networking.firewall.enable = true;
