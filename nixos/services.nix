@@ -4,14 +4,15 @@
     enable = true;
     openFirewall = lib.mkForce true;
     settings = {
-      PasswordAuthentication = true;
       AllowGroups = ["ssh-access"];
+      PasswordAuthentication = true;
       PermitRootLogin = lib.mkForce "no";
+      X11Forwarding = false;
     };
   };
 
   services.cockpit = {
-    openFirewall = true;
     enable = true;
+    openFirewall = true;
   };
 }
