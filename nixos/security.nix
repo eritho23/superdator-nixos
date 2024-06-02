@@ -8,6 +8,9 @@
 
   networking.firewall.enable = true;
 
+  networking.firewall.allowedTCPPorts = [25565];
+  netwokking.firewall.allowedUDPPorts = [25565];
+
   services.fail2ban = {
     enable = true;
     ignoreIP = [
