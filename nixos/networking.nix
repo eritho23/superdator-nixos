@@ -14,6 +14,8 @@
     package = pkgs.unstable.tailscale;
   };
 
+  networking.firewall.allowPing = true;
+
   services.resolved = {
     enable = true;
   };
