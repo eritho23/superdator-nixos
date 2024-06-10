@@ -8,8 +8,8 @@
 
   networking.firewall.enable = true;
 
-  networking.firewall.allowedTCPPorts = [25565];
-  networking.firewall.allowedUDPPorts = [25565];
+  networking.firewall.allowedTCPPorts = [80 443 25565];
+  networking.firewall.allowedUDPPorts = [443 25565];
 
   services.fail2ban = {
     enable = true;

@@ -14,6 +14,7 @@
     ./nix-settings-autoupdate.nix
     ./nvidia.nix
     ./programs.nix
+    ./reverse-proxy.nix
     ./security.nix
     ./services.nix
     ./users.nix
