@@ -8,6 +8,8 @@
 
   networking.firewall.enable = true;
 
+  programs.firejail.enable = true;
+
   networking.firewall.allowedTCPPorts = [80 443 25565];
   networking.firewall.allowedUDPPorts = [443 25565];
 
