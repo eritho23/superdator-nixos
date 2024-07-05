@@ -15,4 +15,10 @@
     enable = true;
     openFirewall = true;
   };
+
+  services.ollama = {
+    enable = true;
+    acceleration = "cuda";
+  };
+  nixpkgs.config.cudaSupport = true;
 }
