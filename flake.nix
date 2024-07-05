@@ -29,7 +29,7 @@
     };
 
     devShells."${system}".default = pkgs.mkShell {
-      packages = with pkgs; [helix nil bat alejandra git nixos-generators];
+      packages = with pkgs; [neovim nil bat ripgrep alejandra git nixos-generators];
     };
   };
 }
