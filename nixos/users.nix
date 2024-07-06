@@ -42,6 +42,7 @@
   users.users."ai-agent" = {
     isNormalUser = true;
     uid = 1100;
+    extraGroups = ["video"];
   };
 
   users.groups."ssh-access" = {};
