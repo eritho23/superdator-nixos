@@ -32,15 +32,23 @@
       torch = let
         env = pkgs.python3.withPackages (pythonPackages:
           with pythonPackages; [
+            # Base for the kernel
             ipykernel
-            numpy
-            pandas
-            torch-bin
+
+            # Useful utilities
+            beautifulsoup4 # Web scraping
+            matplotlib     # Graphs
+            numpy          # Of course
+            pandas         # CSV files
+            pillow         # Images
+            requests       # Make API requests
+            scipy          # Superset of numpy
+            torch-bin      # PyTorch
             torchaudio-bin
             torchvision-bin
           ]);
       in {
-        displayName = "Machine learning with PyTorch";
+        displayName = "Machine learning kernel (PyTorch)";
         argv = [
           "${env.interpreter}"
           "-m"
