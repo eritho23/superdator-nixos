@@ -4,6 +4,7 @@
     uid = 1001;
     initialPassword = "1234";
     extraGroups = ["wheel" "ssh-access"];
+    packages = with pkgs; [chezmoi];
     openssh.authorizedKeys.keys = [];
   };
 
@@ -23,21 +24,21 @@
     # packages = with pkgs; [];
   };
 
-#  users.users."jakobi" = {
-#    isNormalUser = true;
-#    uid = 1004;
-#    initialPassword = "efgh";
-#    # extraGroups = ["wheel"];
-#    # packages = with pkgs; [];
-#  };
+  #  users.users."jakobi" = {
+  #    isNormalUser = true;
+  #    uid = 1004;
+  #    initialPassword = "efgh";
+  #    # extraGroups = ["wheel"];
+  #    # packages = with pkgs; [];
+  #  };
 
-#  users.users."kjell-urban" = {
-#    isNormalUser = true;
-#    uid = 1005;
-#    initialPassword = "racecar";
-#    # extraGroups = ["wheel"];
-#    # packages = with pkgs; [];
-#  };
+  #  users.users."kjell-urban" = {
+  #    isNormalUser = true;
+  #    uid = 1005;
+  #    initialPassword = "racecar";
+  #    # extraGroups = ["wheel"];
+  #    # packages = with pkgs; [];
+  #  };
 
   users.users."ai-agent" = {
     isNormalUser = true;
