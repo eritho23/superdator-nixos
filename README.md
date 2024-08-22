@@ -10,7 +10,7 @@ This repo contains the NixOS configuration for a _super_ computer.
 - Inside a directory, a `configuration.nix` independent of any flake should
   be present.
 
-## How to use
+## Usage
 
 In order to utilize the flake, you of course need to install `nix`. Then, to
 build a test VM with `qemu`, the follwing commands can be used.
@@ -21,6 +21,6 @@ nix build .#nixosConfigurations.<HOSTNAME>.config.system.build.vm
 ```
 
 ## TODO
-- Consolidate users and permissions
-- Fix Nvidia in Podman
-- Upgrade to NixOS 24.05 (when released)
+- Sops for secrets
+- Rotate secrets
+- Reverse proxy
