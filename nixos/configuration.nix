@@ -43,6 +43,9 @@
   sops.defaultSopsFormat = "yaml";
   sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
   sops.secrets.test_1 = {};
+  sops.secrets.flinks_password = {};
+  sops.secrets.alwins_password = {};
+  sops.secrets.jakobis_password = {};
 
   system.stateVersion = "23.11";
 }
