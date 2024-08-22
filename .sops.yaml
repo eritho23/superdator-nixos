@@ -1,0 +1,11 @@
+# Secrets
+
+keys:
+  - &erre age1za4x2kz9kuus40c5tfznckcy9vfrqzt6m0kclpr5q52lcx6fxywq2t9str
+  - &superdator age1l9rlv0kltyh42f3t0hlmpulxkuez00dumw24w8ygw09497wea35q4ecgw8
+creation_rules:
+  - path_regex: secrets/secrets.yaml$
+    key_groups:
+      - age:
+        - *erre
+        - *superdator

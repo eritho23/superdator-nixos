@@ -38,5 +38,11 @@
 
   nixpkgs.overlays = [outputs.overlays.unstable-packages];
 
+  # secrets
+  sops.defaultSopsFile = ../secrets/secrets.yaml;
+  sops.defaultSopsFormat = "yaml";
+  sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+  sops.secrets.test_1 = {};
+
   system.stateVersion = "23.11";
 }
