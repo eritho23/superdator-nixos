@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{config, pkgs, ...}: {
   users.users."erre" = {
     isNormalUser = true;
     uid = 1001;
@@ -44,6 +44,12 @@
     isNormalUser = true;
     uid = 1100;
     extraGroups = ["video"];
+  };
+
+  users.users."flink" = {
+    isNormalUser = true;
+    hashedPasswordFile = config.sops.secrets.flinks_password.path;
+    extraGroups = ["ssh-access"];
   };
 
   users.groups."ssh-access" = {};
