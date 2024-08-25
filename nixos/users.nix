@@ -46,12 +46,12 @@
     extraGroups = ["video"];
   };
 
-  # users.users."flink" = {
-    # isNormalUser = true;
-    # hashedPasswordFile = config.sops.secrets.flinks_password.path;
-    # uid = 1006;
-    # extraGroups = ["ssh-access"];
-  # };
+  users.users."flink" = {
+    isNormalUser = true;
+    hashedPasswordFile = config.sops.secrets.flinks_password.path;
+    uid = 1006;
+    extraGroups = ["ssh-access"];
+  };
 
   users.groups."ssh-access" = {};
 }
