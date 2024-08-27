@@ -1,19 +1,19 @@
-# {config}:
-# {
-#   services.caddy = {
-#     enable = true;
-#     email = "eric.thorburn@hitachigymnasiet.se";
-#     virtualHosts = {
-#       ":80, :443"= {
-#         extraConfig = ''
-#           respond "Hello, World!"
-#           tls internal
-#         '';
-#         logFormat = ''
-#           output file ${config.services.caddy.logDir}-access-https.log
-#         '';
-#       };
-#     };
-#   };
-# }
-{}
+{config}:
+{
+  services.caddy = {
+    enable = true;
+    email = "eric.thorburn@hitachigymnasiet.se";
+    virtualHosts = {
+      "spetsen.net"= {
+        extraConfig = ''
+          respond "Hello, World!"
+        '';
+      };
+      "jupyter.spetsen.net" = {
+        extraConfig = ''
+          reverse_proxy 127.0.0.1:8000
+	'';
+      };
+    };
+  };
+}
