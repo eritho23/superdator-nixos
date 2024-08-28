@@ -10,7 +10,7 @@
 
   programs.firejail.enable = true;
 
-  networking.firewall.allowedTCPPorts = [22 80 443 8000 25565];
+  networking.firewall.allowedTCPPorts = [22 80 443 8000 11434 25565];
   networking.firewall.allowedUDPPorts = [443 25565];
 
   services.fail2ban = {
