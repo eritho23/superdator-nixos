@@ -3,7 +3,7 @@
 
   inputs = {
     # Input stable nixpkgs for use in the OS
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05-small";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     # Unstable packages for things like tailscale
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     # Sops for secret management
