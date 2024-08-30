@@ -22,6 +22,7 @@
 
   services.ollama = {
     enable = true;
+    package = pkgs.unstable.ollama-cuda;
     listenAddress = "0.0.0.0:11434";
     acceleration = "cuda";
   };
