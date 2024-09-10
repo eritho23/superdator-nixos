@@ -6,7 +6,7 @@
     virtualHosts = {
       "spetsen.net"= {
         extraConfig = ''
-          respond "Hello, World!"
+          respond "Should be a spets landing page"
         '';
       };
       "jupyter.spetsen.net" = {

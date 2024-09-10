@@ -22,8 +22,8 @@
 
   services.ollama = {
     enable = true;
-    package = pkgs.unstable.ollama-cuda;
-    listenAddress = "0.0.0.0:11434";
+    host = "0.0.0.0";
+    port = 11434;
     acceleration = "cuda";
   };
 
@@ -32,7 +32,7 @@
     authentication = "jupyterhub.auth.PAMAuthenticator";
     kernels = {
       torch = let
-        env = pkgs.python3.withPackages (pythonPackages:
+        env = pkgs.python311.withPackages (pythonPackages:
           with pythonPackages; [
             # Base for the kernel
             ipykernel

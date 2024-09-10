@@ -36,8 +36,6 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
-  nixpkgs.overlays = [outputs.overlays.unstable-packages];
-
   # secrets
   sops.defaultSopsFile = ../secrets/secrets.yaml;
   sops.defaultSopsFormat = "yaml";

@@ -11,7 +11,6 @@
   services.tailscale = {
     enable = true;
     openFirewall = true;
-    package = pkgs.unstable.tailscale;
   };
 
   networking.firewall.allowPing = true;
