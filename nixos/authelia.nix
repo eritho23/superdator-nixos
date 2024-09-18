@@ -52,6 +52,20 @@
         domain = "spetsen.net";
         redis.host = "/run/redis-authelia-main/redis.sock";
       };
+
+      access_control = {
+        default_policy = "deny";
+        rules = [
+          {
+            domain = ["auth.spetsen.net"];
+            policy = "bypass";
+          }
+          {
+            domain = ["*.spetsen.net"];
+            policy = "one_factor";
+          }
+        ];
+      };
     };
   };
 
