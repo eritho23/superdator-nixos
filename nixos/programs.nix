@@ -37,7 +37,7 @@
     file
     lm_sensors
     nethogs
-    nvtop
+    nvtopPackages.nvidia
     pciutils
     podman-compose
     ripgrep
