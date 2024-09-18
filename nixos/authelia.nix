@@ -9,8 +9,8 @@
       jwtSecretFile = config.sops.secrets."authelia/jwtSecret".path;
       storageEncryptionKeyFile = config.sops.secrets."authelia/storageEncryptionKey".path;
       sessionSecretFile = config.sops.secrets."authelia/sessionSecret".path;
-      oidcIssuerPrivateKeyFile = config.sops.secrets."authelia/oidcIssuerPrivateKey".path;
-      oidcHmacSecretFile = config.sops.secrets."authelia/oidcHmacSecret".path;
+      # oidcIssuerPrivateKeyFile = config.sops.secrets."authelia/oidcIssuerPrivateKey".path;
+      # oidcHmacSecretFile = config.sops.secrets."authelia/oidcHmacSecret".path;
     };
     settings = {
       theme = "auto";
