@@ -37,6 +37,7 @@
     file
     lm_sensors
     nethogs
+    nvtop
     pciutils
     podman-compose
     ripgrep
