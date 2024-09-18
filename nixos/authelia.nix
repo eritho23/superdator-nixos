@@ -14,7 +14,6 @@
     };
     settings = {
       theme = "auto";
-      default_redirection_url = "https://spetsen.net";
 
       server = {
         address = "tcp://127.0.0.1:9091/";
@@ -56,7 +55,6 @@
         expiration = "12h";
         inactivity = "45m";
         remember_me = "1M";
-        domain = "spetsen.net";
         redis.host = "/run/redis-authelia-main/redis.sock";
         cookies = [
           {
