@@ -7,7 +7,7 @@
   ...
 }: {
   imports = [
-    # ./authelia.nix
+    ./authelia.nix
     # ./desktop.nix
     ./hardware-configuration.nix
     ./locale.nix
