@@ -18,6 +18,13 @@
 
       server = {
         address = "tcp://127.0.0.1:9091/";
+        endpoints = {
+          authz = {
+            forward-auth = {
+              implementation = "ForwardAuth";
+            };
+          };
+        };
       };
 
       log = {
@@ -51,6 +58,13 @@
         remember_me = "1M";
         domain = "spetsen.net";
         redis.host = "/run/redis-authelia-main/redis.sock";
+        cookies = [
+          {
+            domain = "spetsen.net";
+            authelia_url = "https://auth.spetsen.net";
+            default_redirection_url = "https://spetsen.net";
+          }
+        ];
       };
 
       access_control = {
