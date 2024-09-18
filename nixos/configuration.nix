@@ -43,11 +43,11 @@
   sops.age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
   sops.secrets.flinks_password.neededForUsers = true;
 
-  sops.secrets."authelia/jwtSecret" = {};
-  sops.secrets."authelia/storageEncryptionKey" = {};
-  sops.secrets."authelia/oidcHmacSecret" = {};
-  sops.secrets."authelia/oidcIssuerPrivateKey" = {};
-  sops.secrets."authelia/sessionSecret" = {};
+  sops.secrets."authelia/jwtSecret".owner = "authelia-main";
+  sops.secrets."authelia/storageEncryptionKey".owner = "authelia-main";
+  sops.secrets."authelia/oidcHmacSecret".owner = "authelia-main";
+  sops.secrets."authelia/oidcIssuerPrivateKey".owner = "authelia-main";
+  sops.secrets."authelia/sessionSecret".owner = "authelia-main";
 
   system.stateVersion = "23.11";
 }

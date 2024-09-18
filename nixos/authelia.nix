@@ -17,8 +17,7 @@
       default_redirection_url = "https://spetsen.net";
 
       server = {
-        host = "127.0.0.1";
-        port = 9091;
+        address = "tcp://127.0.0.1:9091/";
       };
 
       log = {
@@ -38,11 +37,18 @@
         };
       };
 
+      notifier = {
+        disable_startup_check = false;
+        filesystem = {
+          filename = "/var/lib/authelia-main/notification.txt";
+        };
+      };
+
       session = {
         name = "authelia_session";
         expiration = "12h";
         inactivity = "45m";
-        remember_me_duration = "1M";
+        remember_me = "1M";
         domain = "spetsen.net";
         redis.host = "/run/redis-authelia-main/redis.sock";
       };
