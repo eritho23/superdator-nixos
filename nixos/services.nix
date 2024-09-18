@@ -39,13 +39,13 @@
 
             # Useful utilities
             beautifulsoup4 # Web scraping
-            matplotlib     # Graphs
-            numpy          # Of course
-            pandas         # CSV files
-            pillow         # Images
-            requests       # Make API requests
-            scipy          # Superset of numpy
-            torch-bin      # PyTorch
+            matplotlib # Graphs
+            numpy # Of course
+            pandas # CSV files
+            pillow # Images
+            requests # Make API requests
+            scipy # Superset of numpy
+            torch-bin # PyTorch
             torchaudio-bin
             torchvision-bin
           ]);

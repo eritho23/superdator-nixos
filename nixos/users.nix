@@ -1,24 +1,28 @@
-{config, pkgs, ...}: 
+{
+  config,
+  pkgs,
+  ...
+}:
 #let
 # For ComfyUI
- #erresPython = pkgs.python3.withPackages (po:
-    #with po; [
-      #torch-bin
-      #torchsde
-      #torchvision-bin
-      #torchaudio-bin
-      #einops
-      #transformers
-      #tokenizers
-      #sentencepiece
-      #safetensors
-      #aiohttp
-      #pyyaml
-      #pillow
-      #scipy
-      #tqdm
-      #psutil
-    #]);
+#erresPython = pkgs.python3.withPackages (po:
+#with po; [
+#torch-bin
+#torchsde
+#torchvision-bin
+#torchaudio-bin
+#einops
+#transformers
+#tokenizers
+#sentencepiece
+#safetensors
+#aiohttp
+#pyyaml
+#pillow
+#scipy
+#tqdm
+#psutil
+#]);
 #in
 {
   users.users."erre" = {

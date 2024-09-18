@@ -7,6 +7,7 @@
   ...
 }: {
   imports = [
+    # ./authelia.nix
     # ./desktop.nix
     ./hardware-configuration.nix
     ./locale.nix
@@ -39,8 +40,14 @@
   # secrets
   sops.defaultSopsFile = ../secrets/secrets.yaml;
   sops.defaultSopsFormat = "yaml";
-  sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+  sops.age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
   sops.secrets.flinks_password.neededForUsers = true;
+
+  sops.secrets."authelia/jwtSecret" = {};
+  sops.secrets."authelia/storageEncryptionKey" = {};
+  sops.secrets."authelia/oidcHmacSecret" = {};
+  sops.secrets."authelia/oidcIssuerPrivateKey" = {};
+  sops.secrets."authelia/sessionSecret" = {};
 
   system.stateVersion = "23.11";
 }
