@@ -48,6 +48,7 @@
   sops.secrets."authelia/oidcHmacSecret".owner = "authelia-main";
   sops.secrets."authelia/oidcIssuerPrivateKey".owner = "authelia-main";
   sops.secrets."authelia/sessionSecret".owner = "authelia-main";
+  sops.secrets."authelia/ldapPassword".owner = "authelia-main";
 
   system.stateVersion = "23.11";
 }
