@@ -39,7 +39,7 @@
         # path = "/var/lib/authelia-main/users_database.yml";
         # };
         ldap = {
-          address = "ldaps://VS2.abbindustrigymnasium.local";
+          address = "ldaps://10.21.1.2";
           implementation = "activedirectory";
           base_dn = "OU=AbbIndGym,DC=abbindustrigymnasium,DC=local";
           user = "CN=23eritho,OU=TES V230S,OU=Västerås,OU=Elever,OU=ABBIndGym,DC=abbindustrigymnasium,DC=local";
