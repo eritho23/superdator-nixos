@@ -12,6 +12,9 @@
       # oidcIssuerPrivateKeyFile = config.sops.secrets."authelia/oidcIssuerPrivateKey".path;
       # oidcHmacSecretFile = config.sops.secrets."authelia/oidcHmacSecret".path;
     };
+    environmentVariables = {
+      AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD_FILE = config.sops.secrets."authelia/ldapPassword".path;
+    };
     settings = {
       theme = "auto";
 
@@ -33,18 +36,14 @@
 
       authentication_backend = {
         # file = {
-          # path = "/var/lib/authelia-main/users_database.yml";
+        # path = "/var/lib/authelia-main/users_database.yml";
         # };
-	ldap = {
+        ldap = {
           address = "ldaps://VS2.abbindustrigymnasium.local";
-	  implementation = "activedirectory";
-	  base_dn = "OU=AbbIndGym,DC=abbindustrigymnasium,DC=local";
-	  user = "CN=23eritho,OU=TES V230S,OU=Västerås,OU=Elever,OU=ABBIndGym,DC=abbindustrigymnasium,DC=local";
-	};
-      };
-
-      environmentVariables = {
-        AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD_FILE = config.sops.secrets."authelia/ldapPassword".path;
+          implementation = "activedirectory";
+          base_dn = "OU=AbbIndGym,DC=abbindustrigymnasium,DC=local";
+          user = "CN=23eritho,OU=TES V230S,OU=Västerås,OU=Elever,OU=ABBIndGym,DC=abbindustrigymnasium,DC=local";
+        };
       };
 
       storage = {
