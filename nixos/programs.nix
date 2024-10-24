@@ -1,8 +1,8 @@
+{ pkgs, ... }:
+
 {
-  pkgs,
-  lib,
-  ...
-}: {
+  # TODO: Consider moving "gadget"-style programs to user-level.
+
   programs = {
     fzf.fuzzyCompletion = true;
     git.enable = true;
@@ -15,7 +15,7 @@
     tmux.enable = true;
   };
 
-  # Setup a fancy MOTD
+  # Set up a fancy MOTD.
   programs.rust-motd = {
     enable = true;
     settings = {
@@ -48,8 +48,10 @@
     enable = true;
     dockerCompat = true;
   };
-  # Enable Nvidia support in containers
+
+  # Enable Nvidia support in containers.
   hardware.nvidia-container-toolkit.enable = true;
 
   programs.nix-ld.enable = true;
 }
+

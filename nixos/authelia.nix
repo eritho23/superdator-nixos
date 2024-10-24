@@ -1,8 +1,6 @@
+{ config, ... }:
+
 {
-  config,
-  pkgs,
-  ...
-}: {
   services.authelia.instances.main = {
     enable = true;
     secrets = {
@@ -98,3 +96,4 @@
     unixSocketPerm = 600;
   };
 }
+
