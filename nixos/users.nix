@@ -1,29 +1,5 @@
-{
-  config,
-  pkgs,
-  ...
-}:
-#let
-# For ComfyUI
-#erresPython = pkgs.python3.withPackages (po:
-#with po; [
-#torch-bin
-#torchsde
-#torchvision-bin
-#torchaudio-bin
-#einops
-#transformers
-#tokenizers
-#sentencepiece
-#safetensors
-#aiohttp
-#pyyaml
-#pillow
-#scipy
-#tqdm
-#psutil
-#]);
-#in
+{ config, pkgs, ... }:
+
 {
   users.users."erre" = {
     isNormalUser = true;
@@ -66,12 +42,6 @@
   #    # packages = with pkgs; [];
   #  };
 
-  users.users."ai-agent" = {
-    isNormalUser = true;
-    uid = 1100;
-    extraGroups = ["video"];
-  };
-
   users.users."flink" = {
     isNormalUser = true;
     hashedPasswordFile = config.sops.secrets.flinks_password.path;
@@ -79,5 +49,42 @@
     extraGroups = ["ssh-access"];
   };
 
+  users.users."nils" = {
+    isNormalUser = true;
+    uid = 1007;
+    initialPassword = "nixos";
+    extraGroups = ["wheel" "ssh-access"];
+    # packages = with pkgs; [];
+  };
+
+  users.users."ai-agent" = {
+    isNormalUser = true;
+    uid = 1100;
+    extraGroups = ["video"];
+  };
+
   users.groups."ssh-access" = {};
 }
+
+# let
+# # For ComfyUI
+# erresPython = pkgs.python3.withPackages (po:
+# with po; [
+# torch-bin
+# torchsde
+# torchvision-bin
+# torchaudio-bin
+# einops
+# transformers
+# tokenizers
+# sentencepiece
+# safetensors
+# aiohttp
+# pyyaml
+# pillow
+# scipy
+# tqdm
+# psutil
+# ]);
+# in
+

@@ -1,3 +1,5 @@
+{ ... }:
+
 {
   services.xserver = {
     enable = true;
@@ -14,11 +16,10 @@
   };
   services.xserver.displayManager.defaultSession = "xfce";
 
-  /*
-  Add sound to desktop
-  */
+  # Add sound to the desktop.
   services.pipewire = {
     enable = true;
     pulse.enable = true;
   };
 }
+
