@@ -1,6 +1,8 @@
-{ pkgs, lib, ... }:
-
 {
+  pkgs,
+  lib,
+  ...
+}: {
   services.openssh = {
     allowSFTP = true;
     enable = true;
@@ -62,5 +64,6 @@
       };
     };
   };
-}
 
+  nixpkgs.config.cudaSupport = true;
+}

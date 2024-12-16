@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+{config, ...}: {
   services.caddy = {
     enable = true;
     email = "eric.thorburn@hitachigymnasiet.se";
@@ -27,4 +25,3 @@
     };
   };
 }
-
