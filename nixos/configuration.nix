@@ -1,54 +1,54 @@
-{ pkgs, lib, ... }:
-
 {
+  inputs,
+  outputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ./authelia.nix
+    # ./desktop.nix
     ./hardware-configuration.nix
     ./locale.nix
     ./networking.nix
-    ./nix.nix
+    ./nix-settings-autoupdate.nix
     ./nvidia.nix
     ./programs.nix
     ./reverse-proxy.nix
     ./security.nix
     ./services.nix
     ./users.nix
-    ./vm.nix
-    # ./desktop.nix
   ];
 
-  # Set the machine hostname.
+  # Set the hostname for rebuilding
   networking.hostName = "superdator";
 
-  # Use UTC as time zone.
+  # Use UTC as time zone
   time.timeZone = "Etc/UTC";
 
-  # Boot loader.
-  boot.loader = {
-    systemd-boot.enable = true;
-    grub.enable = lib.mkDefault false;
-    efi.canTouchEfiVariables = true;
-  };
-  boot.kernelPackages = pkgs.linuxPackages_6_10;
+  # Boot loader
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.grub.enable = lib.mkDefault false;
+  boot.loader.efi.canTouchEfiVariables = true;
 
-  # Enable systemd in initrd.
+  # Use systemd initrd
   boot.initrd.systemd.enable = lib.mkDefault true;
 
-  # SOPS secrets.
-  sops = {
-    defaultSopsFile = ../secrets/secrets.yaml;
-    defaultSopsFormat = "yaml";
-    age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
-    secrets.flinks_password.neededForUsers = true;
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
-    secrets."authelia/jwtSecret".owner            = "authelia-main";
-    secrets."authelia/storageEncryptionKey".owner = "authelia-main";
-    secrets."authelia/oidcHmacSecret".owner       = "authelia-main";
-    secrets."authelia/oidcIssuerPrivateKey".owner = "authelia-main";
-    secrets."authelia/sessionSecret".owner        = "authelia-main";
-    secrets."authelia/ldapPassword".owner         = "authelia-main";
-  };
+  # secrets
+  sops.defaultSopsFile = ../secrets/secrets.yaml;
+  sops.defaultSopsFormat = "yaml";
+  sops.age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
+  sops.secrets.flinks_password.neededForUsers = true;
+
+  sops.secrets."authelia/jwtSecret".owner = "authelia-main";
+  sops.secrets."authelia/storageEncryptionKey".owner = "authelia-main";
+  sops.secrets."authelia/oidcHmacSecret".owner = "authelia-main";
+  sops.secrets."authelia/oidcIssuerPrivateKey".owner = "authelia-main";
+  sops.secrets."authelia/sessionSecret".owner = "authelia-main";
+  sops.secrets."authelia/ldapPassword".owner = "authelia-main";
 
   system.stateVersion = "23.11";
 }
-
