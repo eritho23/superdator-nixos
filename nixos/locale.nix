@@ -9,7 +9,5 @@
   # Set keyboard options for X
   services.xserver.xkb.layout = "se";
 
-  fonts.packages = with pkgs; [
-    (nerdfonts.override {fonts = ["FiraCode"];})
-  ];
+  # fonts.packages = with pkgs; [];
 }
