@@ -49,9 +49,7 @@
     dockerCompat = true;
   };
   # Enable Nvidia support in containers
-  # services.xserver.videoDrivers = lib.mkForce [ "nvidia" ];
-  hardware.nvidia.datacenter.enable = lib.mkForce true;
-  hardware.nvidia-container-toolkit.enable = true;
+  # hardware.nvidia-container-toolkit.enable = true;
 
   programs.nix-ld.enable = true;
 }
