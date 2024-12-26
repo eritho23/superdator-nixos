@@ -3,21 +3,21 @@
     enable = true;
     email = "eric.thorburn@hitachigymnasiet.se";
     virtualHosts = {
-      "spetsen.net" = {
+      "superdator.spetsen.net" = {
         extraConfig = ''
-          respond "Should be a spets landing page"
+          respond "Should be a fancy superdator landing page"
         '';
       };
-      "jupyter.spetsen.net" = {
+      "jupyter.superdator.spetsen.net" = {
         extraConfig = ''
           forward_auth 127.0.0.1:9091 {
-                   uri /api/authz/forward-auth
+            uri /api/authz/forward-auth
             copy_headers Remote-User Remote-Groups Remote-Email Remote-Name
           }
-                 reverse_proxy 127.0.0.1:8000
+	    reverse_proxy 127.0.0.1:8000
         '';
       };
-      "auth.spetsen.net" = {
+      "auth.superdator.spetsen.net" = {
         extraConfig = ''
           reverse_proxy 127.0.0.1:9091
         '';
