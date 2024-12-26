@@ -22,7 +22,6 @@ nix build .#nixosConfigurations.<HOSTNAME>.config.system.build.vm
 
 ## TODO
 - Incorporate changes from @NilsNachname
-- Fix `nvidia-container-toolkit` (fixed?)
 - Fix `jupyterhub` (watch [Nixpkgs PR #351627](https://github.com/NixOS/nixpkgs/pull/351627))
 - Rotate secrets
 - Reverse proxy
