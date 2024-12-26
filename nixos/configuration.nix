@@ -1,7 +1,4 @@
 {
-  inputs,
-  outputs,
-  config,
   pkgs,
   lib,
   ...
@@ -21,10 +18,10 @@
     ./users.nix
   ];
 
-  # Set the hostname for rebuilding
+  # Set the hostname.
   networking.hostName = "superdator";
 
-  # Use UTC as time zone
+  # Use UTC as time zone.
   time.timeZone = "Etc/UTC";
 
   # Boot loader
@@ -32,12 +29,10 @@
   boot.loader.grub.enable = lib.mkDefault false;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Use systemd initrd
+  # Enable systemd-based initrd.
   boot.initrd.systemd.enable = lib.mkDefault true;
 
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-
-  # secrets
+  # SOPS secrets.
   sops.defaultSopsFile = ../secrets/secrets.yaml;
   sops.defaultSopsFormat = "yaml";
   sops.age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];

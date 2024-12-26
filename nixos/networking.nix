@@ -1,24 +1,30 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{lib, ...}: {
   networking.firewall = {
+    # Tailscale users can bypass the firewall.
     trustedInterfaces = ["tailscale0"];
+    # Reverse path filtering drops packets which claim to originate from
+    # different subnets than those which they are physically entering through.
+    # If set to loose, a similar solution should be implemented manually.
     checkReversePath = "loose";
+    # Respond to IPv4 ICMPv4 echo requests. IPv6 responds regardless of this
+    # setting.
+    # https://mynixos.com/nixpkgs/option/networking.firewall.allowPing
+    allowPing = true;
   };
 
   services.tailscale = {
     enable = true;
+    # Open firewall for the tunnel port.
     openFirewall = true;
+    port = 41641;
   };
 
-  networking.firewall.allowPing = true;
-
+  # Use systemd-resolved for name resolution.
   services.resolved = {
     enable = true;
   };
 
+  # Enable systemd-networkd.
   networking.useNetworkd = lib.mkDefault true;
   systemd.network.enable = lib.mkDefault true;
 
