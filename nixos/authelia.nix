@@ -12,9 +12,9 @@
       # oidcIssuerPrivateKeyFile = config.sops.secrets."authelia/oidcIssuerPrivateKey".path;
       # oidcHmacSecretFile = config.sops.secrets."authelia/oidcHmacSecret".path;
     };
-    environmentVariables = {
-      AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD_FILE = config.sops.secrets."authelia/ldapPassword".path;
-    };
+    # environmentVariables = {
+      # AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD_FILE = config.sops.secrets."authelia/ldapPassword".path;
+    # };
     settings = {
       theme = "auto";
 
@@ -35,15 +35,15 @@
       };
 
       authentication_backend = {
-        # file = {
-          # path = "/var/lib/authelia-main/users_database.yml";
-        # };
-        ldap = {
-          address = "ldap://10.21.1.2";
-          implementation = "activedirectory";
-          base_dn = "OU=AbbIndGym,DC=abbindustrigymnasium,DC=local";
-          user = "CN=23eritho,OU=TES V230S,OU=Västerås,OU=Elever,OU=ABBIndGym,DC=abbindustrigymnasium,DC=local";
+        file = {
+          path = "/var/lib/authelia-main/users_database.yml";
         };
+        # ldap = {
+          # address = "ldap://10.21.1.2";
+          # implementation = "activedirectory";
+          # base_dn = "OU=AbbIndGym,DC=abbindustrigymnasium,DC=local";
+          # user = "CN=23eritho,OU=TES V230S,OU=Västerås,OU=Elever,OU=ABBIndGym,DC=abbindustrigymnasium,DC=local";
+        # };
       };
 
       storage = {
@@ -68,8 +68,8 @@
         cookies = [
           {
             domain = "spetsen.net";
-            authelia_url = "https://auth.spetsen.net";
-            default_redirection_url = "https://spetsen.net";
+            authelia_url = "https://auth.superdator.spetsen.net";
+            default_redirection_url = "https://superdator.spetsen.net";
           }
         ];
       };
@@ -78,11 +78,11 @@
         default_policy = "deny";
         rules = [
           {
-            domain = ["auth.spetsen.net"];
+            domain = ["auth.superdator.spetsen.net"];
             policy = "bypass";
           }
           {
-            domain = ["*.spetsen.net"];
+            domain = ["*.superdator.spetsen.net"];
             policy = "one_factor";
           }
         ];
