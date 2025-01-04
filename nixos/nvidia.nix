@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  lib,
+  ...
+}: {
   hardware.graphics.enable = true;
 
   services.xserver.videoDrivers = ["nvidia"];
@@ -12,4 +16,6 @@
     # datacenter.enable = true;
     open = true;
   };
+
+  nixpkgs.config.cudaSupport = lib.mkDefault true;
 }

@@ -1,17 +1,20 @@
 {
-  security.sudo.enable = true;
-  security.sudo.execWheelOnly = true;
-  security.sudo.extraConfig = ''
-    Defaults env_reset,pwfeedback
-    Defaults lecture = never
-  '';
-
-  networking.firewall.enable = true;
+  security.sudo = {
+    enable = true;
+    execWheelOnly = true;
+    extraConfig = ''
+      Defaults env_reset,pwfeedback
+      Defaults lecture = never
+    '';
+  };
 
   programs.firejail.enable = true;
 
-  networking.firewall.allowedTCPPorts = [22 80 443 8000 11434 25565];
-  networking.firewall.allowedUDPPorts = [443 25565];
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [22 80 443 8000 11434 25565];
+    allowedUDPPorts = [443 25565];
+  };
 
   services.fail2ban = {
     enable = true;

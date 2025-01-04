@@ -66,6 +66,4 @@
       };
     };
   };
-
-  nixpkgs.config.cudaSupport = true;
 }

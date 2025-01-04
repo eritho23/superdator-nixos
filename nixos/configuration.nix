@@ -4,18 +4,19 @@
   ...
 }: {
   imports = [
-    ./authelia.nix
     # ./desktop.nix
+    ./authelia.nix
     ./hardware-configuration.nix
     ./locale.nix
     ./networking.nix
-    ./nix-settings-autoupdate.nix
+    ./nix.nix
     ./nvidia.nix
     ./programs.nix
     ./reverse-proxy.nix
     ./security.nix
     ./services.nix
     ./users.nix
+    ./vm.nix
   ];
 
   # Set the hostname.
