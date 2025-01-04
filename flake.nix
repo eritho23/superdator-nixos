@@ -10,6 +10,7 @@
   };
 
   outputs = {
+    self,
     nixpkgs,
     sops-nix,
     ...
@@ -22,7 +23,7 @@
     nixosConfigurations = {
       # Configuration for the NixOS system
       superdator = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
+        specialArgs = {inherit (self) inputs outputs;};
         modules = [
           ./nixos/configuration.nix
 
