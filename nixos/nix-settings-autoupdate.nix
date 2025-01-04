@@ -12,12 +12,4 @@
 
   # Add connect timeout to nix
   nix.settings.connect-timeout = 5;
-
-  system.autoUpgrade = {
-    enable = true;
-    dates = "Mon 01:00";
-    allowReboot = true;
-    flake = "github:eritho23/superdator-nixos";
-    operation = "switch";
-  };
 }
