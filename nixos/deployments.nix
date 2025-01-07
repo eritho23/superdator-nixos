@@ -10,11 +10,9 @@
       config,
       pkgs,
       ...
-    }: 
-    let
-	pbDataDir = "/var/lib/pocketbase";
-    in
-    {
+    }: let
+      pbDataDir = "/var/lib/pocketbase";
+    in {
       system.stateVersion = "23.11";
       users.users.pocketbase = {
         isSystemUser = true;
@@ -26,7 +24,7 @@
       systemd.services.parkpappa-pb = {
         unitConfig.description = "Pocketbase for parkpappa";
         serviceConfig = {
-          ExecStart = "${pkgs.pocketbase}/bin/pocketbase serve --dir ${pbDataDir}";
+          ExecStart = "${pkgs.pocketbase}/bin/pocketbase serve --dir ${pbDataDir}/pb_data --publicDir ${pbDataDir}/pb_public --hooksDir ${pbDataDir}/pb_hooks";
           Restart = "always";
           RestartSec = "5s";
           Type = "simple";
