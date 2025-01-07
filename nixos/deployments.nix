@@ -12,6 +12,7 @@
       ...
     }: let
       pbDataDir = "/var/lib/pocketbase";
+      pbListenAddr = "127.0.0.1:8090";
     in {
       system.stateVersion = "23.11";
       environment.systemPackages = with pkgs; [pocketbase];
@@ -25,7 +26,7 @@
       systemd.services.parkpappa-pb = {
         unitConfig.description = "Pocketbase for parkpappa";
         serviceConfig = {
-          ExecStart = "${pkgs.pocketbase}/bin/pocketbase serve --dir ${pbDataDir}/pb_data --publicDir ${pbDataDir}/pb_public --hooksDir ${pbDataDir}/pb_hooks";
+          ExecStart = "${pkgs.pocketbase}/bin/pocketbase serve --dir ${pbDataDir}/pb_data --publicDir ${pbDataDir}/pb_public --hooksDir ${pbDataDir}/pb_hooks --http ${pbListenAddr}";
           Restart = "always";
           RestartSec = "5s";
           Type = "simple";
@@ -45,6 +46,7 @@
       ...
     }: let
       pbDataDir = "/var/lib/pocketbase";
+      pbListenAddr = "127.0.0.1:8091";
     in {
       system.stateVersion = "23.11";
       environment.systemPackages = with pkgs; [pocketbase];
@@ -58,7 +60,7 @@
       systemd.services.parkpappa-pb = {
         unitConfig.description = "Pocketbase for zmartrest";
         serviceConfig = {
-          ExecStart = "${pkgs.pocketbase}/bin/pocketbase serve --dir ${pbDataDir}/pb_data --publicDir ${pbDataDir}/pb_public --hooksDir ${pbDataDir}/pb_hooks";
+          ExecStart = "${pkgs.pocketbase}/bin/pocketbase serve --dir ${pbDataDir}/pb_data --publicDir ${pbDataDir}/pb_public --hooksDir ${pbDataDir}/pb_hooks --http ${pbListenAddr}";
           Restart = "always";
           RestartSec = "5s";
           Type = "simple";
