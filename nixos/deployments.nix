@@ -10,11 +10,15 @@
       config,
       pkgs,
       ...
-    }: {
+    }: 
+    let
+	pbDataDir = "/var/lib/pocketbase";
+    in
+    {
       system.stateVersion = "23.11";
       users.users.pocketbase = {
         isSystemUser = true;
-        home = "/var/lib/pocketbase";
+        home = pbDataDir;
         shell = "/run/current-system/sw/bin/nologin";
         group = "pocketbase";
       };
@@ -22,7 +26,7 @@
       systemd.services.parkpappa-pb = {
         unitConfig.description = "Pocketbase for parkpappa";
         serviceConfig = {
-          ExecStart = "${pkgs.pocketbase}/bin/pocketbase serve";
+          ExecStart = "${pkgs.pocketbase}/bin/pocketbase serve --dir ${pbDataDir}";
           Restart = "always";
           RestartSec = "5s";
           Type = "simple";
