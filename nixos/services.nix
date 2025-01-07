@@ -27,7 +27,8 @@
     acceleration = "cuda";
   };
 
-  /*services.open-webui = {
+  /*
+    services.open-webui = {
     enable = true;
     port = 9999;
     host = "127.0.0.1";
@@ -37,45 +38,46 @@
       WEBUI_AUTH = "False"; # TODO: change to something more secure, e.g. OIDC w/ authelia
       OLLAMA_BASE_URL = "http://127.0.0.1:11434";
     };
-  };*/
+  };
+  */
 
   # TODO: fix jupyterhub
 
   # services.jupyterhub = {
-    # enable = true;
-    # authentication = "jupyterhub.auth.PAMAuthenticator";
-    # kernels = {
-      # torch = let
-        # env = pkgs.python311.withPackages (pythonPackages:
-          # with pythonPackages; [
-            # # Base for the kernel
-            # ipykernel
-# 
-            # # Useful utilities
-            # beautifulsoup4 # Web scraping
-            # matplotlib # Graphs
-            # numpy # Of course
-            # pandas # CSV files
-            # pillow # Images
-            # requests # Make API requests
-            # scipy # Superset of numpy
-            # torch # PyTorch
-            # torchaudio
-            # torchvision
-          # ]);
-      # in {
-        # displayName = "Machine learning kernel (PyTorch)";
-        # argv = [
-          # "${env.interpreter}"
-          # "-m"
-          # "ipykernel_launcher"
-          # "-f"
-          # "{connection_file}"
-        # ];
-        # language = "python";
-        # logo32 = "${env}/${env.sitePackages}/ipykernel/resources/logo-32x32.png";
-        # logo64 = "${env}/${env.sitePackages}/ipykernel/resources/logo-64x64.png";
-      # };
-    # };
+  # enable = true;
+  # authentication = "jupyterhub.auth.PAMAuthenticator";
+  # kernels = {
+  # torch = let
+  # env = pkgs.python311.withPackages (pythonPackages:
+  # with pythonPackages; [
+  # # Base for the kernel
+  # ipykernel
+  #
+  # # Useful utilities
+  # beautifulsoup4 # Web scraping
+  # matplotlib # Graphs
+  # numpy # Of course
+  # pandas # CSV files
+  # pillow # Images
+  # requests # Make API requests
+  # scipy # Superset of numpy
+  # torch # PyTorch
+  # torchaudio
+  # torchvision
+  # ]);
+  # in {
+  # displayName = "Machine learning kernel (PyTorch)";
+  # argv = [
+  # "${env.interpreter}"
+  # "-m"
+  # "ipykernel_launcher"
+  # "-f"
+  # "{connection_file}"
+  # ];
+  # language = "python";
+  # logo32 = "${env}/${env.sitePackages}/ipykernel/resources/logo-32x32.png";
+  # logo64 = "${env}/${env.sitePackages}/ipykernel/resources/logo-64x64.png";
+  # };
+  # };
   # };
 }
