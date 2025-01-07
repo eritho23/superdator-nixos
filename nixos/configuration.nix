@@ -5,6 +5,7 @@
 }: {
   imports = [
     # ./desktop.nix
+    ./deployments.nix
     ./authelia.nix
     ./hardware-configuration.nix
     ./locale.nix
