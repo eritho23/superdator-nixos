@@ -5,6 +5,7 @@
   ...
 }: {
   containers.parkpappa = {
+    autoStart = true;
     config = {
       config,
       pkgs,

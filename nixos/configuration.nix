@@ -5,7 +5,7 @@
 }: {
   imports = [
     # ./desktop.nix
-    # ./deployments.nix
+    ./deployments.nix
     ./authelia.nix
     ./hardware-configuration.nix
     ./locale.nix
@@ -46,35 +46,6 @@
   sops.secrets."authelia/oidcIssuerPrivateKey".owner = "authelia-main";
   sops.secrets."authelia/sessionSecret".owner = "authelia-main";
   sops.secrets."authelia/ldapPassword".owner = "authelia-main";
-
-  containers.parkpappa = {
-    config = {
-      config,
-      pkgs,
-      ...
-    }: {
-      system.stateVersion = "23.11";
-      users.users.pocketbase = {
-        isSystemUser = true;
-        home = "/var/lib/pocketbase";
-        shell = "/run/current-system/sw/bin/nologin";
-        group = "pocketbase";
-      };
-      users.groups.pocketbase = {};
-      systemd.services.parkpappa-pb = {
-        unitConfig.description = "Pocketbase for parkpappa";
-        serviceConfig = {
-          ExecStart = "${pkgs.pocketbase}/bin/pocketbase serve";
-          Restart = "always";
-          RestartSec = "5s";
-          Type = "simple";
-          User = "pocketbase";
-          Group = "pocketbase";
-        };
-        wantedBy = ["multi-user.target"];
-      };
-    };
-  };
 
   system.stateVersion = "23.11";
 }
