@@ -14,6 +14,7 @@
       pbDataDir = "/var/lib/pocketbase";
     in {
       system.stateVersion = "23.11";
+      environment.systemPackages = with pkgs; [pocketbase];
       users.users.pocketbase = {
         isSystemUser = true;
         home = pbDataDir;
