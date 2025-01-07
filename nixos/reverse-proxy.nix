@@ -32,6 +32,11 @@
           reverse_proxy 127.0.0.1:9091
         '';
       };
+      "parkpappa-pb.superdator.spetsen.net" = {
+        extraConfig = ''
+          reverse_proxy 127.0.0.1:8090
+        '';
+      };
     };
   };
 }
