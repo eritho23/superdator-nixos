@@ -27,7 +27,7 @@
     acceleration = "cuda";
   };
 
-  services.open-webui = {
+  /*services.open-webui = {
     enable = true;
     port = 9999;
     host = "127.0.0.1";
@@ -37,7 +37,7 @@
       WEBUI_AUTH = "False"; # TODO: change to something more secure, e.g. OIDC w/ authelia
       OLLAMA_BASE_URL = "http://127.0.0.1:11434";
     };
-  };
+  };*/
 
   # TODO: fix jupyterhub
 
