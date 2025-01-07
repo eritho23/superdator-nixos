@@ -21,11 +21,13 @@
         home = pbDataDir;
         shell = "/run/current-system/sw/bin/nologin";
         group = "pocketbase";
+        createHome = true;
       };
       users.groups.pocketbase = {};
       systemd.services.parkpappa-pb = {
         unitConfig.description = "Pocketbase for parkpappa";
         serviceConfig = {
+          ExecStartPre = "";
           ExecStart = "${pkgs.pocketbase}/bin/pocketbase serve --dir ${pbDataDir}/pb_data --publicDir ${pbDataDir}/pb_public --hooksDir ${pbDataDir}/pb_hooks --http ${pbListenAddr}";
           Restart = "always";
           RestartSec = "5s";
@@ -55,6 +57,7 @@
         home = pbDataDir;
         shell = "/run/current-system/sw/bin/nologin";
         group = "pocketbase";
+        createHome = true;
       };
       users.groups.pocketbase = {};
       systemd.services.zmartrest-pb = {
