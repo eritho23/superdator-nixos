@@ -57,7 +57,7 @@
         group = "pocketbase";
       };
       users.groups.pocketbase = {};
-      systemd.services.parkpappa-pb = {
+      systemd.services.zmartrest-pb = {
         unitConfig.description = "Pocketbase for zmartrest";
         serviceConfig = {
           ExecStart = "${pkgs.pocketbase}/bin/pocketbase serve --dir ${pbDataDir}/pb_data --publicDir ${pbDataDir}/pb_public --hooksDir ${pbDataDir}/pb_hooks --http ${pbListenAddr}";
