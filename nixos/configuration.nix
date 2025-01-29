@@ -40,12 +40,18 @@
   sops.age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
   sops.secrets.flinks_password.neededForUsers = true;
 
-  sops.secrets."authelia/jwtSecret".owner = "authelia-main";
-  sops.secrets."authelia/storageEncryptionKey".owner = "authelia-main";
-  sops.secrets."authelia/oidcHmacSecret".owner = "authelia-main";
-  sops.secrets."authelia/oidcIssuerPrivateKey".owner = "authelia-main";
-  sops.secrets."authelia/sessionSecret".owner = "authelia-main";
-  sops.secrets."authelia/ldapPassword".owner = "authelia-main";
+  sops.secrets."beni_ghcr_token" = {};
+  sops.secrets."beni_environ_file" = {};
+
+  # Authelia
+  sops.secrets = {
+    "authelia/jwtSecret".owner = "authelia-main";
+    "authelia/storageEncryptionKey".owner = "authelia-main";
+    "authelia/oidcHmacSecret".owner = "authelia-main";
+    "authelia/oidcIssuerPrivateKey".owner = "authelia-main";
+    "authelia/sessionSecret".owner = "authelia-main";
+    "authelia/ldapPassword".owner = "authelia-main";
+  };
 
   system.stateVersion = "23.11";
 }
