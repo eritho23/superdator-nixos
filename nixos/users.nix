@@ -43,5 +43,13 @@
     # packages = with pkgs; [];
   };
 
+  users.users."ianterzo" = {
+    isNormalUser = true;
+    uid = 1008;
+    initialPassword = "nixos";
+    extraGroups = ["wheel" "ssh-access"];
+    # packages = with pkgs; [];
+  };
+
   users.groups."ssh-access" = {};
 }
