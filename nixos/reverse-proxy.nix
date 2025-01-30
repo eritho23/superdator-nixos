@@ -45,8 +45,12 @@
       };
       "boka.spetsen.net" = {
         extraConfig = ''
-          reverse_proxy @websockets 127.0.0.1:5001
-          reverse_proxy / 127.0.0.1:5000
+          @websockets {
+            header Connection *Upgrade*
+            header Upgrade    websocket
+          }
+	 reverse_proxy @websockets 127.0.0.1:5001
+	 reverse_proxy / 127.0.0.1:5000
         '';
       };
     };
