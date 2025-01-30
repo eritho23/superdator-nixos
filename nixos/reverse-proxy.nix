@@ -45,9 +45,8 @@
       };
       "boka.spetsen.net" = {
         extraConfig = ''
-          respond "Coming soon"
-                 # reverse_proxy @websockets 127.0.0.1:5001
-          # reverse_proxy / 127.0.0.1:5000
+          reverse_proxy @websockets 127.0.0.1:5001
+          reverse_proxy / 127.0.0.1:5000
         '';
       };
     };
