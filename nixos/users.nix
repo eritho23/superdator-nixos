@@ -47,7 +47,7 @@
     isNormalUser = true;
     uid = 1008;
     initialPassword = "nixos";
-    extraGroups = ["wheel" "ssh-access"];
+    extraGroups = ["ssh-access"];
     # packages = with pkgs; [];
   };
 

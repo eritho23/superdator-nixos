@@ -8,7 +8,7 @@
     backend = "podman";
     containers = {
       "tvattstuga-app" = {
-        image = "ghcr.io/benib0/tvattstuga-app:ab4b5e4a22dfe829eff96a64d1aa12fb00b62140";
+        image = "ghcr.io/benib0/tvattstuga-app:1.1";
         ports = [
           "127.0.0.1:5000:3000"
           "127.0.0.1:5001:4000"
