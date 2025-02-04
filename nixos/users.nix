@@ -51,5 +51,13 @@
     # packages = with pkgs; [];
   };
 
+  users.users."beni" = {
+    isNormalUser = true;
+    uid = 1009;
+    hashedPassword = "$y$j9T$aEh.zpaqIc2doGeoIDstX.$bgRWUDMcRn.zX1xRUDFUkgB2NNfFHnS.b8FmtTRuub8";
+    extraGroups = ["ssh-access"];
+    # packages = with pkgs; [];
+  };
+
   users.groups."ssh-access" = {};
 }
