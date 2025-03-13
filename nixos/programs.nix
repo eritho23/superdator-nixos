@@ -48,8 +48,6 @@
     enable = true;
     dockerCompat = true;
   };
-  # Enable Nvidia support in containers
-  hardware.nvidia-container-toolkit.enable = true;
 
   programs.nix-ld.enable = true;
 }
