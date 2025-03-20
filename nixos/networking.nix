@@ -1,4 +1,4 @@
-{lib, ...}: {
+{pkgs, lib, ...}: {
   networking.firewall = {
     # Tailscale users can bypass the firewall.
     trustedInterfaces = ["tailscale0"];
@@ -17,6 +17,7 @@
     # Open firewall for the tunnel port.
     openFirewall = true;
     port = 41641;
+    package = pkgs.unstable.tailscale;
   };
 
   # Use systemd-resolved for name resolution.

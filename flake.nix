@@ -2,8 +2,10 @@
   description = "NixOS flake for the super computer";
 
   inputs = {
-    # Input unstable Nixpkgs for use in the OS.
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # Input stable nixpkgs for use in the OS
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    # Unstable packages for things like tailscale
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     # SOPS for secret management.
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
@@ -19,6 +21,7 @@
     pkgs = import nixpkgs {inherit system;};
   in {
     # Add overlays
+    overlays = import ./overlays {inherit inputs;};
 
     nixosConfigurations = {
       # Configuration for the NixOS system

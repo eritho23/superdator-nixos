@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  outputs,
   ...
 }: {
   imports = [
@@ -19,6 +20,8 @@
     ./users.nix
     ./vm.nix
   ];
+
+  nixpkgs.overlays = [outputs.overlays.unstable-packages];
 
   # Set the hostname.
   networking.hostName = "superdator";
