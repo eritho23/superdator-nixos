@@ -46,6 +46,9 @@
   services.jupyterhub = {
     enable = true;
     authentication = "jupyterhub.auth.PAMAuthenticator";
+    extraConfig = ''
+      c.Authenticator.allowed_users = set(["erre", "malte"])
+    '';
     kernels = {
       torch = let
         env = pkgs.python311.withPackages (pythonPackages:
