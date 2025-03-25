@@ -53,6 +53,8 @@
       torch = let
         env = pkgs.python311.withPackages (pythonPackages:
           with pythonPackages; [
+            pip
+
             # Base for the kernel
             ipykernel
 
