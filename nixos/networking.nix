@@ -1,4 +1,8 @@
-{pkgs, lib, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   networking.firewall = {
     # Tailscale users can bypass the firewall.
     trustedInterfaces = ["tailscale0"];

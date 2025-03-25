@@ -59,5 +59,12 @@
     # packages = with pkgs; [];
   };
 
+  users.users."adrian" = {
+    isNormalUser = true;
+    uid = 1010;
+    hashedPassword = "$y$j9T$6Z0OBcsaq6EIk9GRK.ulD1$HyVfbqJlbRsStyNWEgteDkdhjQRtgs8yqCCCy.eu6HB";
+    extraGroups = ["ssh-access"];
+  };
+
   users.groups."ssh-access" = {};
 }
