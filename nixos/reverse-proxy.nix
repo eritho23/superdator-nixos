@@ -14,7 +14,7 @@
             uri /api/authz/forward-auth
             copy_headers Remote-User Remote-Groups Remote-Email Remote-Name
           }
-          respond "Disabled"
+	  reverse_proxy 127.0.0.1:8000
         '';
       };
       "chat.superdator.spetsen.net" = {
