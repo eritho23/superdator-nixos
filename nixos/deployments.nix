@@ -73,7 +73,7 @@
       systemd.services.justcount-pb = {
         unitConfig.description = "Pocketbase for justcount";
         serviceConfig = {
-          ExecStart = "${pbPackage}/bin/pocketbase serve --dir ${pbDataDir}/pb_data --publicDir ${pbDataDir}/pb_public --hooksDir ${pbDataDir}/pb_hooks --http ${pbListenAddr}";
+          ExecStart = "${pbPackage}/bin/pocketbase serve justcount-pb.superdator.spetsen.net --dir ${pbDataDir}/pb_data --publicDir ${pbDataDir}/pb_public --hooksDir ${pbDataDir}/pb_hooks --http ${pbListenAddr}";
           Restart = "always";
           RestartSec = "5s";
           Type = "simple";
