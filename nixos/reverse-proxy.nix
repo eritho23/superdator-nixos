@@ -10,7 +10,15 @@
       };
       "ctf.spetsen.net" = {
         extraConfig = ''
-          reverse_proxy 127.0.0.1:3333
+                 reverse_proxy 127.0.0.1:3333
+          header {
+                   Content-Security-Policy "connect-src 'none'; default-src 'self'; font-src 'none'; manifest-src 'none'; object-src 'none'; worker-src 'none';"
+            Strict-Transport-Security "max-age=31536000; includeSubDomains"
+            X-Frame-Options "SAMEORIGIN"
+            X-Content-Type-Options "nosniff"
+            Referrer-Policy "no-referrer"
+            Permissions-Policy "geolocation=(), camera=(), microphone=()"
+          }
         '';
       };
       "jupyter.superdator.spetsen.net" = {
