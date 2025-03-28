@@ -103,8 +103,10 @@
     after = ["postgresql.service"];
     requires = ["postgresql.service"];
     environment = {
+      ADDRESS_HEADER = "x-forwarded-for";
+      HOST_HEADER = "x-forwarded-host";
       PORT = "3333";
-      ORIGIN = "ctf.spetsen.net";
+      PROTOCOL_HEADER = "x-forwarded-proto";
     };
     serviceConfig = {
       EnvironmentFile = "${config.sops.secrets."spetsctf/environment_file".path}";
