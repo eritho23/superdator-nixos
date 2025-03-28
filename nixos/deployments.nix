@@ -97,14 +97,15 @@
     group = "spetsctf";
   };
 
-  systemd.services.spetsctf =
-  let
+  systemd.services.spetsctf = let
     spetsCtfWebBundle = inputs.spetsctf.packages."${pkgs.system}".spetsctf;
-  in
-  {
-    unitConfig.description = "SpetsCTF platform web service";
+  in {
     after = ["postgresql.service"];
     requires = ["postgresql.service"];
+    environment = {
+      PORT = "3333";
+      ORIGIN = "ctf.spetsen.net";
+    };
     serviceConfig = {
       EnvironmentFile = "${config.sops.secrets."spetsctf/environment_file".path}";
       ExecStart = "${pkgs.nodejs_22}/bin/node ${spetsCtfWebBundle}";

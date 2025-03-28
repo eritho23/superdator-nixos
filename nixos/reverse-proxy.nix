@@ -8,6 +8,15 @@
           respond "Should be a fancy superdator landing page"
         '';
       };
+      "ctf.spetsen.net" = {
+        extraConfig = ''
+                 forward_auth 127.0.0.1:9091 {
+                   uri /api/authz/forward-auth
+                   copy_headers Remote-User Remote-Groups Remote-Email Remote-Name
+                 }
+          reverse_proxy 127.0.0.1:3333
+        '';
+      };
       "jupyter.superdator.spetsen.net" = {
         extraConfig = ''
                  forward_auth 127.0.0.1:9091 {
