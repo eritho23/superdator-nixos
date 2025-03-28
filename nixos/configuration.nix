@@ -6,13 +6,14 @@
 }: {
   imports = [
     # ./desktop.nix
-    ./deployments.nix
     ./authelia.nix
+    ./deployments.nix
     ./hardware-configuration.nix
     ./locale.nix
     ./networking.nix
     ./nix.nix
     ./nvidia.nix
+    ./postgresql.nix
     ./programs.nix
     ./reverse-proxy.nix
     ./security.nix
