@@ -84,4 +84,15 @@
       };
     };
   };
+
+  users.groups.spetsctf = {};
+  users.users.spetsctf = let
+    spetsCtfDataDir = "/var/lib/spetsctf";
+  in {
+    isSystemUser = true;
+    home = spetsCtfDataDir;
+    createHome = true;
+    shell = "/run/current-system/sw/bin/nologin";
+    group = "spetsctf";
+  };
 }

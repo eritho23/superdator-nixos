@@ -9,6 +9,14 @@
     # SOPS for secret management.
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    ### FLAKE INPUTS FOR DEPLOYMENTS BELOW ###
+    spetsctf = {
+      url = "github:fdABB-Gym-Samuel/SpetsCTF";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
+    ### END FLAKE INPUTS FOR DEPLOYMENTS ###
   };
 
   outputs = {
