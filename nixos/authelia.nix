@@ -81,10 +81,6 @@
             domain = ["*.superdator.spetsen.net"];
             policy = "one_factor";
           }
-          {
-            domain = ["ctf.spetsen.net"];
-            policy = "one_factor";
-          }
         ];
       };
     };
