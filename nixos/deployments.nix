@@ -2,6 +2,7 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }: {
   # containers.parkpappa = {
@@ -94,5 +95,25 @@
     createHome = true;
     shell = "/run/current-system/sw/bin/nologin";
     group = "spetsctf";
+  };
+
+  systemd.services.spetsctf =
+  let
+    spetsCtfWebBundle = inputs.spetsctf.packages."${pkgs.system}".spetsctf;
+  in
+  {
+    unitConfig.description = "SpetsCTF platform web service";
+    after = ["postgresql.service"];
+    requires = ["postgresql.service"];
+    serviceConfig = {
+      EnvironmentFile = "${config.sops.secrets."spetsctf/environment_file".path}";
+      ExecStart = "${pkgs.nodejs_22}/bin/node ${spetsCtfWebBundle}";
+      Group = "spetsctf";
+      Restart = "no";
+      Type = "simple";
+      User = "spetsctf";
+      WorkingDirectory = "/var/lib/spetsctf";
+    };
+    wantedBy = ["multi-user.target"];
   };
 }

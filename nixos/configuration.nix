@@ -57,5 +57,8 @@
     "authelia/ldapPassword".owner = "authelia-main";
   };
 
+  sops.secrets."spetsctf/environment_file".owner = "spetsctf";
+  sops.secrets."spetsctf/postgres_password".owner = "spetsctf";
+
   system.stateVersion = "23.11";
 }
