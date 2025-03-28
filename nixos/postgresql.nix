@@ -3,10 +3,12 @@
     enable = true;
     package = pkgs.postgresql_16;
     ensureDatabases = ["spetsctf"];
-    ensureUsers."spetsctf" = {
-      ensureDBOwnership = true;
-      name = "spetsctf";
-      ensureClauses.login = true;
-    };
+    ensureUsers = [
+      {
+        name = "spetsctf";
+        ensureClauses.login = true;
+        ensureDBOwnership = true;
+      }
+    ];
   };
 }
