@@ -5,42 +5,6 @@
   inputs,
   ...
 }: {
-  # containers.parkpappa = {
-  # autoStart = true;
-  # config = {
-  # config,
-  # pkgs,
-  # ...
-  # }: let
-  # pbDataDir = "/var/lib/pocketbase";
-  # pbListenAddr = "127.0.0.1:8090";
-  # in {
-  # system.stateVersion = "23.11";
-  # environment.systemPackages = with pkgs; [pocketbase];
-  # users.users.pocketbase = {
-  # isSystemUser = true;
-  # home = pbDataDir;
-  # shell = "/run/current-system/sw/bin/nologin";
-  # group = "pocketbase";
-  # createHome = true;
-  # };
-  # users.groups.pocketbase = {};
-  # systemd.services.parkpappa-pb = {
-  # unitConfig.description = "Pocketbase for parkpappa";
-  # serviceConfig = {
-  # ExecStartPre = "";
-  # ExecStart = "${pkgs.pocketbase}/bin/pocketbase serve --dir ${pbDataDir}/pb_data --publicDir ${pbDataDir}/pb_public --hooksDir ${pbDataDir}/pb_hooks --http ${pbListenAddr}";
-  # Restart = "always";
-  # RestartSec = "5s";
-  # Type = "simple";
-  # User = "pocketbase";
-  # Group = "pocketbase";
-  # };
-  # wantedBy = ["multi-user.target"];
-  # };
-  # };
-  # };
-
   containers.justcount = {
     autoStart = true;
     config = {
@@ -104,14 +68,18 @@
     requires = ["postgresql.service"];
     environment = {
       ADDRESS_HEADER = "x-forwarded-for";
-      HOST_HEADER = "x-forwarded-host";
+      NODE_ENV = "production";
+      ORIGIN = "https://ctf.spetsen.net";
       PORT = "3333";
-      PROTOCOL_HEADER = "x-forwarded-proto";
     };
     serviceConfig = {
       EnvironmentFile = "${config.sops.secrets."spetsctf/environment_file".path}";
       ExecStart = "${pkgs.nodejs_22}/bin/node ${spetsCtfWebBundle}";
       Group = "spetsctf";
+      NoNewPrivileges = "yes";
+      ProcSubset = "pid";
+      ProtectSystem = "yes";
+      ReadWritePaths = "/var/lib/spetsctf";
       Restart = "no";
       Type = "simple";
       User = "spetsctf";
