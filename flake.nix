@@ -9,6 +9,7 @@
     # SOPS for secret management.
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
 
     ### FLAKE INPUTS FOR DEPLOYMENTS BELOW ###
     spetsctf = {
@@ -22,15 +23,19 @@
   outputs = {
     self,
     nixpkgs,
+    systems,
     sops-nix,
+    treefmt-nix,
     ...
   } @ inputs: let
     system = "x86_64-linux";
     pkgs = import nixpkgs {inherit system;};
+    eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
+    treefmtEval = eachSystem (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
   in {
     # Add overlays
     overlays = import ./overlays {inherit inputs;};
-
+    formatter = eachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
     nixosConfigurations = {
       # Configuration for the NixOS system
       superdator = nixpkgs.lib.nixosSystem {
