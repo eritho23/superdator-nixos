@@ -120,7 +120,9 @@ in {
             torchaudio
             torchvision
 
-            ipywebrtc
+            ipywebrtc # CUSTOM
+            ipywidgets
+            opencv4
           ]);
       in {
         displayName = "MaltKernel";
