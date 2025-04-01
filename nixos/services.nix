@@ -2,7 +2,22 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  ipywebrtc = pkgs.python3Packages.buildPythonPackage rec {
+    pname = "ipywebrtc";
+    version = "0.6.0";
+    format = "setuptools";
+
+    buildInputs = [pkgs.python3Packages.jupyter-packaging];
+
+    pythonImportsCheck = [];
+
+    src = pkgs.fetchPypi {
+      inherit pname version;
+      hash = "sha256-+Kw8wCs2M7WfOIrvZ5Yc/1f5ACj9MDuziGxjw9Yx2hM=";
+    };
+  };
+in {
   services.openssh = {
     allowSFTP = true;
     enable = true;
@@ -51,7 +66,7 @@
     '';
     kernels = {
       torch = let
-        env = pkgs.python311.withPackages (pythonPackages:
+        env = pkgs.python3.withPackages (pythonPackages:
           with pythonPackages; [
             pip
 
@@ -72,6 +87,43 @@
           ]);
       in {
         displayName = "Machine learning kernel (PyTorch)";
+        argv = [
+          "${env.interpreter}"
+          "-m"
+          "ipykernel_launcher"
+          "-f"
+          "{connection_file}"
+        ];
+        language = "python";
+        logo32 = "${env}/${env.sitePackages}/ipykernel/resources/logo-32x32.png";
+        logo64 = "${env}/${env.sitePackages}/ipykernel/resources/logo-64x64.png";
+      };
+      malte = let
+        env = pkgs.python3.withPackages (pythonPackages:
+          with pythonPackages; [
+            scikit-learn
+
+            pip
+
+            # Base for the kernel
+            ipykernel
+
+            # Useful utilities
+            beautifulsoup4 # Web scraping
+            matplotlib # Graphs
+            numpy # Of course
+            pandas # CSV files
+            pillow # Images
+            requests # Make API requests
+            scipy # Superset of numpy
+            torch # PyTorch
+            torchaudio
+            torchvision
+
+            ipywebrtc
+          ]);
+      in {
+        displayName = "MaltKernel";
         argv = [
           "${env.interpreter}"
           "-m"
