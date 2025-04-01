@@ -2,7 +2,12 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  pythonWithPip = pkgs.python3.withPackages (po:
+    with po; [
+      pip
+    ]);
+in {
   programs = {
     fzf.fuzzyCompletion = true;
     git.enable = true;
@@ -40,6 +45,7 @@
     nvtopPackages.nvidia
     pciutils
     podman-compose
+    pythonWithPip
     ripgrep
     wget
   ];
