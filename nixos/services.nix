@@ -3,12 +3,12 @@
   lib,
   ...
 }: let
-  ipywebrtc = pkgs.python3Packages.buildPythonPackage rec {
+  ipywebrtc = pkgs.unstable.python312Packages.buildPythonPackage rec {
     pname = "ipywebrtc";
     version = "0.6.0";
     format = "setuptools";
 
-    buildInputs = [pkgs.python3Packages.jupyter-packaging];
+    buildInputs = [pkgs.unstable.python312Packages.jupyter-packaging];
 
     pythonImportsCheck = [];
 
