@@ -43,6 +43,9 @@
     initialPassword = "nixos";
     extraGroups = ["wheel" "ssh-access"];
     # packages = with pkgs; [];
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMvLI8Eo8iu1wd36nsdRwGaElTCVKF2B/GE0KYXD4sVm nils@atlasaves.com"
+    ];
   };
 
   users.users."ianterzo" = {
