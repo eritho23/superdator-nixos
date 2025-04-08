@@ -99,7 +99,7 @@ in {
         logo64 = "${env}/${env.sitePackages}/ipykernel/resources/logo-64x64.png";
       };
       malte = let
-        env = pkgs.python3.withPackages (pythonPackages:
+        env = pkgs.unstable.python312.withPackages (pythonPackages:
           with pythonPackages; [
             scikit-learn
 
@@ -123,6 +123,8 @@ in {
             ipywebrtc # CUSTOM
             ipywidgets
             opencv4
+
+            ultralytics
           ]);
       in {
         displayName = "MaltKernel";
