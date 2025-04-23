@@ -64,10 +64,10 @@
     # packages = with pkgs; [];
   };
 
-  users.users."adrian" = {
+  users.users."hannes" = {
     isNormalUser = true;
-    uid = 1010;
-    hashedPassword = "$y$j9T$6Z0OBcsaq6EIk9GRK.ulD1$HyVfbqJlbRsStyNWEgteDkdhjQRtgs8yqCCCy.eu6HB";
+    uid = 1020;
+    hashedPassword = "$y$j9T$I.hNRxV95KMVBVNVibRQW0$kD/YNgHwRMJ18uM1cg7sVPrFqvRwwazKVV4My5pBXP9";
     extraGroups = ["ssh-access"];
   };
 
