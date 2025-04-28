@@ -62,7 +62,7 @@ in {
     enable = true;
     authentication = "jupyterhub.auth.PAMAuthenticator";
     extraConfig = ''
-      c.Authenticator.allowed_users = set(["erre", "malte"])
+      c.Authenticator.allowed_groups = set(["jupyter-access"])
     '';
     kernels = {
       torch = let

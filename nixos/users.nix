@@ -7,7 +7,7 @@
     isNormalUser = true;
     uid = 1001;
     initialPassword = "1234";
-    extraGroups = ["wheel" "ssh-access"];
+    extraGroups = ["wheel" "ssh-access" "jupyter-access"];
     packages = with pkgs; [chezmoi];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB5Gyc3DfKNsJ9UrF2xXuvsHe1BkvlltxsfUCYLniiqm abbindgym\\23eritho@SW2311"
@@ -18,7 +18,7 @@
     isNormalUser = true;
     uid = 1002;
     initialPassword = "4567";
-    extraGroups = ["wheel" "ssh-access"];
+    extraGroups = ["wheel" "ssh-access" "jupyter-access"];
     # packages = with pkgs; [];
   };
 
@@ -26,7 +26,7 @@
     isNormalUser = true;
     uid = 1003;
     initialPassword = "abcd";
-    extraGroups = ["wheel" "ssh-access"];
+    extraGroups = ["wheel"];
     # packages = with pkgs; [];
   };
 
@@ -34,14 +34,14 @@
     isNormalUser = true;
     hashedPasswordFile = config.sops.secrets.flinks_password.path;
     uid = 1006;
-    extraGroups = ["ssh-access"];
+    extraGroups = ["ssh-access" "jupyter-access"];
   };
 
   users.users."nils" = {
     isNormalUser = true;
     uid = 1007;
     initialPassword = "nixos";
-    extraGroups = ["wheel" "ssh-access"];
+    extraGroups = ["wheel" "ssh-access" "jupyter-access"];
     # packages = with pkgs; [];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMvLI8Eo8iu1wd36nsdRwGaElTCVKF2B/GE0KYXD4sVm nils@atlasaves.com"
@@ -72,4 +72,5 @@
   };
 
   users.groups."ssh-access" = {};
+  users.groups."jupyter-access" = {};
 }
