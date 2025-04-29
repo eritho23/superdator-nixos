@@ -71,6 +71,13 @@
     extraGroups = ["ssh-access"];
   };
 
+  users.users."22erituo" = {
+    isNormalUser = true;
+    uid = 1021;
+    hashedPasswordFile = config.sops.secrets.erituo_password.path;
+    extraGroups = ["ssh-access"];
+  };
+
   users.groups."ssh-access" = {};
   users.groups."jupyter-access" = {};
 }

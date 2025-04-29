@@ -43,6 +43,7 @@
   sops.defaultSopsFormat = "yaml";
   sops.age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
   sops.secrets.flinks_password.neededForUsers = true;
+  sops.secrets.erituo_password.neededForUsers = true;
 
   sops.secrets."beni_ghcr_token" = {};
   sops.secrets."beni_environ_file" = {};
