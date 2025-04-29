@@ -84,6 +84,8 @@ in {
             torch # PyTorch
             torchaudio
             torchvision
+            onnxruntime
+            opencv4
           ]);
       in {
         displayName = "Machine learning kernel (PyTorch)";
