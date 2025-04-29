@@ -74,7 +74,7 @@
   users.users."22erituo" = {
     isNormalUser = true;
     uid = 1021;
-    initialPasswordHash = "$y$j9T$LhaMxU0f63zJxfA2aEmEC.$4GUAvDZNaJJYcUzdxVcZ5hAxyKLFKDtDQMb10iepK26";
+    initialHashedPassword = "$y$j9T$LhaMxU0f63zJxfA2aEmEC.$4GUAvDZNaJJYcUzdxVcZ5hAxyKLFKDtDQMb10iepK26";
     extraGroups = ["ssh-access"];
   };
 
