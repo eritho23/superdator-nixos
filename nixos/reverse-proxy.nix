@@ -13,7 +13,7 @@
                  reverse_proxy 127.0.0.1:3333
 
           header {
-          	Content-Security-Policy "font-src 'self'; manifest-src 'none'; object-src 'none'; worker-src 'none'; script-src 'self';"
+          	Content-Security-Policy "font-src 'self'; manifest-src 'none'; object-src 'none'; worker-src 'none'; script-src 'self'; script-src-elem 'self';"
           	Strict-Transport-Security "max-age=31536000; includeSubDomains"
           	X-Frame-Options "SAMEORIGIN"X-Content-Type-Options "nosniff"
           	Referrer-Policy "no-referrer"
