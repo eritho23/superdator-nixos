@@ -10,20 +10,21 @@
       };
       "ctf.spetsen.net" = {
         extraConfig = ''
-                 reverse_proxy 127.0.0.1:3333
+                reverse_proxy 127.0.0.1:3333
 
-          header {
-          	Content-Security-Policy "font-src 'self'; manifest-src 'none'; object-src 'none'; worker-src 'none';"
-          	Strict-Transport-Security "max-age=31536000; includeSubDomains"
-          	X-Frame-Options "SAMEORIGIN"X-Content-Type-Options "nosniff"
-          	Referrer-Policy "no-referrer"
-          	Permissions-Policy "geolocation=(), camera=(), microphone=()"
-                        }
+                header {
+          # CSP is managed fully by SvelteKit.
+                	Strict-Transport-Security "max-age=31536000; includeSubDomains"
+                	X-Frame-Options "SAMEORIGIN"
+                	X-Content-Type-Options "nosniff"
+                	Referrer-Policy "no-referrer"
+                	Permissions-Policy "geolocation=(), camera=(), microphone=()"
+                }
 
-          @fonts {
-            			path *.woff2 *.woff *.ttf *.otf
-          		}
-          		header @fonts Cache-Control "public, max-age=31536000, immutable"
+                @fonts {
+                	path *.woff2 *.woff *.ttf *.otf
+                }
+                header @fonts Cache-Control "public, max-age=31536000, immutable"
         '';
       };
       "jupyter.superdator.spetsen.net" = {
@@ -54,6 +55,11 @@
       "justcount-pb.superdator.spetsen.net" = {
         extraConfig = ''
           reverse_proxy 127.0.0.1:8092
+        '';
+      };
+      "aula.spetsen.net" = {
+        extraConfig = ''
+          reverse_proxy 127.0.0.1:4041
         '';
       };
       "boka.spetsen.net" = {
