@@ -72,6 +72,13 @@
           reverse_proxy 127.0.0.1:5000
         '';
       };
+
+      # Actualis UF
+      "actualis.app" = {
+        extraConfig = ''
+          reverse_proxy 127.0.0.1:10021
+        '';
+      };
     };
   };
 }
