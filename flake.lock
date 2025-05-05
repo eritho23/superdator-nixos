@@ -68,17 +68,17 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1746386163,
-        "narHash": "sha256-hBmI86x8FfbCm2Y+blstpmmtO4DPPxjId43cwqGx0+4=",
+        "lastModified": 1746439803,
+        "narHash": "sha256-5oQmH/FuCiIF/V7/DzdeZ8h9k0fBW+jm8CEoDp1FAE4=",
         "owner": "fdABB-Gym-Samuel",
         "repo": "SpetsCTF",
-        "rev": "1874197d74d5074695f6011831b0a7d56f416255",
+        "rev": "c195f4dbdea9c074ccbcc0deb7f9c7abf1b7a087",
         "type": "github"
       },
       "original": {
         "owner": "fdABB-Gym-Samuel",
         "repo": "SpetsCTF",
-        "rev": "1874197d74d5074695f6011831b0a7d56f416255",
+        "rev": "c195f4dbdea9c074ccbcc0deb7f9c7abf1b7a087",
         "type": "github"
       }
     },
