@@ -57,6 +57,11 @@
           reverse_proxy 127.0.0.1:8092
         '';
       };
+      "fardtjanst-pb.superdator.spetsen.net" = {
+        extraConfig = ''
+          reverse_proxy 127.0.0.1:8093
+        '';
+      };
       "aula.spetsen.net" = {
         extraConfig = ''
           reverse_proxy 127.0.0.1:4041
