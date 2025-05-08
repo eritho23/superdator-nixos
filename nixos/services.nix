@@ -66,7 +66,7 @@ in {
     '';
     kernels = {
       torch = let
-        env = pkgs.python3.withPackages (pythonPackages:
+        env = pkgs.unstable.python3.withPackages (pythonPackages:
           with pythonPackages; [
             pip
 
@@ -81,11 +81,12 @@ in {
             pillow # Images
             requests # Make API requests
             scipy # Superset of numpy
-            torch # PyTorch
-            torchaudio
-            torchvision
+            torch-bin # PyTorch
+            torchaudio-bin
+            torchvision-bin
             onnxruntime
             opencv4
+            ultralytics
           ]);
       in {
         displayName = "Machine learning kernel (PyTorch)";
