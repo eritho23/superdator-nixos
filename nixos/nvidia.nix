@@ -1,6 +1,6 @@
 {
-  config,
-  lib,
+  # config,
+  # lib,
   ...
 }: {
   hardware.graphics.enable = true;
@@ -13,5 +13,5 @@
     open = true;
   };
 
-  nixpkgs.config.cudaSupport = lib.mkDefault true;
+  # nixpkgs.config.cudaSupport = lib.mkDefault true;
 }
