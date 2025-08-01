@@ -42,8 +42,7 @@
                     uri /api/authz/forward-auth
                     copy_headers Remote-User Remote-Groups Remote-Email Remote-Name
           }
-                 # reverse_proxy 127.0.0.1:9999
-          respond "Disabled"
+          reverse_proxy 127.0.0.1:9999
 
         '';
       };
