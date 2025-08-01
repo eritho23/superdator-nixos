@@ -1,5 +1,4 @@
 {
-  pkgs,
   lib,
   outputs,
   ...
@@ -38,15 +37,19 @@
   # Enable systemd-based initrd.
   boot.initrd.systemd.enable = lib.mkDefault true;
 
+  users.motd = "Welcome to the supercomputer!";
+
   # SOPS secrets.
   sops.defaultSopsFile = ../secrets/secrets.yaml;
   sops.defaultSopsFormat = "yaml";
   sops.age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
   sops.secrets.flinks_password.neededForUsers = true;
-  # sops.secrets.erituo_password.neededForUsers = true;
 
   sops.secrets."beni_ghcr_token" = {};
   sops.secrets."beni_environ_file" = {};
+  sops.secrets."beni_hashed_password".neededForUsers = true;
+
+  sops.secrets."hannes_hashed_password".neededForUsers = true;
 
   # Authelia
   sops.secrets = {

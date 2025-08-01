@@ -14,21 +14,21 @@
     ];
   };
 
-  users.users."malte" = {
-    isNormalUser = true;
-    uid = 1002;
-    initialPassword = "4567";
-    extraGroups = ["wheel" "ssh-access" "jupyter-access"];
-    # packages = with pkgs; [];
-  };
+  # users.users."malte" = {
+  #   isNormalUser = true;
+  #   uid = 1002;
+  #   initialPassword = "4567";
+  #   extraGroups = ["wheel" "ssh-access" "jupyter-access"];
+  #   # packages = with pkgs; [];
+  # };
 
-  users.users."nojus" = {
-    isNormalUser = true;
-    uid = 1003;
-    initialPassword = "abcd";
-    extraGroups = ["wheel"];
-    # packages = with pkgs; [];
-  };
+  # users.users."nojus" = {
+  #   isNormalUser = true;
+  #   uid = 1003;
+  #   initialPassword = "abcd";
+  #   extraGroups = ["wheel"];
+  #   # packages = with pkgs; [];
+  # };
 
   users.users."flink" = {
     isNormalUser = true;
@@ -59,7 +59,7 @@
   users.users."beni" = {
     isNormalUser = true;
     uid = 1009;
-    hashedPassword = "$y$j9T$aEh.zpaqIc2doGeoIDstX.$bgRWUDMcRn.zX1xRUDFUkgB2NNfFHnS.b8FmtTRuub8";
+    hashedPasswordFile = config.sops.secrets."beni_hashed_password".path;
     extraGroups = ["ssh-access"];
     # packages = with pkgs; [];
   };
@@ -67,14 +67,7 @@
   users.users."hannes" = {
     isNormalUser = true;
     uid = 1020;
-    hashedPassword = "$y$j9T$I.hNRxV95KMVBVNVibRQW0$kD/YNgHwRMJ18uM1cg7sVPrFqvRwwazKVV4My5pBXP9";
-    extraGroups = ["ssh-access"];
-  };
-
-  users.users."22erituo" = {
-    isNormalUser = true;
-    uid = 1021;
-    initialHashedPassword = "$y$j9T$LhaMxU0f63zJxfA2aEmEC.$4GUAvDZNaJJYcUzdxVcZ5hAxyKLFKDtDQMb10iepK26";
+    hashedPasswordFile = config.sops.secrets."hannes_hashed_password".path;
     extraGroups = ["ssh-access"];
   };
 

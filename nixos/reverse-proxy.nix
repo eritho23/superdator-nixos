@@ -57,16 +57,11 @@
           reverse_proxy 127.0.0.1:8092
         '';
       };
-      "fardtjanst-pb.superdator.spetsen.net" = {
-        extraConfig = ''
-          reverse_proxy 127.0.0.1:8093
-        '';
-      };
-      "aula.spetsen.net" = {
-        extraConfig = ''
-          reverse_proxy 127.0.0.1:4041
-        '';
-      };
+      # "fardtjanst-pb.superdator.spetsen.net" = {
+      #   extraConfig = ''
+      #     reverse_proxy 127.0.0.1:8093
+      #   '';
+      # };
       "boka.spetsen.net" = {
         extraConfig = ''
                   @websockets {
@@ -75,13 +70,6 @@
                   }
           reverse_proxy @websockets 127.0.0.1:5001
           reverse_proxy 127.0.0.1:5000
-        '';
-      };
-
-      # Actualis UF
-      "actualis.app" = {
-        extraConfig = ''
-          reverse_proxy 127.0.0.1:10021
         '';
       };
     };

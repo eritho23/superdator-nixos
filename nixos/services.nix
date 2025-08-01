@@ -30,11 +30,6 @@ in {
     };
   };
 
-  services.cockpit = {
-    enable = true;
-    openFirewall = true;
-  };
-
   services.ollama = {
     enable = true;
     host = "0.0.0.0";
