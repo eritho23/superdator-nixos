@@ -47,8 +47,10 @@ in {
     OLLAMA_BASE_URL = "http://127.0.0.1:11434";
 
     # As per https://www.authelia.com/integration/trusted-header-sso/introduction/ .
-    WEBUI_AUTH_TRUSTED_EMAIL_HEADER = "Remote-Email";
-    WEBUI_AUTH_TRUSTED_NAME_HEADER = "Remote-Name";
+    # WEBUI_AUTH_TRUSTED_EMAIL_HEADER = "Remote-Email";
+    # WEBUI_AUTH_TRUSTED_NAME_HEADER = "Remote-Name";
+    # FIXME Dangerous
+    WEBUI_AUTH="False";
   };
 };
 

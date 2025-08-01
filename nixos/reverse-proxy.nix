@@ -36,14 +36,13 @@
           reverse_proxy 127.0.0.1:8000
         '';
       };
+      # forward_auth 127.0.0.1:9091 {
+      #           uri /api/authz/forward-auth
+      #           copy_headers Remote-User Remote-Groups Remote-Email Remote-Name
+      # }
       "chat.superdator.spetsen.net" = {
         extraConfig = ''
-          forward_auth 127.0.0.1:9091 {
-                    uri /api/authz/forward-auth
-                    copy_headers Remote-User Remote-Groups Remote-Email Remote-Name
-          }
           reverse_proxy 127.0.0.1:9999
-
         '';
       };
       "auth.superdator.spetsen.net" = {
