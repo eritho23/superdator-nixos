@@ -5,12 +5,9 @@
       jwtSecretFile = config.sops.secrets."authelia/jwtSecret".path;
       storageEncryptionKeyFile = config.sops.secrets."authelia/storageEncryptionKey".path;
       sessionSecretFile = config.sops.secrets."authelia/sessionSecret".path;
-      # oidcIssuerPrivateKeyFile = config.sops.secrets."authelia/oidcIssuerPrivateKey".path;
-      # oidcHmacSecretFile = config.sops.secrets."authelia/oidcHmacSecret".path;
+      oidcIssuerPrivateKeyFile = config.sops.secrets."authelia/oidcIssuerPrivateKey".path;
+      oidcHmacSecretFile = config.sops.secrets."authelia/oidcHmacSecret".path;
     };
-    # environmentVariables = {
-    # AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD_FILE = config.sops.secrets."authelia/ldapPassword".path;
-    # };
     settings = {
       theme = "auto";
 
@@ -34,12 +31,6 @@
         file = {
           path = "/var/lib/authelia-main/users_database.yml";
         };
-        # ldap = {
-        # address = "ldap://10.21.1.2";
-        # implementation = "activedirectory";
-        # base_dn = "OU=AbbIndGym,DC=abbindustrigymnasium,DC=local";
-        # user = "CN=23eritho,OU=TES V230S,OU=Västerås,OU=Elever,OU=ABBIndGym,DC=abbindustrigymnasium,DC=local";
-        # };
       };
 
       storage = {
@@ -47,6 +38,29 @@
           path = "/var/lib/authelia-main/db.sqlite3";
         };
       };
+
+      # identity_providers = {
+      #   oidc = {
+      #     clients = [
+      #       {
+      #         client_id = "abcd";
+      #         client_name = "Open WebUI";
+      #         client_secret = "{{ env \"OPEN_WEBUI_CLIENT_SECRET\" }}";
+      #         public = false;
+      #         authorization_policy = "one_factor";
+      #         require_pkce = false;
+      #         pkce_challenge_method = "";
+      #         redirect_uris = ["https://aaa.se"];
+      #         scopes = ["openid" "profile" "groups" "email"];
+      #         response_types = ["code"];
+      #         grant_types = ["authorization_code"];
+      #         access_token_signed_response_alg = "none";
+      #         userinfo_signed_response_alg = "none";
+      #         token_endpoint_auth_method = "client_secret_basic";
+      #       }
+      #     ];
+      #   };
+      # };
 
       notifier = {
         disable_startup_check = false;

@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   pythonWithPip = pkgs.python3.withPackages (po:
     with po; [
       pip

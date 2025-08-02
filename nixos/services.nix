@@ -38,20 +38,20 @@ in {
   };
 
   services.open-webui = {
-  enable = true;
-  port = 9999;
-  host = "127.0.0.1";
-  environment = {
-    ENV = "prod";
-    WEBUI_NAME = "spetsen.net LLM Service";
-    OLLAMA_BASE_URL = "http://127.0.0.1:11434";
+    enable = true;
+    port = 9999;
+    host = "127.0.0.1";
+    environment = {
+      ENV = "prod";
+      WEBUI_NAME = "spetsen.net LLM Service";
+      OLLAMA_BASE_URL = "http://127.0.0.1:11434";
 
-    # As per https://www.authelia.com/integration/trusted-header-sso/introduction/ .
-    WEBUI_AUTH_TRUSTED_EMAIL_HEADER = "Remote-Email";
-    WEBUI_AUTH_TRUSTED_NAME_HEADER = "Remote-Name";
-    WEBUI_AUTH_TRUSTED_GROUPS_HEADER = "Remote-Groups";
+      # As per https://www.authelia.com/integration/trusted-header-sso/introduction/ .
+      WEBUI_AUTH_TRUSTED_EMAIL_HEADER = "Remote-Email";
+      WEBUI_AUTH_TRUSTED_NAME_HEADER = "Remote-Name";
+      WEBUI_AUTH_TRUSTED_GROUPS_HEADER = "Remote-Groups";
+    };
   };
-};
 
   # TODO: fix jupyterhub
 
