@@ -16,12 +16,42 @@
       font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, Adwaita Sans, Cantarell, Ubuntu, roboto, noto, helvetica, arial, sans-serif;
     }
 
+    body {
+      background-color: #eee;
+      color: #111;
+    }
+
     code {
       font-family: Menlo, Consolas, Monaco, Adwaita Mono, Liberation Mono, Lucida Console, monospace;
+    }
+
+    code.block {
       width: 100%;
       padding: 0.7rem;
       border-radius: 0.3rem;
-      border: 0.1rem solid gray;
+      border: 3px solid gray;
+    }
+
+    .card-grid {
+      width: 33.3%;
+    }
+
+    .card {
+      border-radius: 0.6rem;
+      border: 0.2rem solid black;
+      background-color: aliceblue;
+      padding: 0.3rem;
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+    }
+
+    .card-title {
+      margin: 0px;
+    }
+
+    .card:hover {
+      box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
     }
   </style>
 </head>
@@ -83,7 +113,7 @@
     Load averages
   </h2>
   <p>Contents of /proc/uptime:</p>
-  <code>
+  <code class="block">
     <?php
     $fd = fopen("/proc/loadavg", "r");
     if (! $fd) {
@@ -94,6 +124,19 @@
     }
     ?>
   </code>
+
+  <h2>Hosted @ <code>spetsen.net</code>
+
+  <div class="">
+    <div class="card">
+      <h3 class="card-title">Grupprumsbokaren</h3>
+      <a href="https://boka.spetsen.net">
+        <code>
+          https://boka.spetsen.net
+        </code>
+      </a>
+    </div>
+  </div>
 
 </body>
 
