@@ -27,6 +27,11 @@
                 header @fonts Cache-Control "public, max-age=31536000, immutable"
         '';
       };
+      "aula.spetsen.net" = {
+        extraConfig = ''
+          reverse_proxy 127.0.0.1:4041
+        '';
+      };
       "jupyter.superdator.spetsen.net" = {
         extraConfig = ''
                  forward_auth 127.0.0.1:9091 {
