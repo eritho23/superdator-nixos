@@ -1,4 +1,4 @@
-{microvm, ...}: let
+{...}: let
   # These options are used by the host when running a virtualized (VM) build of
   # the system.
   virtualisation = {
@@ -19,6 +19,6 @@ in {
 
   imports = [
     # Act as a host for MicroVMs.
-    microvm.nixosModules.host
+    # microvm.nixosModules.host
   ];
 }
