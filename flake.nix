@@ -11,13 +11,15 @@
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
+    # MicroVMs
+    microvm.url = "github:microvm-nix/microvm.nix";
+    microvm.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     ### FLAKE INPUTS FOR DEPLOYMENTS BELOW ###
     spetsctf = {
       url = "github:fdABB-Gym-Samuel/SpetsCTF/9be634e60ff420d969cfe4d91432fbc9d1b137a4";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-
     ### END FLAKE INPUTS FOR DEPLOYMENTS ###
   };
 
@@ -51,7 +53,7 @@
     };
 
     devShells.${system}.default = pkgs.mkShell {
-      packages = with pkgs; [neovim nil bat ripgrep alejandra git nixos-generators age sops frankenphp];
+      packages = with pkgs; [neovim nil bat ripgrep alejandra git nixos-generators age sops frankenphp helix];
     };
   };
 }
