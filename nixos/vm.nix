@@ -1,4 +1,4 @@
-{...}: let
+{microvm, ...}: let
   # These options are used by the host when running a virtualized (VM) build of
   # the system.
   virtualisation = {
@@ -16,4 +16,9 @@ in {
   virtualisation.vmVariantWithBootLoader = {
     inherit virtualisation;
   };
+
+  imports = [
+    # Act as a host for MicroVMs.
+    microvm.nixosModules.host
+  ];
 }

@@ -14,6 +14,7 @@
     ./nvidia.nix
     ./postgresql.nix
     ./programs.nix
+    ./remotebuild.nix
     ./reverse-proxy.nix
     ./security.nix
     ./services.nix

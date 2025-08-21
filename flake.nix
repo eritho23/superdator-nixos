@@ -53,7 +53,7 @@
     };
 
     devShells.${system}.default = pkgs.mkShell {
-      packages = with pkgs; [neovim nil bat ripgrep alejandra git nixos-generators age sops frankenphp helix];
+      packages = with pkgs; [neovim nixd bat ripgrep alejandra git nixos-generators age sops frankenphp helix];
     };
   };
 }
