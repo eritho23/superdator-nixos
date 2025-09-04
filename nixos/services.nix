@@ -53,7 +53,7 @@ in {
       # WEBUI_AUTH_TRUSTED_GROUPS_HEADER = "Remote-Groups";
 
       # TODO fix this:
-      WEBUI_AUTH="False";
+      WEBUI_AUTH = "False";
     };
   };
 

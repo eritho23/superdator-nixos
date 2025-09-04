@@ -16,4 +16,9 @@ in {
   virtualisation.vmVariantWithBootLoader = {
     inherit virtualisation;
   };
+
+  imports = [
+    # Act as a host for MicroVMs.
+    # microvm.nixosModules.host
+  ];
 }
