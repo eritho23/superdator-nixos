@@ -71,6 +71,16 @@
     extraGroups = ["ssh-access"];
   };
 
+  users.users."gustav" = {
+    isNormalUser = true;
+    uid = 1021;
+    hashedPasswordFile = config.sops.secrets."gustav_hashed_password".path;
+    extraGroups = ["ssh-access"];
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAVQjtd/jEPI3IgWyKiwvBD9S2hbLEZ249tOy8HpN2Ci gustav.pettersson2@outlook.com"
+    ];
+  };
+
   users.groups."ssh-access" = {};
   users.groups."jupyter-access" = {};
 }

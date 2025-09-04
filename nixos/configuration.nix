@@ -49,7 +49,7 @@
   sops.secrets."beni_ghcr_token" = {};
   sops.secrets."beni_environ_file" = {};
   sops.secrets."beni_hashed_password".neededForUsers = true;
-
+  sops.secrets."gustav_hashed_password".neededForUsers = true;
   sops.secrets."hannes_hashed_password".neededForUsers = true;
 
   # Authelia
