@@ -20,6 +20,10 @@
       url = "github:fdABB-Gym-Samuel/SpetsCTF/9be634e60ff420d969cfe4d91432fbc9d1b137a4";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    aulabokning = {
+      url = "git+ssh://git@github.com/eritho23/aulabokning?rev=f275302dbc33143ff4ee76e6671f88ccbdf91511";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     ### END FLAKE INPUTS FOR DEPLOYMENTS ###
   };
 

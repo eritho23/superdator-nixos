@@ -1,5 +1,27 @@
 {
   "nodes": {
+    "aulabokning": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "utils": "utils"
+      },
+      "locked": {
+        "lastModified": 1757360327,
+        "narHash": "sha256-WgeRFBFuAzCdrdxzGcq0I1eKN9vmIh4rDmdGuiYYslk=",
+        "ref": "refs/heads/main",
+        "rev": "f275302dbc33143ff4ee76e6671f88ccbdf91511",
+        "revCount": 22,
+        "type": "git",
+        "url": "ssh://git@github.com/eritho23/aulabokning"
+      },
+      "original": {
+        "rev": "f275302dbc33143ff4ee76e6671f88ccbdf91511",
+        "type": "git",
+        "url": "ssh://git@github.com/eritho23/aulabokning"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1755704039,
@@ -34,11 +56,12 @@
     },
     "root": {
       "inputs": {
+        "aulabokning": "aulabokning",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "sops-nix": "sops-nix",
         "spetsctf": "spetsctf",
-        "systems": "systems_2",
+        "systems": "systems_3",
         "treefmt-nix": "treefmt-nix"
       }
     },
@@ -67,7 +90,7 @@
         "nixpkgs": [
           "nixpkgs-unstable"
         ],
-        "utils": "utils"
+        "utils": "utils_2"
       },
       "locked": {
         "lastModified": 1754406265,
@@ -109,6 +132,21 @@
         "type": "github"
       },
       "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "systems_3": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
         "id": "systems",
         "type": "indirect"
       }
@@ -136,6 +174,24 @@
     "utils": {
       "inputs": {
         "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "utils_2": {
+      "inputs": {
+        "systems": "systems_2"
       },
       "locked": {
         "lastModified": 1731533236,
