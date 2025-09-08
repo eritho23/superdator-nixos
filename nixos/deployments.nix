@@ -161,7 +161,7 @@
       ProtectKernelLogs = "yes";
       ProtectKernelModules = "yes";
       ProtectSystem = "strict";
-      Restart = "unless-stopped";
+      Restart = "on-failure";
       RestrictAddressFamilies = "AF_INET AF_INET6";
       RestrictRealtime = "yes";
       RestrictSUIDGUID = "yes";
