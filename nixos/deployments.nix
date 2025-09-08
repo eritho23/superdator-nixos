@@ -179,9 +179,7 @@
   };
 
   systemd.services.redis-aulabokning = {
-    serviceConfig = {
-      PrivateTmp = "yes";
-    };
+    # PrivateTmp is already set.
     unitConfig = {
       JoinsNamespaceOf = "aulabokning.service";
     };
