@@ -2,6 +2,7 @@
 {
   config,
   pkgs,
+  lib,
   inputs,
   ...
 }: {
@@ -133,5 +134,56 @@
       WorkingDirectory = "/var/lib/spetsctf";
     };
     wantedBy = ["multi-user.target"];
+  };
+
+  sops.secrets."aulabokning/environment_file".sopsFile = ../secrets/secrets.yaml;
+
+  systemd.services.aulabokning = let
+    aulabokningPath = inputs.aulabokning.packages."${pkgs.system}".default;
+  in {
+    environment = {
+      PORT = "4041";
+      NODE_ENV = "production";
+      REDIS_URI = "redis:///tmp/redis.sock";
+    };
+    serviceConfig = {
+      DynamicUser = "yes";
+      EnvironmentFile = config.sops.secrets."aulabokning/environment_file".path;
+      ExecStart = "${lib.getExe pkgs.nodejs_22} ${aulabokningPath}/server.js";
+      Group = "redis-aulabokning";
+      MemoryDenyWriteExecute = "yes";
+      NoNewPrivileges = "yes";
+      PrivateDevices = "yes";
+      PrivateTmp = "yes";
+      ProcSubset = "invisible";
+      ProtectClock = "yes";
+      ProtectHome = "yes";
+      ProtectKernelLogs = "yes";
+      ProtectKernelModules = "yes";
+      ProtectSystem = "strict";
+      Restart = "unless-stopped";
+      RestrictAddressFamilies = "AF_INET AF_INET6";
+      RestrictRealtime = "yes";
+      RestrictSUIDGUID = "yes";
+      StateDirectory = "aulabokning";
+      Type = "simple";
+      UMask = "0077";
+    };
+  };
+
+  services.redis.servers.aulabokning = {
+    enable = true;
+    port = 0;
+    unixSocket = "/tmp/redis.sock";
+    unixSocketPerm = 660;
+  };
+
+  systemd.services.redis-aulabokning = {
+    serviceConfig = {
+      PrivateTmp = "yes";
+    };
+    unitConfig = {
+      JoinsNamespaceOf = "aulabokning.service";
+    };
   };
 }
