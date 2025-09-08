@@ -155,7 +155,7 @@
       NoNewPrivileges = "yes";
       PrivateDevices = "yes";
       PrivateTmp = "yes";
-      ProcSubset = "invisible";
+      ProcSubset = "pid";
       ProtectClock = "yes";
       ProtectHome = "yes";
       ProtectKernelLogs = "yes";
@@ -164,7 +164,6 @@
       Restart = "on-failure";
       RestrictAddressFamilies = "AF_INET AF_INET6";
       RestrictRealtime = "yes";
-      RestrictSUIDGUID = "yes";
       StateDirectory = "aulabokning";
       Type = "simple";
       UMask = "0077";
