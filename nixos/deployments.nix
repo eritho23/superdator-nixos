@@ -162,7 +162,7 @@
       ProtectKernelModules = "yes";
       ProtectSystem = "strict";
       Restart = "on-failure";
-      RestrictAddressFamilies = "AF_INET AF_INET6";
+      RestrictAddressFamilies = "AF_INET AF_INET6 AF_UNIX";
       RestrictRealtime = "yes";
       StateDirectory = "aulabokning";
       Type = "simple";
