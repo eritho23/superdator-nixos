@@ -151,7 +151,7 @@
       EnvironmentFile = config.sops.secrets."aulabokning/environment_file".path;
       ExecStart = "${lib.getExe pkgs.nodejs_22} ${aulabokningPath}/server.js";
       Group = "redis-aulabokning";
-      MemoryDenyWriteExecute = "yes";
+      # MemoryDenyWriteExecute = "yes"; # Consider if --jitless is desirable.
       NoNewPrivileges = "yes";
       PrivateDevices = "yes";
       PrivateTmp = "yes";
