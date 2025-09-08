@@ -144,7 +144,7 @@
     environment = {
       PORT = "4041";
       NODE_ENV = "production";
-      REDIS_SOCKET_PATH = "redis-socket:///tmp/redis.sock";
+      REDIS_SOCKET_PATH = "/tmp/redis.sock";
     };
     serviceConfig = {
       DynamicUser = "yes";
