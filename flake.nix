@@ -21,7 +21,7 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     aulabokning = {
-      url = "git+ssh://git@github.com/eritho23/aulabokning?rev=ae3dfb95bc2d93e9b77cb11545744fa5e7fe9c7d";
+      url = "git+ssh://git@github.com/eritho23/aulabokning?rev=f1b28acbce01ee971e3143e5d8ca24194b496fb6";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     ### END FLAKE INPUTS FOR DEPLOYMENTS ###
