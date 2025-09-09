@@ -30,7 +30,7 @@
       "aula.spetsen.net" = {
         extraConfig = ''
           header {
-            Content-Security-Policy "default-src 'self';"
+            Content-Security-Policy "default-src 'self'; img-src 'self' *.googleusercontent.com;"
           }
           reverse_proxy 127.0.0.1:4041
         '';
