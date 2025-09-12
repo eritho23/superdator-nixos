@@ -5,7 +5,7 @@
 }: {
   networking.firewall = {
     # Tailscale users can bypass the firewall.
-    trustedInterfaces = ["tailscale0"];
+    # trustedInterfaces = ["tailscale0"];
     # Reverse path filtering drops packets which claim to originate from
     # different subnets than those which they are physically entering through.
     # If set to loose, a similar solution should be implemented manually.
@@ -16,13 +16,13 @@
     allowPing = true;
   };
 
-  services.tailscale = {
-    enable = true;
-    # Open firewall for the tunnel port.
-    openFirewall = true;
-    port = 41641;
-    package = pkgs.unstable.tailscale;
-  };
+  # services.tailscale = {
+  # enable = true;
+  # Open firewall for the tunnel port.
+  # openFirewall = true;
+  # port = 41641;
+  # package = pkgs.unstable.tailscale;
+  # };
 
   # Use systemd-resolved for name resolution.
   services.resolved = {
