@@ -168,6 +168,7 @@
       Type = "simple";
       UMask = "0077";
     };
+    wantedBy = ["multi-user.target"];
   };
 
   services.redis.servers.aulabokning = {
