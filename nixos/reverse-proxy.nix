@@ -67,6 +67,15 @@
         extraConfig = ''
           root * ${inputs.echoloungeuf}/Reklamhemsida
           file_server
+
+          header {
+            Content-Security-Policy "default-src 'self'; style-src fonts.googleapis.com 'self'; font-src fonts.gstatic.com 'self';"
+          	Strict-Transport-Security "max-age=31536000; includeSubDomains"
+          	X-Frame-Options "SAMEORIGIN"
+          	X-Content-Type-Options "nosniff"
+          	Referrer-Policy "no-referrer"
+          	Permissions-Policy "geolocation=(), camera=(), microphone=()"
+          }
         '';
       };
       "boka.spetsen.net" = {
