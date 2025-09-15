@@ -65,7 +65,8 @@
       };
       "echoloungeuf.spetsen.net" = {
         extraConfig = ''
-          root ${inputs.echoloungeuf}/Reklamhemsida/*
+          root * ${inputs.echoloungeuf}/Reklamhemsida
+          index index.html
           file_server
         '';
       };
