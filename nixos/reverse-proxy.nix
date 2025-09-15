@@ -69,7 +69,7 @@
           file_server
 
           header {
-            Content-Security-Policy "default-src 'self'; style-src fonts.googleapis.com 'self'; font-src fonts.gstatic.com 'self';"
+            Content-Security-Policy "default-src 'self'; style-src fonts.googleapis.com 'self'; font-src fonts.gstatic.com 'self'; script-src 'sha256-/4yvUaFYEK/vXBoauvrRnktmm07bdqdp9GUxARvsXOQ=';"
           	Strict-Transport-Security "max-age=31536000; includeSubDomains"
           	X-Frame-Options "SAMEORIGIN"
           	X-Content-Type-Options "nosniff"
