@@ -70,7 +70,7 @@
 
           header {
             Content-Security-Policy "default-src 'self'; style-src fonts.googleapis.com 'self'; font-src fonts.gstatic.com 'self'; script-src 'sha256-/4yvUaFYEK/vXBoauvrRnktmm07bdqdp9GUxARvsXOQ=';"
-          	Last-Modified "${inputs.echoloungeuf.lastModified}"
+          	Last-Modified "${builtins.toString inputs.echoloungeuf.lastModified}"
           	Permissions-Policy "geolocation=(), camera=(), microphone=()"
           	Referrer-Policy "no-referrer"
           	Strict-Transport-Security "max-age=31536000; includeSubDomains"
