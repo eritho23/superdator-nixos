@@ -24,6 +24,10 @@
       url = "git+ssh://git@github.com/eritho23/aulabokning?rev=741e439f808b822bb3fff049c78d9028da6d9434";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    echoloungeuf = {
+      url = "git+ssh://git@github.com/Miraengel/GYARTE";
+      flake = false;
+    };
     ### END FLAKE INPUTS FOR DEPLOYMENTS ###
   };
 

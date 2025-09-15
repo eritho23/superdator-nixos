@@ -1,4 +1,4 @@
-{...}: {
+{inputs, ...}: {
   services.caddy = {
     enable = true;
     email = "eric.thorburn@hitachigymnasiet.se";
@@ -63,11 +63,12 @@
           reverse_proxy 127.0.0.1:8092
         '';
       };
-      # "fardtjanst-pb.superdator.spetsen.net" = {
-      #   extraConfig = ''
-      #     reverse_proxy 127.0.0.1:8093
-      #   '';
-      # };
+      "echoloungeuf.spetsen.net" = {
+        extraConfig = ''
+          root ${inputs.echoloungeuf}/Reklamhemsida/*
+          file_server
+        '';
+      };
       "boka.spetsen.net" = {
         extraConfig = ''
                   @websockets {
