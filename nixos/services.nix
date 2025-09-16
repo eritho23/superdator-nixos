@@ -38,6 +38,17 @@ in {
     acceleration = "cuda";
   };
 
+  virtualisation.libvirtd = {
+    enable = true;
+    onBoot = "start";
+    startDelay = 10;
+    onShutdown = "shutdown";
+    qemu = {
+      package = pkgs.qemu_kvm;
+      runAsRoot = false;
+    };
+  };
+
   services.open-webui = {
     enable = true;
     port = 9999;
