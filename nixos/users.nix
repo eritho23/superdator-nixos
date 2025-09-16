@@ -7,7 +7,7 @@
     isNormalUser = true;
     uid = 1001;
     initialPassword = "1234";
-    extraGroups = ["wheel" "ssh-access" "jupyter-access"];
+    extraGroups = ["wheel" "ssh-access" "jupyter-access" "libvirtd"];
     packages = with pkgs; [chezmoi];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB5Gyc3DfKNsJ9UrF2xXuvsHe1BkvlltxsfUCYLniiqm abbindgym\\23eritho@SW2311"
