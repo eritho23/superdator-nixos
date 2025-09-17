@@ -34,6 +34,7 @@ in {
     dust
     fastfetch
     file
+    gnupg
     lm_sensors
     nethogs
     nvtopPackages.nvidia

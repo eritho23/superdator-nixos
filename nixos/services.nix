@@ -49,6 +49,8 @@ in {
     };
   };
 
+  environment.systemPackages = [pkgs.virt-manager];
+
   services.open-webui = {
     enable = true;
     port = 9999;
