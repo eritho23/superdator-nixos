@@ -1,43 +1,5 @@
 {
   "nodes": {
-    "aulabokning": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "utils": "utils"
-      },
-      "locked": {
-        "lastModified": 1757425103,
-        "narHash": "sha256-CisUy0tdYV3sfuVD/EKPCU6N369P5LqkHxqYrOgpmVs=",
-        "ref": "refs/heads/main",
-        "rev": "741e439f808b822bb3fff049c78d9028da6d9434",
-        "revCount": 33,
-        "type": "git",
-        "url": "ssh://git@github.com/eritho23/aulabokning"
-      },
-      "original": {
-        "rev": "741e439f808b822bb3fff049c78d9028da6d9434",
-        "type": "git",
-        "url": "ssh://git@github.com/eritho23/aulabokning"
-      }
-    },
-    "echoloungeuf": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1757938248,
-        "narHash": "sha256-50+Lt76wAgUUmfysN8nhrO9zi9jROJBIfJBt/11dZ74=",
-        "ref": "refs/heads/main",
-        "rev": "b179da180ac3a233cf11a41366efb8573fdf95dc",
-        "revCount": 39,
-        "type": "git",
-        "url": "ssh://git@github.com/Miraengel/GYARTE"
-      },
-      "original": {
-        "type": "git",
-        "url": "ssh://git@github.com/Miraengel/GYARTE"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1757545623,
@@ -72,13 +34,10 @@
     },
     "root": {
       "inputs": {
-        "aulabokning": "aulabokning",
-        "echoloungeuf": "echoloungeuf",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "sops-nix": "sops-nix",
-        "spetsctf": "spetsctf",
-        "systems": "systems_3",
+        "systems": "systems",
         "treefmt-nix": "treefmt-nix"
       }
     },
@@ -102,28 +61,6 @@
         "type": "github"
       }
     },
-    "spetsctf": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs-unstable"
-        ],
-        "utils": "utils_2"
-      },
-      "locked": {
-        "lastModified": 1754406265,
-        "narHash": "sha256-rRHIseMWTSN+YxmaaDUCTa+YjRy5vuesVv8TLsDTrJI=",
-        "owner": "fdABB-Gym-Samuel",
-        "repo": "SpetsCTF",
-        "rev": "9be634e60ff420d969cfe4d91432fbc9d1b137a4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "fdABB-Gym-Samuel",
-        "repo": "SpetsCTF",
-        "rev": "9be634e60ff420d969cfe4d91432fbc9d1b137a4",
-        "type": "github"
-      }
-    },
     "systems": {
       "locked": {
         "lastModified": 1681028828,
@@ -137,35 +74,6 @@
         "owner": "nix-systems",
         "repo": "default",
         "type": "github"
-      }
-    },
-    "systems_2": {
-      "locked": {
-        "lastModified": 1681028828,
-        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
-        "owner": "nix-systems",
-        "repo": "default",
-        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-systems",
-        "repo": "default",
-        "type": "github"
-      }
-    },
-    "systems_3": {
-      "locked": {
-        "lastModified": 1681028828,
-        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
-        "owner": "nix-systems",
-        "repo": "default",
-        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
-        "type": "github"
-      },
-      "original": {
-        "id": "systems",
-        "type": "indirect"
       }
     },
     "treefmt-nix": {
@@ -185,42 +93,6 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
-        "type": "github"
-      }
-    },
-    "utils": {
-      "inputs": {
-        "systems": "systems"
-      },
-      "locked": {
-        "lastModified": 1731533236,
-        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
-    "utils_2": {
-      "inputs": {
-        "systems": "systems_2"
-      },
-      "locked": {
-        "lastModified": 1731533236,
-        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
         "type": "github"
       }
     }
