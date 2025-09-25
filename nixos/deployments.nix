@@ -93,6 +93,65 @@
 
   sops.secrets."aulabokning/environment_file".sopsFile = ../secrets/secrets.yaml;
 
+  microvm.vms = {
+    spetsctf-services = {
+      config = {
+        microvm = {
+          hypervisor = "qemu";
+          mem = 8192;
+          vcpu = 4;
+
+          interfaces = [
+            {
+              type = "tap";
+              id = "vm-spetsctf";
+              mac = "02:00:00:00:00:01";
+            }
+          ];
+        };
+
+        users.groups."chall-user" = {};
+        users.users."chall-user" = {
+          isSystemUser = true;
+          shell = "/run/current-system/sw/bin/nologin";
+          group = "chall-user";
+          home = "/var/lib/chall-user";
+          createHome = true;
+          homeMode = "700";
+        };
+
+        virtualisation.oci-containers = {
+          backend = "podman";
+          containers = {
+            "plz_give" = {
+              image = "plz_give:0.0.1";
+              imageStream = inputs.spetsctf-services.packages.x86_64-linux.plz_give;
+              ports = [
+                "45508:1337"
+              ];
+              hostname = "chall";
+              podman.user = "chall-user";
+            };
+          };
+        };
+
+        systemd.network.enable = true;
+        systemd.network.networks."10-lan" = {
+          matchConfig.Type = "ether";
+          networkConfig = {
+            Address = ["10.22.1.101/16"];
+            Gateway = "10.22.1.1";
+            DNS = ["10.21.1.2" "10.21.1.3"];
+            DHCP = "no";
+          };
+        };
+
+        networking.hostName = "spetsctf-services";
+        system.stateVersion = "25.05";
+      };
+    };
+  };
+
   systemd.services.aulabokning = let
     aulabokningPath = inputs.aulabokning.packages."${pkgs.system}".default;
   in {
