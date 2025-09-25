@@ -112,6 +112,7 @@
 
         users.users."root".openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH5Ysdzr8kUAzQf+v7g+RKqaG+7J0Y/Q7pwKUstIlesR erre@superdator"];
         services.openssh.enable = true;
+        services.openssh.openFirewall = true;
 
         users.groups."chall-user" = {};
         users.users."chall-user" = {
@@ -137,6 +138,15 @@
             };
           };
         };
+
+        networking.firewall.enable = true;
+        networking.firewall.allowedTCPPortRanges = [
+          # Services are hosted between these ports.
+          {
+            from = 40000;
+            to = 50000;
+          }
+        ];
 
         systemd.network.enable = true;
         systemd.network.networks."10-lan" = {
