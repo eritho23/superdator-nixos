@@ -104,7 +104,7 @@
     serviceConfig = {
       DynamicUser = "yes";
       EnvironmentFile = config.sops.secrets."aulabokning/environment_file".path;
-      ExecStart = "${lib.getExe pkgs.nodejs_22} --jitless ${aulabokningPath}/server.js";
+      ExecStart = "${lib.getExe pkgs.nodejs_22} ${aulabokningPath}/server.js";
       Group = "redis-aulabokning";
       NoNewPrivileges = "yes";
       PrivateDevices = "yes";
