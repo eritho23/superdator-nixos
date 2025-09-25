@@ -135,6 +135,7 @@
         "nixpkgs-unstable": "nixpkgs-unstable",
         "sops-nix": "sops-nix",
         "spetsctf": "spetsctf",
+        "spetsctf-services": "spetsctf-services",
         "systems": "systems_4",
         "treefmt-nix": "treefmt-nix_2"
       }
@@ -196,6 +197,30 @@
         "repo": "SpetsCTF",
         "rev": "acd1ad9c553af4495a2798ccfe024cac32f5aa9a",
         "type": "github"
+      }
+    },
+    "spetsctf-services": {
+      "inputs": {
+        "microvm": [
+          "microvm"
+        ],
+        "nixpkgs": [
+          "nixpkgs-unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1758785400,
+        "narHash": "sha256-VzlYC9CTHCJ+77z+I912iU7wesUwibaL8Of+wBHpZG0=",
+        "ref": "refs/heads/main",
+        "rev": "f352c6cbc2e40a99c38ab6e50edd88f8efa70ba1",
+        "revCount": 5,
+        "type": "git",
+        "url": "ssh://git@github.com/fdABB-Gym-Samuel/SpetsCTF-services"
+      },
+      "original": {
+        "rev": "f352c6cbc2e40a99c38ab6e50edd88f8efa70ba1",
+        "type": "git",
+        "url": "ssh://git@github.com/fdABB-Gym-Samuel/SpetsCTF-services"
       }
     },
     "systems": {

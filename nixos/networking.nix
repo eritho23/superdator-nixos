@@ -29,16 +29,32 @@
     enable = true;
   };
 
-  # Enable systemd-networkd.
   networking.useNetworkd = lib.mkDefault true;
   systemd.network.enable = lib.mkDefault true;
 
-  systemd.network.networks."10-lan" = {
-    matchConfig.Name = "eno1";
-    matchConfig.MACAddress = "10:7c:61:0b:8b:68";
+  # SpetsCTF services networking.
+  systemd.network.netdevs."br0" = {
+    netdevConfig = {
+      Kind = "bridge";
+      Name = "br0";
+    };
+  };
 
-    address = ["10.22.1.100/16"];
-    gateway = ["10.22.1.1"];
-    dns = ["10.21.1.2" "10.21.1.3"];
+  systemd.network.networks."11-lan" = {
+    matchConfig.Name = ["eno1" "vm-*"];
+    networkConfig = {
+      Bridge = "br0";
+    };
+    linkConfig.RequiredForOnline = "no";
+  };
+
+  systemd.network.networks."11-lan-bridge" = {
+    matchConfig.Name = "br0";
+    networkConfig = {
+      Address = ["10.22.1.100/16"];
+      Gateway = "10.22.1.1";
+      DNS = ["10.21.1.2" "10.21.1.3"];
+    };
+    linkConfig.RequiredForOnline = "routable";
   };
 }

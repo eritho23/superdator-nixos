@@ -20,6 +20,11 @@
       url = "github:fdABB-Gym-Samuel/SpetsCTF/acd1ad9c553af4495a2798ccfe024cac32f5aa9a";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    spetsctf-services = {
+      url = "git+ssh://git@github.com/fdABB-Gym-Samuel/SpetsCTF-services?rev=f352c6cbc2e40a99c38ab6e50edd88f8efa70ba1";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.microvm.follows = "microvm";
+    };
     aulabokning = {
       url = "git+ssh://git@github.com/eritho23/aulabokning?rev=716c1d93b55a7a1aa530c2f3491b1038861facf5";
       inputs.nixpkgs.follows = "nixpkgs";
