@@ -110,6 +110,9 @@
           ];
         };
 
+        users.users."root".hashedPassword = "$y$j9T$7OuromOWc2Z/AUHKVUE4h0$WHjINWxGWi51mU.ydh9gePfcewzbOa8W9u6D.uD2VU0";
+        services.openssh.enable = true;
+
         users.groups."chall-user" = {};
         users.users."chall-user" = {
           isSystemUser = true;
