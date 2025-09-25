@@ -106,7 +106,6 @@
       EnvironmentFile = config.sops.secrets."aulabokning/environment_file".path;
       ExecStart = "${lib.getExe pkgs.nodejs_22} --jitless ${aulabokningPath}/server.js";
       Group = "redis-aulabokning";
-      MemoryDenyWriteExecute = "yes";
       NoNewPrivileges = "yes";
       PrivateDevices = "yes";
       PrivateTmp = "yes";
@@ -120,6 +119,7 @@
       RestrictAddressFamilies = "AF_INET AF_INET6 AF_UNIX";
       RestrictRealtime = "yes";
       StateDirectory = "aulabokning";
+      SystemCallFilter = "@system-service";
       Type = "simple";
       UMask = "0077";
     };
