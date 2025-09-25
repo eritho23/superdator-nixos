@@ -12,8 +12,8 @@
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
     # MicroVMs
-    # microvm.url = "github:microvm-nix/microvm.nix";
-    # microvm.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    microvm.url = "github:microvm-nix/microvm.nix";
+    microvm.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     ### FLAKE INPUTS FOR DEPLOYMENTS BELOW ###
     spetsctf = {
@@ -37,6 +37,7 @@
     systems,
     sops-nix,
     treefmt-nix,
+    microvm,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -56,6 +57,7 @@
 
           # add sops secrets
           sops-nix.nixosModules.sops
+          microvm.nixosModules.host
         ];
       };
     };
