@@ -8,16 +8,16 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1757425103,
-        "narHash": "sha256-CisUy0tdYV3sfuVD/EKPCU6N369P5LqkHxqYrOgpmVs=",
+        "lastModified": 1758780712,
+        "narHash": "sha256-PXfHGu+pNsHGf2x9NGSGft/TpPFO0TY3+FrFGu/E2aY=",
         "ref": "refs/heads/main",
-        "rev": "741e439f808b822bb3fff049c78d9028da6d9434",
-        "revCount": 33,
+        "rev": "716c1d93b55a7a1aa530c2f3491b1038861facf5",
+        "revCount": 34,
         "type": "git",
         "url": "ssh://git@github.com/eritho23/aulabokning"
       },
       "original": {
-        "rev": "741e439f808b822bb3fff049c78d9028da6d9434",
+        "rev": "716c1d93b55a7a1aa530c2f3491b1038861facf5",
         "type": "git",
         "url": "ssh://git@github.com/eritho23/aulabokning"
       }

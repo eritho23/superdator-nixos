@@ -21,7 +21,7 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     aulabokning = {
-      url = "git+ssh://git@github.com/eritho23/aulabokning?rev=741e439f808b822bb3fff049c78d9028da6d9434";
+      url = "git+ssh://git@github.com/eritho23/aulabokning?rev=716c1d93b55a7a1aa530c2f3491b1038861facf5";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     echoloungeuf = {
