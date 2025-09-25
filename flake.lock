@@ -25,11 +25,11 @@
     "echoloungeuf": {
       "flake": false,
       "locked": {
-        "lastModified": 1757938248,
-        "narHash": "sha256-50+Lt76wAgUUmfysN8nhrO9zi9jROJBIfJBt/11dZ74=",
+        "lastModified": 1758020479,
+        "narHash": "sha256-515J46c+hvS3MBWCyuvifJABWa3DpTP1y/jkSilqGRU=",
         "ref": "refs/heads/main",
-        "rev": "b179da180ac3a233cf11a41366efb8573fdf95dc",
-        "revCount": 39,
+        "rev": "1a59a37aff8840734890c7972e949817a46c9a52",
+        "revCount": 42,
         "type": "git",
         "url": "ssh://git@github.com/Miraengel/GYARTE"
       },
