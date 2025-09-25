@@ -110,7 +110,7 @@
           ];
         };
 
-        users.users."root".hashedPassword = "$y$j9T$7OuromOWc2Z/AUHKVUE4h0$WHjINWxGWi51mU.ydh9gePfcewzbOa8W9u6D.uD2VU0";
+        users.users."root".openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH5Ysdzr8kUAzQf+v7g+RKqaG+7J0Y/Q7pwKUstIlesR erre@superdator"];
         services.openssh.enable = true;
 
         users.groups."chall-user" = {};
