@@ -127,6 +127,15 @@
         virtualisation.oci-containers = {
           backend = "podman";
           containers = {
+            "bazaar_silent_deadly" = {
+              image = "bazaar_silent_deadly:0.0.1";
+              imageStream = inputs.spetsctf-services.packages.x86_64-linux.bazaar_silent_deadly;
+              ports = [
+                "42764:5000"
+              ];
+              hostname = "chall";
+              podman.user = "chall-user";
+            };
             "plz_give" = {
               image = "plz_give:0.0.1";
               imageStream = inputs.spetsctf-services.packages.x86_64-linux.plz_give;
