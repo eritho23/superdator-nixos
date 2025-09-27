@@ -131,8 +131,21 @@
         virtualisation.oci-containers = {
           backend = "podman";
           containers = {
+            "bazaar_bank_at_sea" = {
+              image = "bazaar_bank_at_sea:1";
+              imageStream = inputs.spetsctf-services.packages.x86_64-linux.bazaar_bank_at_sea;
+              ports = [
+                "45907:5000"
+              ];
+              extraOptions = [
+                "--read-only=true"
+                "--tmpfs=/tmp:rw"
+              ];
+              hostname = "chall";
+              podman.user = "chall-user";
+            };
             "bazaar_silent_deadly" = {
-              image = "bazaar_silent_deadly:0.0.5";
+              image = "bazaar_silent_deadly:5";
               imageStream = inputs.spetsctf-services.packages.x86_64-linux.bazaar_silent_deadly;
               ports = [
                 "42764:5000"
@@ -145,7 +158,7 @@
               podman.user = "chall-user";
             };
             "plz_give" = {
-              image = "plz_give:0.0.1";
+              image = "plz_give:1";
               imageStream = inputs.spetsctf-services.packages.x86_64-linux.plz_give;
               ports = [
                 "45508:1337"
