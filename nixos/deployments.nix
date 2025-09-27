@@ -170,6 +170,18 @@
               hostname = "chall";
               podman.user = "chall-user";
             };
+            "fd_tillganglig_eller" = {
+              image = "fd_tillganglig_eller:1";
+              imageStream = inputs.spetsctf-services.packages.x86_64-linux.fd_tillganglig_eller;
+              ports = [
+                "49283:4000"
+              ];
+              extraOptions = [
+                "--read-only=true"
+              ];
+              hostname = "chall";
+              podman.user = "chall-user";
+            };
           };
         };
 
@@ -178,7 +190,7 @@
           # Services are hosted between these ports.
           {
             from = 40000;
-            to = 50000;
+            to = 48000; # 48000-50000 are for services for SpetsCTF
           }
         ];
 
