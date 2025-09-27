@@ -21,7 +21,7 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     spetsctf-services = {
-      url = "git+ssh://git@github.com/fdABB-Gym-Samuel/SpetsCTF-services?rev=12ba00fc47e5f4dffa9562dc28333b321a43e011";
+      url = "git+ssh://git@github.com/fdABB-Gym-Samuel/SpetsCTF-services?rev=f026f5def9cea56610c70c90c4aa527ed7542447";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
       inputs.microvm.follows = "microvm";
     };

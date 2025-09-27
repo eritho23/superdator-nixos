@@ -209,16 +209,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1758874031,
-        "narHash": "sha256-KRnE6kvTT8Z0G/rGNIQcBPl8YuBSjh5ZBGWhZdPIiVs=",
+        "lastModified": 1758969217,
+        "narHash": "sha256-wtUmD/ntfTkOr2T/VEp7NP+xKneq5vWHL+u2dZDVUP0=",
         "ref": "refs/heads/main",
-        "rev": "12ba00fc47e5f4dffa9562dc28333b321a43e011",
-        "revCount": 9,
+        "rev": "f026f5def9cea56610c70c90c4aa527ed7542447",
+        "revCount": 15,
         "type": "git",
         "url": "ssh://git@github.com/fdABB-Gym-Samuel/SpetsCTF-services"
       },
       "original": {
-        "rev": "12ba00fc47e5f4dffa9562dc28333b321a43e011",
+        "rev": "f026f5def9cea56610c70c90c4aa527ed7542447",
         "type": "git",
         "url": "ssh://git@github.com/fdABB-Gym-Samuel/SpetsCTF-services"
       }

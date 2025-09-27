@@ -128,10 +128,14 @@
           backend = "podman";
           containers = {
             "bazaar_silent_deadly" = {
-              image = "bazaar_silent_deadly:0.0.1";
+              image = "bazaar_silent_deadly:0.0.5";
               imageStream = inputs.spetsctf-services.packages.x86_64-linux.bazaar_silent_deadly;
               ports = [
                 "42764:5000"
+              ];
+              extraOptions = [
+                "--read-only=true"
+                "--tmpfs=/tmp:rw"
               ];
               hostname = "chall";
               podman.user = "chall-user";
@@ -141,6 +145,10 @@
               imageStream = inputs.spetsctf-services.packages.x86_64-linux.plz_give;
               ports = [
                 "45508:1337"
+              ];
+              extraOptions = [
+                "--read-only=true"
+                "--tmpfs=/tmp:rw"
               ];
               hostname = "chall";
               podman.user = "chall-user";
