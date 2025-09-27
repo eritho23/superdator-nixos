@@ -172,7 +172,7 @@
             };
             "fd_tillganglig_eller" = {
               image = "fd_tillganglig_eller:1";
-              imageStream = inputs.spetsctf-services.packages.x86_64-linux.fd_tillganglig_eller;
+              imageFile = inputs.spetsctf-services.packages.x86_64-linux.fd_tillganglig_eller;
               ports = [
                 "49283:4000"
               ];
