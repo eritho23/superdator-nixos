@@ -124,6 +124,10 @@
           homeMode = "700";
         };
 
+        users.mutableUsers = false;
+        system.switch.enable = false;
+        system.etc.overlay.mutable = false;
+
         virtualisation.oci-containers = {
           backend = "podman";
           containers = {
