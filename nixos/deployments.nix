@@ -122,6 +122,18 @@
           home = "/var/lib/chall-user";
           createHome = true;
           homeMode = "700";
+          subUidRanges = [
+            {
+              count = 65535;
+              startUid = 100000;
+            }
+          ];
+          subGidRanges = [
+            {
+              count = 65535;
+              startGid = 100000;
+            }
+          ];
         };
 
         users.mutableUsers = false;
