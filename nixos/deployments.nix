@@ -186,7 +186,7 @@
               image = "fd_tillganglig_eller:1";
               imageFile = inputs.spetsctf-services.packages.x86_64-linux.fd_tillganglig_eller;
               ports = [
-                "49283:4000"
+                "46171:4000"
               ];
               extraOptions = [
                 "--read-only=true"
