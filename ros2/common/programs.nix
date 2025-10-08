@@ -1,12 +1,13 @@
 {
   pkgs,
-  lib,
+  # lib,
   ...
 }: {
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [
-      "vscode"
-    ];
+  nixpkgs.config.allowUnfree = true;
+  # nixpkgs.config.allowUnfreePredicate = pkg:
+  # builtins.elem (lib.getName pkg) [
+  # "vscode"
+  # ];
 
   environment.systemPackages = with pkgs; [
     bat
