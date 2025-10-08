@@ -1,4 +1,6 @@
 {
+  networking.hostId = "316366";
+
   disko.devices = {
     disk = {
       main = {
@@ -25,18 +27,42 @@
                 priority = 100;
               };
             };
-            root = {
+            cryptroot = {
               end = "-32G";
               content = {
-                type = "filesystem";
-                format = "ext4";
-                mountpoint = "/";
-                mountOptions = [
-                  "defaults"
-                ];
+                type = "luks";
+                name = "cryptroot";
+                content = {
+                  type = "zfs";
+                  pool = "rpool";
+                };
               };
             };
           };
+        };
+      };
+    };
+  };
+  zpool = {
+    rpool = {
+      type = "zpool";
+      rootFsOptions = {
+        mountpoint = "none";
+        compression = "zstd";
+        acltype = "posixacl";
+        xattr = "sa";
+      };
+      datasets = {
+        nixos = {
+          type = "zfs_fs";
+          options = {
+            canmount = "off";
+            mountpoint = "none";
+          };
+        };
+        "nixos/root" = {
+          type = "zfs_fs";
+          mountpoint = "/";
         };
       };
     };
