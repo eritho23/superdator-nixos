@@ -17,6 +17,9 @@
     # Disko
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
+    # Lanzaboote
+    lanzaboote.url = "github:nix-community/lanzaboote/v0.4.2";
+    lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
 
     ### FLAKE INPUTS FOR DEPLOYMENTS BELOW ###
     spetsctf = {
@@ -45,6 +48,7 @@
     systems,
     disko,
     sops-nix,
+    lanzaboote,
     treefmt-nix,
     microvm,
     ...
@@ -78,6 +82,7 @@
             modules = [
               sops-nix.nixosModules.sops
               disko.nixosModules.disko
+              lanzaboote.nixosModules.lanzaboote
 
               {
                 networking.hostName = hostname;
@@ -86,6 +91,7 @@
               ./ros2/common
               (./ros2 + "/disko-${hostname}.nix")
               (./ros2 + "/hardware-configuration-${hostname}.nix")
+              (./ros2 + "/bootloader-${hostname}.nix")
             ];
           }
       );

@@ -1,6 +1,5 @@
 {
   imports = [
-    ./bootloader.nix
     ./desktop.nix
     ./initial-root-access.nix
     ./locale.nix
