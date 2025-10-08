@@ -18,7 +18,7 @@
               };
             };
             encryptedSwap = {
-              size = "32G";
+              size = "100%";
               content = {
                 type = "swap";
                 randomEncryption = true;
@@ -26,7 +26,7 @@
               };
             };
             root = {
-              size = "100%";
+              end = "-32G";
               content = {
                 type = "filesystem";
                 format = "xfs";

@@ -84,7 +84,7 @@
               }
 
               ./ros2/common
-              (./ros2/common + "disko-${hostname}.nix")
+              (./ros2/common + "/disko-${hostname}.nix")
             ];
           }
       );
