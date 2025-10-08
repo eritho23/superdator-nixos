@@ -3,7 +3,7 @@
   lib,
   ...
 }: {
-  boot.loader.systemd-systemd-boot.enable = true;
+  boot.loader.systemd--boot.enable = true;
   # boot.loader.systemd-systemd-boot.enable = lib.mkForce false;
   # boot.loader.lanzaboote = {
   # enable = true;
