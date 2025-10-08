@@ -42,27 +42,27 @@
         };
       };
     };
-  };
-  zpool = {
-    rpool = {
-      type = "zpool";
-      rootFsOptions = {
-        mountpoint = "none";
-        compression = "zstd";
-        acltype = "posixacl";
-        xattr = "sa";
-      };
-      datasets = {
-        nixos = {
-          type = "zfs_fs";
-          options = {
-            canmount = "off";
-            mountpoint = "none";
-          };
+    zpool = {
+      rpool = {
+        type = "zpool";
+        rootFsOptions = {
+          mountpoint = "none";
+          compression = "zstd";
+          acltype = "posixacl";
+          xattr = "sa";
         };
-        "nixos/root" = {
-          type = "zfs_fs";
-          mountpoint = "/";
+        datasets = {
+          nixos = {
+            type = "zfs_fs";
+            options = {
+              canmount = "off";
+              mountpoint = "none";
+            };
+          };
+          "nixos/root" = {
+            type = "zfs_fs";
+            mountpoint = "/";
+          };
         };
       };
     };
