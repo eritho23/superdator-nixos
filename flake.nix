@@ -14,6 +14,9 @@
     # MicroVMs
     microvm.url = "github:microvm-nix/microvm.nix";
     microvm.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    # Disko
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
 
     ### FLAKE INPUTS FOR DEPLOYMENTS BELOW ###
     spetsctf = {
@@ -40,6 +43,7 @@
     self,
     nixpkgs,
     systems,
+    disko,
     sops-nix,
     treefmt-nix,
     microvm,
@@ -53,19 +57,37 @@
     # Add overlays
     overlays = import ./overlays {inherit inputs;};
     formatter = eachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
-    nixosConfigurations = {
-      # Configuration for the NixOS system
-      superdator = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit (self) inputs outputs;};
-        modules = [
-          ./nixos/configuration.nix
+    nixosConfigurations =
+      {
+        # Configuration for the NixOS system
+        superdator = nixpkgs.lib.nixosSystem {
+          specialArgs = {inherit (self) inputs outputs;};
+          modules = [
+            ./nixos/configuration.nix
 
-          # add sops secrets
-          sops-nix.nixosModules.sops
-          microvm.nixosModules.host
-        ];
-      };
-    };
+            # add sops secrets
+            sops-nix.nixosModules.sops
+            microvm.nixosModules.host
+          ];
+        };
+      }
+      // pkgs.lib.genAttrs ["dunning" "kruger"] (
+        hostname:
+          nixpkgs.lib.nixosSystem {
+            specialArgs = {inherit (self) inputs outputs;};
+            modules = [
+              sops-nix.nixosModules.sops
+              disko.nixosModules.disko
+
+              {
+                networking.hostName = hostname;
+              }
+
+              ./ros2/common
+              (./ros2/common + "disko-${hostname}.nix")
+            ];
+          }
+      );
 
     devShells.${system}.default = pkgs.mkShell {
       packages = with pkgs; [neovim nixd bat ripgrep alejandra git nixos-generators age sops frankenphp helix];
