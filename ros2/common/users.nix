@@ -11,6 +11,6 @@
   users.users."erre" = {
     isNormalUser = true;
     extraGroups = ["wheel"];
-    hashedPassword = config.sops.secrets."ros2/users/erre/hashed_password".path;
+    hashedPasswordFile = config.sops.secrets."ros2/users/erre/hashed_password".path;
   };
 }
