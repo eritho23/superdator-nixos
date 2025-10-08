@@ -1,7 +1,6 @@
 {
   imports = [
     ./desktop.nix
-    ./initial-root-access.nix
     ./locale.nix
     ./networking.nix
     ./openssh.nix
