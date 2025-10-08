@@ -10,5 +10,7 @@
     ./users.nix
   ];
 
+  time.timeZone = "Europe/Stockholm";
+
   system.stateVersion = "25.05";
 }

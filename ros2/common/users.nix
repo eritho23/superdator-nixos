@@ -1,6 +1,6 @@
 {
   security.doas.enable = true;
-  
+
   users.mutableUsers = false;
 
   users.users."erre" = {
