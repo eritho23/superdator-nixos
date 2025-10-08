@@ -3,6 +3,7 @@
     ./desktop.nix
     ./locale.nix
     ./networking.nix
+    ./nvidia.nix
     ./openssh.nix
     ./programs.nix
     ./users.nix
