@@ -29,11 +29,10 @@
               end = "-32G";
               content = {
                 type = "filesystem";
-                format = "xfs";
+                format = "ext4";
                 mountpoint = "/";
                 mountOptions = [
                   "defaults"
-                  "pquota"
                 ];
               };
             };
