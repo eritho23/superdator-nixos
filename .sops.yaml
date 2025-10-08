@@ -5,6 +5,7 @@ keys:
   - &superdator age1l9rlv0kltyh42f3t0hlmpulxkuez00dumw24w8ygw09497wea35q4ecgw8
   - &obsidian age1n2vym8aq3fdxrmpejz40pulnmwjhmw9u75xc8hrkvc98dq4h83jqkmlxug
   - &dunning age17jcxlfvqkva5ynsddfsnpk8wy99xjzmqwzc234ent49vvrgue9gsxncpwj
+  - &kruger age1gqpyefghp8qlp9tw8s4q7yfglpqcr40tjm94d8t283jx6u0xrgksqksa9n
 creation_rules:
   - path_regex: secrets/secrets.yaml$
     key_groups:
@@ -18,4 +19,5 @@ creation_rules:
         - *erre
         - *obsidian
         - *dunning
+        - *kruger
 
