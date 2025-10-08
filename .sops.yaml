@@ -1,6 +1,7 @@
 # Secrets
 
 keys:
+  - &gustav age19c8qem9840j93me4qauxkxxkuayejgvck2l7yu8z8r3ffd0wr9jq2hy70c 
   - &erre age1za4x2kz9kuus40c5tfznckcy9vfrqzt6m0kclpr5q52lcx6fxywq2t9str
   - &superdator age1l9rlv0kltyh42f3t0hlmpulxkuez00dumw24w8ygw09497wea35q4ecgw8
   - &obsidian age1n2vym8aq3fdxrmpejz40pulnmwjhmw9u75xc8hrkvc98dq4h83jqkmlxug
@@ -10,12 +11,14 @@ creation_rules:
   - path_regex: secrets/secrets.yaml$
     key_groups:
       - age:
+        - *gustav
         - *erre
         - *superdator
         - *obsidian
   - path_regex: secrets/ros2.yaml$
     key_groups:
       - age:
+        - *gustav
         - *erre
         - *obsidian
         - *dunning
