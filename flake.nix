@@ -85,6 +85,7 @@
 
               ./ros2/common
               (./ros2 + "/disko-${hostname}.nix")
+              (./ros2 + "/harware-configuration-${hostname}.nix")
             ];
           }
       );
