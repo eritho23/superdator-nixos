@@ -1,5 +1,5 @@
 {
-  networking.hostId = "316366";
+  networking.hostId = "dd4973b0";
 
   disko.devices = {
     disk = {
