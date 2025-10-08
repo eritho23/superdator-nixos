@@ -2,6 +2,20 @@
 
 This repo contains the NixOS configuration for a _super_ computer.
 
+## For Gustav and Jonathan
+
+### Deploy Kruger
+
+```
+ssh root@10.22.3.214 'nixos-rebuild boot --option tarball-ttl 0 --flake github:eritho23/superdator-nixos && reboot'
+```
+
+### Deploy Dunning
+
+```
+ssh root@10.22.4.33 'nixos-rebuild boot --option tarball-ttl 0 --flake github:eritho23/superdator-nixos && reboot'
+```
+
 ## Structure
 
 - The root of the repo has a Nix `flake.nix` with the NixOS configuration
