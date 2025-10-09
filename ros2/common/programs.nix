@@ -36,7 +36,7 @@
     wget
     cmake
     gnumake
-    libgcc
+    gcc
     clang
   ];
 
