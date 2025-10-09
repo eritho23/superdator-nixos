@@ -7,6 +7,7 @@
     ./openssh.nix
     ./programs.nix
     ./users.nix
+    ./unitree.nix
   ];
 
   time.timeZone = "Europe/Stockholm";
