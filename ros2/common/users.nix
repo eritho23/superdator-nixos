@@ -32,6 +32,9 @@
     isNormalUser = true;
     extraGroups = ["wheel"];
     hashedPasswordFile = config.sops.secrets."ros2/users/gustav/hashed_password".path;
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAVQjtd/jEPI3IgWyKiwvBD9S2hbLEZ249tOy8HpN2Ci gustav.pettersson2@outlook.com"
+    ];
   };
 
   users.users."jonathan" = {
@@ -39,5 +42,8 @@
     isNormalUser = true;
     extraGroups = ["wheel"];
     hashedPasswordFile = config.sops.secrets."ros2/users/jonathan/hashed_password".path;
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPbqVTascQiJYBzBLwvQhI8z/4bQh4NV9wNGkRicGnTd jonathan@wahrenberg.com"
+    ];
   };
 }
