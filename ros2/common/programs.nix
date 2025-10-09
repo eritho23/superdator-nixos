@@ -34,6 +34,10 @@
     unzip
     vscode
     wget
+    cmake
+    make
+    gcc
+    clang
   ];
 
   virtualisation.podman = {
