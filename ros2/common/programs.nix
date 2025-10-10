@@ -34,10 +34,17 @@
     unzip
     vscode
     wget
+
+    # Deps for unitree sdk
     cmake
     gnumake
     gcc
     clang
+    yaml-cpp
+    eigen
+    boost
+    spdlog
+    fmt
   ];
 
   virtualisation.podman = {
