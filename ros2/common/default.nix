@@ -8,6 +8,7 @@
     ./programs.nix
     ./users.nix
     ./unitree.nix
+    ./nix.nix
   ];
 
   time.timeZone = "Europe/Stockholm";

@@ -35,7 +35,7 @@
     vscode
     wget
     cmake
-    make
+    gnumake
     gcc
     clang
   ];
