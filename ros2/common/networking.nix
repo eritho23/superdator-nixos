@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   networking.useNetworkd = true;
   systemd.network = {
     enable = true;
@@ -19,5 +19,15 @@
     Settings = {
       AutoConnect = true;
     };
+  };
+
+  networking.firewall = {
+    # Tailscale should be allowed past firewall
+    trustedInterfaces = ["tailscale0"];
+  };
+
+  services.tailscale = {
+    enable = true;
+    package = pkgs.unstable.tailscale;
   };
 }
