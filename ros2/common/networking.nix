@@ -20,4 +20,14 @@
       AutoConnect = true;
     };
   };
+
+  networking.firewall = {
+    # Tailscale should be allowed past firewall
+    trustedInterfaces = ["tailscale0"];
+  };
+
+  services.tailscale = {
+    enable = true;
+    package = pkgs.unstable.tailscale;
+  };
 }
