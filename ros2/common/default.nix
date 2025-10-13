@@ -12,7 +12,7 @@
   ];
 
   # Change this to include hostname of device?
-  users.motd = "Welcome to a ROS 2 dev station!"
+  users.motd = "Welcome to a ROS 2 dev station!";
 
   time.timeZone = "Europe/Stockholm";
 
