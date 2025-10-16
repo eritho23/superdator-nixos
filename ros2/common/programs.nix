@@ -16,6 +16,7 @@
     name = "isaac-sim-env";
     targetPkgs = pkgs:
       with pkgs; [
+        bash
         micromamba
         python311
 
@@ -28,9 +29,6 @@
         git
         which
         zlib
-
-        # Removes annoything warning
-        bash-completion
 
         # Libraries for Isaac Sim GUI/rendering
         libGL
@@ -57,11 +55,23 @@
         pulseaudio
       ];
     profile = ''
+      export SHELL=${pkgs.bash}/bin/bash
       export MAMBA_ROOT_PREFIX=/opt/micromamba
       export LD_LIBRARY_PATH=${pkgs.stdenv.cc.cc.lib}/lib:$LD_LIBRARY_PATH
 
       # Initialize micromamba env
-      eval "$(micromamba shell hook --shell bash)"
+      export MICROMAMBA_EXE=${pkgs.micromamba}/bin/micromamba
+      eval "$($MICROMAMBA_EXE shell hook -s bash)"
+
+      # Welcome msg
+      clear
+      echo -e "\e[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\e[0m"
+      echo -e "\e[1;32m Welcome to the Isaac Sim FHS Environment!\e[0m"
+      echo -e "\e[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\e[0m"
+      echo -e "Micromamba root: \e[1;33m$MAMBA_ROOT_PREFIX\e[0m"
+      echo -e "Python version:  \e[1;33m$(python3 --version 2>/dev/null)\e[0m"
+      echo -e "Working dir:     \e[1;33m$(pwd)\e[0m"
+      echo
     '';
     runScript = "bash";
   };
