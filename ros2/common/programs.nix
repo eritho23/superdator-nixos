@@ -12,7 +12,7 @@
 
   # FHS environment for isaac sim
   # NOTE: we use isaac sim 5.0.0 as we have an rtx 50XX
-  isaacSimEnv = pkgs.buildFHSUserEnv {
+  isaacSimEnv = pkgs.buildFHSEnv {
     name = "isaac-sim-env";
     targetPkgs = pkgs:
       with pkgs; [
@@ -50,7 +50,7 @@
         xorg.libXinerama
         libxkbcommon
         vulkan-loader
-        alsaLib
+        alsa-lib
         pulseaudio
       ];
     profile = ''
@@ -72,7 +72,7 @@ in {
 
   # Safety:
   users.groups.micromamba = {};
-  # Create /opt/micromamba with ro for users
+  # Create /opt/micromamba with rx for others, rwx for group & root
   systemd.tmpfiles.rules = [
     "d /opt/micromamba 2775 root micromamba -"
   ];
