@@ -73,7 +73,7 @@
       echo -e "Working dir:     \e[1;33m$(pwd)\e[0m"
       echo
     '';
-    runScript = "bash";
+    runScript = "${pkgs.bash}/bin/bash -l -i"; # interactive login
   };
 in {
   nixpkgs.config.allowUnfree = true;
