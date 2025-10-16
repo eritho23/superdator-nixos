@@ -29,6 +29,9 @@
         which
         zlib
 
+        # Removes annoything warning
+        bash-completions
+
         # Libraries for Isaac Sim GUI/rendering
         libGL
         libGLU
