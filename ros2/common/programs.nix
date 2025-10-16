@@ -45,6 +45,10 @@
     boost
     spdlog
     fmt
+
+    # conda 
+    python312Packages.conda 
+    python312Packages.libmambapy
   ];
 
   virtualisation.podman = {
