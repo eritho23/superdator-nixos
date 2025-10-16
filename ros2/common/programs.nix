@@ -72,6 +72,18 @@
       echo -e "Python version:  \e[1;33m$(python3 --version 2>/dev/null)\e[0m"
       echo -e "Working dir:     \e[1;33m$(pwd)\e[0m"
       echo
+
+      # Auto init micromamba env
+      AUTO_ENV="unitree_sim_env"
+      if [ -d "$MAMBA_ROOT_PREFIX/envs/$AUTO_ENV"]; then
+        if $MICROMAMBA_EXE activate $AUTO_ENV >/dev/null 2>&1; then
+          echo -e "\e[1;32mSuccessfully activated '$AUTO_ENV'\e[0m"
+        else
+          echo -e "\e[1;31mFailed to activate '$AUTO_ENV'\e[0m"
+        fi
+      else
+        echo -e "\e[1;33mUnable to find '$AUTO_ENV' this should not happen\e[0m"
+      fi
     '';
     runScript = "${pkgs.bash}/bin/bash -l -i"; # interactive login
   };
