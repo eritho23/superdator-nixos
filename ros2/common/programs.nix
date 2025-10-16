@@ -40,12 +40,25 @@
         pkg-config
         openssl
 
-        # Standard C++ library (fixes GLIBCXX errors mentioned in troubleshooting)
+        # Standard C++ library
         stdenv.cc.cc.lib
+
+        # Vulkan /lib
+        xorg.libXi
+        xorg.libXcursor
+        xorg.libXrandr
+        xorg.libXinerama
+        libxkbcommon
+        vulkan-loader
+        alsaLib
+        pulseaudio
       ];
     profile = ''
-      export CONDA_PREFIX=$HOME/.conda
+      export MAMBA_ROOT_PREFIX=/opt/micromamba
       export LD_LIBRARY_PATH=${pkgs.stdenv.cc.cc.lib}/lib:$LD_LIBRARY_PATH
+
+      # Initialize micromamba env
+      eval "$(micromamba shell hook --shell bash)"
     '';
     runScript = "bash";
   };
@@ -56,6 +69,13 @@ in {
   # builtins.elem (lib.getName pkg) [
   # "vscode"
   # ];
+
+  # Safety:
+  users.groups.micromamba = {};
+  # Create /opt/micromamba with ro for users
+  systemd.tempfiles.rules = [
+    "d /opt/micromamba 2775 root micromamba -"
+  ];
 
   environment.systemPackages = with pkgs; [
     bat
