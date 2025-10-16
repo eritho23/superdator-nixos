@@ -76,7 +76,7 @@
       # Auto init micromamba env
       AUTO_ENV="unitree_sim_env"
       if [ -d "$MAMBA_ROOT_PREFIX/envs/$AUTO_ENV" ]; then
-        if $MICROMAMBA_EXE activate $AUTO_ENV >/dev/null 2>&1; then
+        if micromamba activate "$AUTO_ENV" >/dev/null 2>&1; then
           echo -e "\e[1;32mSuccessfully activated '$AUTO_ENV'\e[0m"
         else
           echo -e "\e[1;31mFailed to activate '$AUTO_ENV'\e[0m"
