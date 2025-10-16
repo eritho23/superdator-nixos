@@ -6,8 +6,7 @@
   # Python312 general python env
   python312Packages = ps:
     with ps; [
-      conda
-      libmambapy
+      # Default python pkgs
     ];
   python312Env = pkgs.python312.withPackages python312Packages;
 
