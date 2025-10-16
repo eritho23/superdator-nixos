@@ -14,6 +14,11 @@
     sopsFile = ../../secrets/ros2.yaml;
   };
 
+  sops.secrets."ros2/users/marcus/hashed_password" = {
+    neededForUsers = true;
+    sopsFile = ../../secrets/ros2.yaml;
+  };
+
   security.doas.enable = true;
 
   users.mutableUsers = false;
@@ -45,5 +50,11 @@
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPbqVTascQiJYBzBLwvQhI8z/4bQh4NV9wNGkRicGnTd jonathan@wahrenberg.com"
     ];
+  };
+
+  users.users."marcus" = {
+    description = "Marcus (230S)";
+    isNormalUser = true;
+    hashedPasswordFile = config.sops.secrets."ros2/users/marcus/hashed_password".path;
   };
 }
