@@ -73,7 +73,7 @@ in {
   # Safety:
   users.groups.micromamba = {};
   # Create /opt/micromamba with ro for users
-  systemd.tempfiles.rules = [
+  systemd.tmpfiles.rules = [
     "d /opt/micromamba 2775 root micromamba -"
   ];
 
