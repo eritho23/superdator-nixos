@@ -30,7 +30,7 @@
         zlib
 
         # Removes annoything warning
-        bash-completions
+        bash-completion
 
         # Libraries for Isaac Sim GUI/rendering
         libGL
