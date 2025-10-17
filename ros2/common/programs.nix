@@ -2,12 +2,29 @@
   pkgs,
   # lib,
   ...
-}: {
+}: let
+  # Python312 general python env
+  python312Packages = ps:
+    with ps; [
+      # Default python pkgs
+    ];
+  python312Env = pkgs.python312.withPackages python312Packages;
+
+  isaac = import ./isaac-sim.nix {inherit pkgs;};
+in {
   nixpkgs.config.allowUnfree = true;
+
   # nixpkgs.config.allowUnfreePredicate = pkg:
   # builtins.elem (lib.getName pkg) [
   # "vscode"
   # ];
+
+  # Safety:
+  users.groups.micromamba = {};
+  # Create /opt/micromamba with rx for others, rwx for group & root
+  systemd.tmpfiles.rules = [
+    "d /opt/micromamba 2775 root micromamba -"
+  ];
 
   environment.systemPackages = with pkgs; [
     bat
@@ -28,7 +45,6 @@
     nodejs
     nvtopPackages.nvidia
     pciutils
-    python3
     ripgrep
     tmux
     unzip
@@ -45,6 +61,10 @@
     boost
     spdlog
     fmt
+
+    # custom env
+    python312Env
+    isaac.isaacSimEnv
   ];
 
   virtualisation.podman = {
