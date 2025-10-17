@@ -19,8 +19,6 @@ in {
   # "vscode"
   # ];
 
-  # Safety:
-  users.groups.micromamba = {};
   # Create /opt/micromamba with rx for others, rwx for group & root
   systemd.tmpfiles.rules = [
     "d /opt/micromamba 2775 root micromamba -"
