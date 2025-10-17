@@ -4,7 +4,7 @@
     settings = {
       AllowGroups = ["ssh-access"];
       PasswordAuthentication = true;
-      PermitRootLogin = "yes"; # NOTE: change for safety in the future
+      PermitRootLogin = "no";
     };
   };
 }
