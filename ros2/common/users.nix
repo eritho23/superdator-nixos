@@ -56,5 +56,6 @@
     description = "Marcus (230S)";
     isNormalUser = true;
     hashedPasswordFile = config.sops.secrets."ros2/users/marcus/hashed_password".path;
+    extraGroups = ["micromamba"]
   };
 }
