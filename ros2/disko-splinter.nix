@@ -23,7 +23,7 @@
               format = "ext4";
               mountpoint = "/";
               mountOptions = ["noatime" "discard"];
-              mkfsOptions = [
+              extraArgs = [
                 "-L"
                 "nixos-root"
                 "-m"
