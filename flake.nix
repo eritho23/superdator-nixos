@@ -75,7 +75,7 @@
           ];
         };
       }
-      // pkgs.lib.genAttrs ["dunning" "kruger"] (
+      // pkgs.lib.genAttrs ["dunning" "kruger" "splinter"] (
         hostname:
           nixpkgs.lib.nixosSystem {
             specialArgs = {inherit (self) inputs outputs;};
