@@ -34,7 +34,7 @@
     sopsFile = ../../secrets/ros2.yaml;
   };
 
-  sops.secrets."ros2/users/ludwig/hashed_password" = {
+  sops.secrets."ros2/users/ludvig/hashed_password" = {
     neededForUsers = true;
     sopsFile = ../../secrets/ros2.yaml;
   };
@@ -102,8 +102,8 @@
     hashedPasswordFile = config.sops.secrets."ros2/users/lucas/hashed_password".path;
   };
 
-  users.users."ludwig" = {
-    description = "Ludwig (240S)";
+  users.users."ludvig" = {
+    description = "Ludvig (240S)";
     isNormalUser = true;
     hashedPasswordFile = config.sops.secrets."ros2/users/ludwig/hashed_password".path;
   };
