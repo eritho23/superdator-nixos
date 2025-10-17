@@ -19,6 +19,11 @@
     sopsFile = ../../secrets/ros2.yaml;
   };
 
+  users.groups = {
+    micromamba = {};
+    ssh-access = {};
+  };
+
   security.doas.enable = true;
 
   users.mutableUsers = false;

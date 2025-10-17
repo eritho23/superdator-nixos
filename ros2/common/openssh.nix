@@ -2,10 +2,9 @@
   services.openssh = {
     enable = true;
     settings = {
-      AllowGroups = "ssh-access";
+      AllowGroups = ["ssh-access"];
       PasswordAuthentication = true;
-      PermitRootLogin = "no"; # NOTE: change for safety in the future
+      PermitRootLogin = "yes"; # NOTE: change for safety in the future
     };
   };
 }
-
