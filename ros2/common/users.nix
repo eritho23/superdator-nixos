@@ -105,6 +105,6 @@
   users.users."ludvig" = {
     description = "Ludvig (240S)";
     isNormalUser = true;
-    hashedPasswordFile = config.sops.secrets."ros2/users/ludwig/hashed_password".path;
+    hashedPasswordFile = config.sops.secrets."ros2/users/ludvig/hashed_password".path;
   };
 }
