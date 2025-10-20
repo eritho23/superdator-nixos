@@ -7,7 +7,7 @@ keys:
   - &obsidian age1n2vym8aq3fdxrmpejz40pulnmwjhmw9u75xc8hrkvc98dq4h83jqkmlxug
   - &dunning age17jcxlfvqkva5ynsddfsnpk8wy99xjzmqwzc234ent49vvrgue9gsxncpwj
   - &kruger age1gqpyefghp8qlp9tw8s4q7yfglpqcr40tjm94d8t283jx6u0xrgksqksa9n
-  - &splinter age1nyzg032kfx7rpa2q4k8yudaft7ged463w8p7h2qle2vl68ywwsvq4v36f8
+  - &splinter age1uta3998cfuek676l6sqgmfz6y6w3pcjztmsml5f99xz7dum08fusg5wld8
 creation_rules:
   - path_regex: secrets/secrets.yaml$
     key_groups:
