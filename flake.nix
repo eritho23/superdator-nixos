@@ -75,6 +75,7 @@
           ];
         };
       }
+      # ROS2 full env workstations
       // pkgs.lib.genAttrs ["dunning" "kruger"] (
         hostname:
           nixpkgs.lib.nixosSystem {
@@ -90,6 +91,27 @@
               }
 
               ./ros2/common
+              (./ros2 + "/disko-${hostname}.nix")
+              (./ros2 + "/hardware-configuration-${hostname}.nix")
+              (./ros2 + "/bootloader-${hostname}.nix")
+            ];
+          }
+      )
+      # ROS2 minimal workstations
+      // pkgs.lib.genAttrs ["splinter"] (
+        hostname:
+          nixpkgs.lib.nixosSystem {
+            specialArgs = {inherit (self) inputs outputs;};
+            modules = [
+              {nixpkgs.overlays = builtins.attrValues self.overlays;}
+              sops-nix.nixosModules.sops
+              disko.nixosModules.disko
+              lanzaboote.nixosModules.lanzaboote
+              {
+                networking.hostName = hostname;
+              }
+
+              ./ros2/common/default-minimal.nix
               (./ros2 + "/disko-${hostname}.nix")
               (./ros2 + "/hardware-configuration-${hostname}.nix")
               (./ros2 + "/bootloader-${hostname}.nix")
