@@ -103,6 +103,7 @@
           nixpkgs.lib.nixosSystem {
             specialArgs = {inherit (self) inputs outputs;};
             modules = [
+              {nixpkgs.overlays = builtins.attrValues self.overlays;}
               sops-nix.nixosModules.sops
               disko.nixosModules.disko
               lanzaboote.nixosModules.lanzaboote
