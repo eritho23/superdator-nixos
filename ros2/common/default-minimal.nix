@@ -4,7 +4,7 @@
     ./locale.nix
     ./networking.nix
     ./openssh.nix
-    ./programs.nix
+    ./programs-minimal.nix
     ./users.nix
     ./nix.nix
   ];
