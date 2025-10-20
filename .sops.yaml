@@ -9,6 +9,7 @@ keys:
   - &kruger age1gqpyefghp8qlp9tw8s4q7yfglpqcr40tjm94d8t283jx6u0xrgksqksa9n
   - &splinter age1tjf7dpjkcu9mpttpjgxcq6lt4ta6kvztdu09470fgswfzh03gddsqy7uqu 
   - &leonardo age1c6u4el5ajkql9gdqs097dqszffkektuxrvsha6p0dt07vefwe32sn6dkx2
+  - &donatello age1azjxve9js9uhg55kc7c8edevk3nx8gqhqfav9nltrnefkz4l85hqd5cxnd
 creation_rules:
   - path_regex: secrets/secrets.yaml$
     key_groups:
@@ -27,4 +28,5 @@ creation_rules:
         - *kruger
         - *splinter
         - *leonardo
+        - *donatello
 
