@@ -5,7 +5,7 @@
 }: let
   justCount = pkgs.fetchzip {
     url = "file://${../sites/justcount.app/JustCount-UF-main.zip}";
-    hash = pkgs.lib.fakeHash;
+    hash = "sha256-4lV+MKeShkqGHYjxWvrtK5jjNus0R0KXF/nr/LErh+Q=";
   };
 in {
   services.caddy = {
