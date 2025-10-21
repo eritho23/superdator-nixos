@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  rosEnv = with pkgs.ros-humble;
+  rosEnv = with pkgs.rosPackages.humble;
     buildEnv {
       name = "ros2-humble-env";
       paths = [
