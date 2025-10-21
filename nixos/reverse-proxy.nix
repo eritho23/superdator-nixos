@@ -1,4 +1,13 @@
-{inputs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: let
+  justCount = pkgs.fetchzip {
+    url = "file://${../sites/justcount.app/JustCount-UF-main.zip}";
+    hash = pkgs.lib.fakeHash;
+  };
+in {
   services.caddy = {
     enable = true;
     email = "eric.thorburn@hitachigymnasiet.se";
@@ -87,6 +96,20 @@
                   }
           reverse_proxy @websockets 127.0.0.1:5001
           reverse_proxy 127.0.0.1:5000
+        '';
+      };
+      "justcount.app" = {
+        extraConfig = ''
+          root * ${justCount}/JustCount_Website
+          file_server
+
+          header {
+          	Permissions-Policy "geolocation=(), camera=(), microphone=()"
+          	Referrer-Policy "no-referrer"
+          	Strict-Transport-Security "max-age=31536000; includeSubDomains"
+          	X-Content-Type-Options "nosniff"
+          	X-Frame-Options "SAMEORIGIN"
+          }
         '';
       };
     };
