@@ -7,6 +7,7 @@
     ./programs-minimal.nix
     ./users.nix
     ./nix.nix
+    ./ros2-humble-minimal.nix
   ];
 
   # Change this to include hostname of device?
