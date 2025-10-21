@@ -5,4 +5,6 @@
       config.allowUnfree = true;
     };
   };
+
+  ros2-humble = inputs.nix-ros-overlay.overlays.default;
 }

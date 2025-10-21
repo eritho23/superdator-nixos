@@ -21,6 +21,10 @@
     lanzaboote.url = "github:nix-community/lanzaboote/v0.4.2";
     lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
 
+    # ROS2 overlays
+    nix-ros-overlay.url = "github:lopsided98/nix-ros-overlay/master";
+    nix-ros-overlay.inputs.nixpkgs.follows = "nixpkgs";
+
     ### FLAKE INPUTS FOR DEPLOYMENTS BELOW ###
     spetsctf = {
       url = "github:fdABB-Gym-Samuel/SpetsCTF/d45aa5f9d5c2b95238c208d45a40cf4a934c100c";
