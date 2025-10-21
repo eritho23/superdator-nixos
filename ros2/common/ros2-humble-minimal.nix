@@ -7,7 +7,7 @@
     buildEnv {
       name = "ros2-humble-env";
       paths = [
-        ros2-base
+        ros-core
       ];
     };
 in {
