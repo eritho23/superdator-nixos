@@ -9,6 +9,7 @@
     ./users.nix
     ./unitree.nix
     ./nix.nix
+    ./ros2-humble.nix
   ];
 
   # Change this to include hostname of device?
