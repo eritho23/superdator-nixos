@@ -138,6 +138,6 @@
   users.users."strom" = {
     description = "Gustav Strom (230S)";
     isNormalUser = true;
-    hashedPasswordFile = config.sops.secrets."ros2/users/raina/hashed_password".path;
+    hashedPasswordFile = config.sops.secrets."ros2/users/strom/hashed_password".path;
   };
 }
