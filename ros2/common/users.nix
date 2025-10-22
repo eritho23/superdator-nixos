@@ -49,6 +49,11 @@
     sopsFile = ../../secrets/ros2.yaml;
   };
 
+  sops.secrets."ros2/users/strom/hashed_password" = {
+    neededForUsers = true;
+    sopsFile = ../../secrets/ros2.yaml;
+  };
+
   users.groups = {
     micromamba = {};
     ssh-access = {};
@@ -126,6 +131,12 @@
 
   users.users."raina" = {
     description = "Raina (240S)";
+    isNormalUser = true;
+    hashedPasswordFile = config.sops.secrets."ros2/users/raina/hashed_password".path;
+  };
+
+  users.users."strom" = {
+    description = "Gustav Strom (230S)";
     isNormalUser = true;
     hashedPasswordFile = config.sops.secrets."ros2/users/raina/hashed_password".path;
   };
