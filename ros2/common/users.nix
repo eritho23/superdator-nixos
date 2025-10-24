@@ -54,6 +54,11 @@
     sopsFile = ../../secrets/ros2.yaml;
   };
 
+  sops.secrets."ros2/users/beni/hashed_password" = {
+    neededForUsers = true;
+    sopsFile = ../../secrets/ros2.yaml;
+  };
+
   users.groups = {
     micromamba = {};
     ssh-access = {};
@@ -139,5 +144,11 @@
     description = "Gustav Strom (230S)";
     isNormalUser = true;
     hashedPasswordFile = config.sops.secrets."ros2/users/strom/hashed_password".path;
+  };
+
+  users.users."beni" = {
+    description = "Beni-Juste (230S)";
+    isNormalUser = true;
+    hashedPasswordFile = config.sops.secrets."ros2/users/beni/hashed_password".path;
   };
 }
