@@ -46,6 +46,7 @@ in {
     unzip
     vscode
     wget
+    alacritty
 
     # Deps for unitree sdk
     cmake
