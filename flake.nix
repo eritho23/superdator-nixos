@@ -102,7 +102,7 @@
           }
       )
       # ROS2 minimal workstations
-      // pkgs.lib.genAttrs ["splinter" "leonardo" "donatello"] (
+      // pkgs.lib.genAttrs ["murphy" "splinter" "leonardo" "donatello"] (
         hostname:
           nixpkgs.lib.nixosSystem {
             specialArgs = {inherit (self) inputs outputs;};
