@@ -43,6 +43,10 @@
       url = "git+ssh://git@github.com/Miraengel/GYARTE";
       flake = false;
     };
+    justcountuf = {
+      url = "git+ssh://git@github.com/JustCountUF/JustCount-UF";
+      flake = false;
+    };
     ### END FLAKE INPUTS FOR DEPLOYMENTS ###
   };
 
