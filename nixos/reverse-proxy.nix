@@ -95,7 +95,7 @@
       };
       "justcount.app" = {
         extraConfig = ''
-          root * ${inputs.justcountuf}/JustCount_Website
+          root * ${inputs.justcountuf}/new_website
           file_server
 
           header {
