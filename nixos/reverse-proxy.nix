@@ -1,13 +1,8 @@
 {
   inputs,
-  pkgs,
   ...
-}: let
-  justCount = pkgs.fetchzip {
-    url = "file://${../sites/justcount.app/JustCount-UF-main.zip}";
-    hash = "sha256-4lV+MKeShkqGHYjxWvrtK5jjNus0R0KXF/nr/LErh+Q=";
-  };
-in {
+}:
+{
   services.caddy = {
     enable = true;
     email = "eric.thorburn@hitachigymnasiet.se";
@@ -100,7 +95,7 @@ in {
       };
       "justcount.app" = {
         extraConfig = ''
-          root * ${justCount}/JustCount_Website
+          root * ${inputs.justcountuf}/JustCount_Website
           file_server
 
           header {
