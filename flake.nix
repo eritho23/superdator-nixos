@@ -44,7 +44,7 @@
       flake = false;
     };
     justcountuf = {
-      url = "git+ssh://git@github.com/JustCountUF/JustCount-UF";
+      url = "git+ssh://git@github.com/JustCountUF/JustCount-UF?rev=d0f1a03cea3486ffb79e090ea82c949a023a464a";
       flake = false;
     };
     ### END FLAKE INPUTS FOR DEPLOYMENTS ###
