@@ -11,15 +11,16 @@
     config = {pkgs, ...}: let
       pbDataDir = "/var/lib/pocketbase";
       pbListenAddr = "127.0.0.1:8092";
+      # pbPackage = pkgs.pocketbase.overrideAttrs (f: rec {version = "0.27.0";src = pkgs.fetchFromGitHub {owner = "pocketbase";repo = "pocketbase";rev = "${version}";hash = "sha256-sSXsWeW9GrndmsjrLwN4UohI36IRQRES17WU8WH+irg=";};vendorHash = "sha256-ceMCtxrAgNfdCc9x3ExedACK/hh20l4LNBEUL2KJkHM=";});
       pbPackage = pkgs.pocketbase.overrideAttrs (f: rec {
-        version = "0.26.6";
+        version = "0.27.0";
         src = pkgs.fetchFromGitHub {
           owner = "pocketbase";
           repo = "pocketbase";
           rev = "${version}";
-          hash = "sha256-PDHRMCICzvb7InHSvYRvlYDaB6hkESJyL7iiz+lO6+I=";
+          hash = "sha256-sSXsWeW9GrndmsjrLwN4UohI36IRQRES17WU8WH+irg=";
         };
-        vendorHash = "sha256-qkVbtQeyhQ0w0H5BW1Nq4S7UPK7KXkGrueBm9nM/O68=";
+        vendorHash = "sha256-ceMCtxrAgNfdCc9x3ExedACK/hh20l4LNBEUL2KJkHM=";
       });
     in {
       system.stateVersion = "23.11";
