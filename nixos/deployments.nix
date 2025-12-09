@@ -11,9 +11,9 @@
     config = {pkgs, ...}: let
       pbDataDir = "/var/lib/pocketbase";
       pbListenAddr = "127.0.0.1:8092";
-      # pbPackage = pkgs.pocketbase.overrideAttrs (f: rec {version = "0.27.0";src = pkgs.fetchFromGitHub {owner = "pocketbase";repo = "pocketbase";rev = "${version}";hash = "sha256-sSXsWeW9GrndmsjrLwN4UohI36IRQRES17WU8WH+irg=";};vendorHash = "sha256-ceMCtxrAgNfdCc9x3ExedACK/hh20l4LNBEUL2KJkHM=";});
+      # pbPackage = pkgs.pocketbase.overrideAttrs (f: rec {version = "v0.27.0";src = pkgs.fetchFromGitHub {owner = "pocketbase";repo = "pocketbase";rev = "${version}";hash = "sha256-sSXsWeW9GrndmsjrLwN4UohI36IRQRES17WU8WH+irg=";};vendorHash = "sha256-ceMCtxrAgNfdCc9x3ExedACK/hh20l4LNBEUL2KJkHM=";});
       pbPackage = pkgs.pocketbase.overrideAttrs (f: rec {
-        version = "0.27.0";
+        version = "v0.27.0";
         src = pkgs.fetchFromGitHub {
           owner = "pocketbase";
           repo = "pocketbase";
