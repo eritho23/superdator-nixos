@@ -19,7 +19,7 @@
           rev = "${version}";
           hash = "sha256-PDHRMCICzvb7InHSvYRvlYDaB6hkESJyL7iiz+lO6+I=";
         };
-        vendorHash = "sha256-9TuKYXZyyfVaow/5SW0rbYlIs8XiNF1hmkmHZT9J2O0=";
+        vendorHash = "sha256-qkVbtQeyhQ0w0H5BW1Nq4S7UPK7KXkGrueBm9nM/O68=";
       });
     in {
       system.stateVersion = "23.11";
