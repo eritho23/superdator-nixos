@@ -12,16 +12,19 @@
       pbDataDir = "/var/lib/pocketbase";
       pbListenAddr = "127.0.0.1:8092";
       # pbPackage = pkgs.pocketbase.overrideAttrs (f: rec {version = "v0.27.0";src = pkgs.fetchFromGitHub {owner = "pocketbase";repo = "pocketbase";rev = "${version}";hash = "sha256-sSXsWeW9GrndmsjrLwN4UohI36IRQRES17WU8WH+irg=";};vendorHash = "sha256-ceMCtxrAgNfdCc9x3ExedACK/hh20l4LNBEUL2KJkHM=";});
-      pbPackage = pkgs.pocketbase.overrideAttrs (f: rec {
-        version = "v0.27.0";
-        src = pkgs.fetchFromGitHub {
-          owner = "pocketbase";
-          repo = "pocketbase";
-          rev = "${version}";
-          hash = "sha256-sSXsWeW9GrndmsjrLwN4UohI36IRQRES17WU8WH+irg=";
-        };
-        vendorHash = "sha256-ceMCtxrAgNfdCc9x3ExedACK/hh20l4LNBEUL2KJkHM=";
-      });
+      pbPackage =
+        pkgs.pocketbase.overrideAttrs (f: rec {
+            version = "v0.27.2";
+            src =
+              pkgs.fetchFromGitHub {
+                owner = "pocketbase";
+                repo = "pocketbase";
+                rev = "${version}";
+                hash = "sha256-KvKBx5AKpcvgd
+f8tq2sJPLF63Fpa9KN3j5WJumR28k4=";
+              };
+            vendorHash = "sha256-1Qym5XRyMBfn5csp+YFkKNhJokDrHbfnpKAMq09Da5s=";
+          });
     in {
       system.stateVersion = "23.11";
       environment.systemPackages = with pkgs; [pocketbase];
