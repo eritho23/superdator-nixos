@@ -8,20 +8,16 @@
 }: {
   containers.justcount = {
     autoStart = true;
-    config = {
-      config,
-      pkgs,
-      ...
-    }: let
+    config = {pkgs, ...}: let
       pbDataDir = "/var/lib/pocketbase";
       pbListenAddr = "127.0.0.1:8092";
       pbPackage = pkgs.pocketbase.overrideAttrs (f: rec {
-        version = "0.26.4";
+        version = "0.26.6";
         src = pkgs.fetchFromGitHub {
           owner = "pocketbase";
           repo = "pocketbase";
-          rev = "v${version}";
-          hash = "sha256-rNosfeiuXsn2x8Ae7WIZLmF7njsgi8fJ1Ze1njYQSY0=";
+          rev = "${version}";
+          hash = "sha256-PDHRMCICzvb7InHSvYRvlYDaB6hkESJyL7iiz+lO6+I=";
         };
         vendorHash = "sha256-9TuKYXZyyfVaow/5SW0rbYlIs8XiNF1hmkmHZT9J2O0=";
       });
