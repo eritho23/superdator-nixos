@@ -14,16 +14,16 @@
       # pbPackage = pkgs.pocketbase.overrideAttrs (f: rec {version = "v0.27.0";src = pkgs.fetchFromGitHub {owner = "pocketbase";repo = "pocketbase";rev = "${version}";hash = "sha256-sSXsWeW9GrndmsjrLwN4UohI36IRQRES17WU8WH+irg=";};vendorHash = "sha256-ceMCtxrAgNfdCc9x3ExedACK/hh20l4LNBEUL2KJkHM=";});
       pbPackage =
         pkgs.pocketbase.overrideAttrs (f: rec {
-            version = "v0.27.2";
+            version = "v0.28.4";
             src =
               pkgs.fetchFromGitHub {
                 owner = "pocketbase";
                 repo = "pocketbase";
                 rev = "${version}";
-                hash = "sha256-KvKBx5AKpcvgd
-f8tq2sJPLF63Fpa9KN3j5WJumR28k4=";
+                hash = "sha256-LMkyz8Eu5W9TG
+Zva7bPiAoN21ymKvAO6oSZcvX6rX+s=";
               };
-            vendorHash = "sha256-1Qym5XRyMBfn5csp+YFkKNhJokDrHbfnpKAMq09Da5s=";
+            vendorHash = "sha256-hOB8MOfG+RHDJEP5DSDvSiphb+c86QySNEmRr8633cM=";
           });
     in {
       system.stateVersion = "23.11";
