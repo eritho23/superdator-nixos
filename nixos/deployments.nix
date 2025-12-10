@@ -9,7 +9,12 @@
   security.sudo.extraRules = [
     {
       users = ["${config.users.users.beni.name}"];
-      commands = [{command = "/run/current-system/sw/bin/machinectl shell pocketbase@justcount /run/current-system/sw/bin/bash";}];
+      commands = [
+        {
+          command = "/run/current-system/sw/bin/machinectl shell pocketbase@justcount /run/current-system/sw/bin/bash";
+          runAs = "root:root";
+        }
+      ];
     }
   ];
 
