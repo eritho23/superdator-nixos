@@ -6,6 +6,13 @@
   inputs,
   ...
 }: {
+  security.sudo.extraRules = [
+    {
+      users = ["${config.users.users.beni.name}"];
+      commands = [{command = "/run/current-system/sw/bin/machinectl shell pocketbase@justcount /run/current-system/sw/bin/bash";}];
+    }
+  ];
+
   containers.justcount = {
     autoStart = true;
     config = {pkgs, ...}: let
