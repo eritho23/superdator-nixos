@@ -12,9 +12,9 @@
       commands = [
         {
           command = "/run/current-system/sw/bin/machinectl shell pocketbase@justcount /run/current-system/sw/bin/bash";
-          runAs = "root:root";
         }
       ];
+      runAs = "root:root";
     }
   ];
 
