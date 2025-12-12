@@ -20,7 +20,11 @@
 
   containers.justcount = {
     autoStart = true;
-    config = {pkgs, ...}: let
+    config = {
+      config,
+      pkgs,
+      ...
+    }: let
       pbDataDir = "/var/lib/pocketbase";
       pbListenAddr = "127.0.0.1:8092";
       pbPackage = pkgs.pocketbase.overrideAttrs (f: rec {
@@ -44,23 +48,29 @@
         createHome = true;
       };
       users.groups.pocketbase = {};
-      security.sudo.extraRules = [
-        {
-          users = ["${config.users.users.pocketbase.name}"];
-          commands = [
-            {
-              command = "/run/current-system/sw/bin/systemctl restart ${config.systemd.services.justcount-pb.name}";
-            }
-            {
-              command = "/run/current-system/sw/bin/systemctl stop ${config.systemd.services.justcount-pb.name}";
-            }
-            {
-              command = "/run/current-system/sw/bin/systemctl start ${config.systemd.services.justcount-pb.name}";
-            }
-          ];
-          runAs = "root:root";
-        }
-      ];
+      security.sudo = {
+        enable = true;
+        extraRules = [
+          {
+            users = ["${config.users.users.pocketbase.name}"];
+            commands = [
+              {
+                command = "/run/current-system/sw/bin/systemctl restart ${config.systemd.services.justcount-pb.name}";
+                options = ["NOPASSWD"];
+              }
+              {
+                command = "/run/current-system/sw/bin/systemctl stop ${config.systemd.services.justcount-pb.name}";
+                options = ["NOPASSWD"];
+              }
+              {
+                command = "/run/current-system/sw/bin/systemctl start ${config.systemd.services.justcount-pb.name}";
+                options = ["NOPASSWD"];
+              }
+            ];
+            runAs = "root:root";
+          }
+        ];
+      };
 
       systemd = {
         timers.justcount-pb-backup = {
@@ -93,23 +103,22 @@
             path = with pkgs; [
               coreutils
               gnutar
-              xz-utils
+              gzip
             ];
             unitConfig.description = "Backup for justcount pocketbase";
             serviceConfig = {
               Type = "oneshot";
-              Restart = false;
+              Restart = "no";
               ExecStartPost = [
-                "${lib.getBin config.systemd.package}/systemctl start ${config.systemd.services.justcount-pb.name}"
                 "-${lib.getBin config.systemd.package}/systemctl start ${config.systemd.services.justcount-pb.name}"
               ];
               ExecStartPre = [
                 "${lib.getBin config.systemd.package}/systemctl stop ${config.systemd.services.justcount-pb.name}"
               ];
-              ExecStart = pkgs.writeShellScript "run-justcount-pb-backup" ''
+              ExecStart = pkgs.writeShellScript "pb-backup-start" ''
                 echo "Starting backup..."
                 mkdir -p "${pbDataDir}/backups"
-                tar -czf ${pbDataDir}/backups/$(date +"backup-%Y-%m-%dT%H%M.tar.gz") "${pbDataDir}/"*
+                tar -czf ${pbDataDir}/backups/$(date +"backup-%Y-%m-%dT%H%M.tar.gz") ${pbDataDir}/pb*
                 ls -t "$BACKUP_DIR"/myapp-*.tar.gz | tail -n +8 | xargs -r rm
                 echo "Backup finished."
               '';
