@@ -110,10 +110,10 @@
               Type = "oneshot";
               Restart = "no";
               ExecStartPost = [
-                "-${lib.getBin config.systemd.package}/systemctl start ${config.systemd.services.justcount-pb.name}"
+                "-/run/current-system/sw/bin/systemctl start ${config.systemd.services.justcount-pb.name}"
               ];
               ExecStartPre = [
-                "${lib.getBin config.systemd.package}/systemctl stop ${config.systemd.services.justcount-pb.name}"
+                "/run/current-system/sw/bin/systemctl stop ${config.systemd.services.justcount-pb.name}"
               ];
               ExecStart = pkgs.writeShellScript "pb-backup-start" ''
                 echo "Starting backup..."
