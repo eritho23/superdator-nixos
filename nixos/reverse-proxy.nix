@@ -63,6 +63,11 @@
           reverse_proxy 127.0.0.1:8092
         '';
       };
+      "behealthy-pb.superdator.spetsen.net" = {
+        extraConfig = ''
+          reverse_proxy 127.0.0.1:8093
+        '';
+      };
       "echoloungeuf.spetsen.net" = {
         extraConfig = ''
           root * ${inputs.echoloungeuf}/Reklamhemsida
