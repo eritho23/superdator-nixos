@@ -17,6 +17,7 @@
     vendorHash = "sha256-Oo0zfS7WLrF6hpphuWMV6Of7k6ezcWp3MtfQgCiSuo8=";
   });
   pbDataDir = "/var/lib/pocketbase";
+  pbBackupDir = "${pbDataDir}/backups";
 in {
   security.sudo.extraRules = [
     {
@@ -109,9 +110,9 @@ in {
                 ];
                 ExecStart = pkgs.writeShellScript "pb-backup-start" ''
                   echo "Starting backup..."
-                  mkdir -p "${pbDataDir}/backups"
-                  tar -czf ${pbDataDir}/backups/$(date +"backup-%Y-%m-%dT%H%M.tar.gz") ${pbDataDir}/pb*
-                  ls -t ${pbDataDir}/backup-*.tar.gz | tail -n +8 | xargs -r rm
+                  mkdir -p "${pbBackupDir}"
+                  tar -czf ${pbBackupDir}/$(date +"backup-%Y-%m-%dT%H%M.tar.gz") ${pbDataDir}/pb*
+                  ls -t ${pbBackupDir}/backup-*.tar.gz | tail -n +8 | xargs -r rm
                   echo "Backup finished."
                 '';
               };
@@ -199,9 +200,9 @@ in {
                 ];
                 ExecStart = pkgs.writeShellScript "pb-backup-start" ''
                   echo "Starting backup..."
-                  mkdir -p "${pbDataDir}/backups"
-                  tar -czf ${pbDataDir}/backups/$(date +"backup-%Y-%m-%dT%H%M.tar.gz") ${pbDataDir}/pb*
-                  ls -t ${pbDataDir}/backup-*.tar.gz | tail -n +8 | xargs -r rm
+                  mkdir -p "${pbBackupDir}"
+                  tar -czf ${pbBackupDir}/$(date +"backup-%Y-%m-%dT%H%M.tar.gz") ${pbDataDir}/pb*
+                  ls -t ${pbBackupDir}/backup-*.tar.gz | tail -n +8 | xargs -r rm
                   echo "Backup finished."
                 '';
               };
@@ -291,9 +292,9 @@ in {
                 ];
                 ExecStart = pkgs.writeShellScript "pb-backup-start" ''
                   echo "Starting backup..."
-                  mkdir -p "${pbDataDir}/backups"
-                  tar -czf ${pbDataDir}/backups/$(date +"backup-%Y-%m-%dT%H%M.tar.gz") ${pbDataDir}/pb*
-                  ls -t ${pbDataDir}/backup-*.tar.gz | tail -n +8 | xargs -r rm
+                  mkdir -p "${pbBackupDir}"
+                  tar -czf ${pbBackupDir}/$(date +"backup-%Y-%m-%dT%H%M.tar.gz") ${pbDataDir}/pb*
+                  ls -t ${pbBackupDir}/backup-*.tar.gz | tail -n +8 | xargs -r rm
                   echo "Backup finished."
                 '';
               };
