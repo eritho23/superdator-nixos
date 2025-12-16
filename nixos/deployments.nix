@@ -210,6 +210,98 @@ in {
         };
       };
     };
+
+    # Named adam, bertil, caesar etc...
+    # Adam: Marcus is in the group.
+    ai-project-adam = {
+      autoStart = true;
+      config = {
+        config,
+        pkgs,
+        ...
+      }: let
+        pbListenAddr = "127.0.0.1:8094";
+      in {
+        system.stateVersion = "23.11";
+        environment.systemPackages = with pkgs; [pocketbase];
+        users.users.pocketbase = {
+          isSystemUser = true;
+          home = pbDataDir;
+          shell = "/run/current-system/sw/bin/nologin";
+          group = "pocketbase";
+          createHome = true;
+        };
+        users.groups.pocketbase = {};
+        security.sudo = {
+          enable = true;
+          extraRules = [
+            {
+              users = ["${config.users.users.pocketbase.name}"];
+              commands = map (cmd: {
+                command = "/run/current-system/sw/bin/systemctl ${cmd} ${config.systemd.services.ai-project-adam-pb.name}";
+                options = ["NOPASSWD"];
+              }) ["restart" "stop" "start"];
+              runAs = "root:root";
+            }
+          ];
+        };
+
+        systemd = {
+          timers.ai-project-adam-pb-backup = {
+            timerConfig = {
+              RandomizedDelaySec = "15min";
+              OnCalendar = "02:00:00";
+              Unit = config.systemd.services.ai-project-adam-pb-backup.name;
+            };
+            unitConfig = {
+              description = "Timer for pocketbase backup.";
+              Requires = config.systemd.services.ai-project-adam-pb-backup.name;
+            };
+            wantedBy = ["timers.target"];
+          };
+          services = {
+            ai-project-adam-pb = {
+              unitConfig.description = "Pocketbase for ai-project-adam";
+              serviceConfig = {
+                ExecStart = "${pbPackage}/bin/pocketbase serve --dir ${pbDataDir}/pb_data --publicDir ${pbDataDir}/pb_public --hooksDir ${pbDataDir}/pb_hooks --http ${pbListenAddr}";
+                Restart = "always";
+                RestartSec = "5s";
+                Type = "simple";
+                User = "pocketbase";
+                Group = "pocketbase";
+              };
+              wantedBy = ["multi-user.target"];
+            };
+            ai-project-adam-pb-backup = {
+              wantedBy = ["multi-user.target"];
+              path = with pkgs; [
+                coreutils
+                gnutar
+                gzip
+              ];
+              unitConfig.description = "Backup for ai-project-adam pocketbase";
+              serviceConfig = {
+                Type = "oneshot";
+                Restart = "no";
+                ExecStartPost = [
+                  "-/run/current-system/sw/bin/systemctl start ${config.systemd.services.ai-project-adam-pb.name}"
+                ];
+                ExecStartPre = [
+                  "/run/current-system/sw/bin/systemctl stop ${config.systemd.services.ai-project-adam-pb.name}"
+                ];
+                ExecStart = pkgs.writeShellScript "pb-backup-start" ''
+                  echo "Starting backup..."
+                  mkdir -p "${pbDataDir}/backups"
+                  tar -czf ${pbDataDir}/backups/$(date +"backup-%Y-%m-%dT%H%M.tar.gz") ${pbDataDir}/pb*
+                  ls -t "$BACKUP_DIR"/backup-*.tar.gz | tail -n +8 | xargs -r rm
+                  echo "Backup finished."
+                '';
+              };
+            };
+          };
+        };
+      };
+    };
   };
 
   users.groups.spetsctf = {};

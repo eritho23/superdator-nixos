@@ -68,6 +68,11 @@
           reverse_proxy 127.0.0.1:8093
         '';
       };
+      "ai-project-adam-pb.superdator.spetsen.net" = {
+        extraConfig = ''
+          reverse_proxy 127.0.0.1:8094
+        '';
+      };
       "echoloungeuf.spetsen.net" = {
         extraConfig = ''
           root * ${inputs.echoloungeuf}/Reklamhemsida
