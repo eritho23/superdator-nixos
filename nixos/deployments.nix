@@ -111,7 +111,7 @@ in {
                   echo "Starting backup..."
                   mkdir -p "${pbDataDir}/backups"
                   tar -czf ${pbDataDir}/backups/$(date +"backup-%Y-%m-%dT%H%M.tar.gz") ${pbDataDir}/pb*
-                  ls -t "$BACKUP_DIR"/backup-*.tar.gz | tail -n +8 | xargs -r rm
+                  ls -t ${pbDataDir}/backup-*.tar.gz | tail -n +8 | xargs -r rm
                   echo "Backup finished."
                 '';
               };
@@ -201,7 +201,7 @@ in {
                   echo "Starting backup..."
                   mkdir -p "${pbDataDir}/backups"
                   tar -czf ${pbDataDir}/backups/$(date +"backup-%Y-%m-%dT%H%M.tar.gz") ${pbDataDir}/pb*
-                  ls -t "$BACKUP_DIR"/backup-*.tar.gz | tail -n +8 | xargs -r rm
+                  ls -t ${pbDataDir}/backup-*.tar.gz | tail -n +8 | xargs -r rm
                   echo "Backup finished."
                 '';
               };
@@ -293,7 +293,7 @@ in {
                   echo "Starting backup..."
                   mkdir -p "${pbDataDir}/backups"
                   tar -czf ${pbDataDir}/backups/$(date +"backup-%Y-%m-%dT%H%M.tar.gz") ${pbDataDir}/pb*
-                  ls -t "$BACKUP_DIR"/backup-*.tar.gz | tail -n +8 | xargs -r rm
+                  ls -t ${pbDataDir}/backup-*.tar.gz | tail -n +8 | xargs -r rm
                   echo "Backup finished."
                 '';
               };
