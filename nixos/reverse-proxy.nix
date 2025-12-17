@@ -104,6 +104,8 @@
           root * ${inputs.justcountuf}/new_website
           file_server
 
+          reverse_proxy /api/* 127.0.0.1:5065
+
           header {
           	Permissions-Policy "geolocation=(), camera=(), microphone=()"
           	Referrer-Policy "no-referrer"
