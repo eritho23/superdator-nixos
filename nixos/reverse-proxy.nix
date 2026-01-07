@@ -103,14 +103,6 @@
         extraConfig = ''
           reverse_proxy / 127.0.0.1:5066
           reverse_proxy /api/* 127.0.0.1:5065
-
-          header {
-          	Permissions-Policy "geolocation=(), camera=(), microphone=()"
-          	Referrer-Policy "no-referrer"
-          	Strict-Transport-Security "max-age=31536000; includeSubDomains"
-          	X-Content-Type-Options "nosniff"
-          	X-Frame-Options "SAMEORIGIN"
-          }
         '';
       };
     };
