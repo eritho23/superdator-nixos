@@ -101,7 +101,7 @@
       };
       "justcount.app" = {
         extraConfig = ''
-          reverse_proxy / 127.0.0.1:5066
+          reverse_proxy 127.0.0.1:5066
           reverse_proxy /api/* 127.0.0.1:5065
         '';
       };
