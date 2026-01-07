@@ -101,7 +101,7 @@
       };
       "justcount.app" = {
         extraConfig = ''
-          root * ${inputs.justcountuf}/new_website
+          root * ${inputs.justcountuf}/JustCount-Site
           file_server
 
           reverse_proxy /api/* 127.0.0.1:5065

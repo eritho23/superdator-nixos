@@ -3,7 +3,7 @@
 
   inputs = {
     # Input stable nixpkgs for use in the OS
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     # Unstable packages for things like tailscale
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     # SOPS for secret management.
@@ -44,7 +44,7 @@
       flake = false;
     };
     justcountuf = {
-      url = "git+ssh://git@github.com/JustCountUF/JustCount-UF?rev=d0f1a03cea3486ffb79e090ea82c949a023a464a";
+      url = "git+ssh://git@github.com/JustCountUF/JustCount-UF?rev=710d4bea0a9d8223ae994524fee4855df0a36a73";
       flake = false;
     };
     ### END FLAKE INPUTS FOR DEPLOYMENTS ###
@@ -68,7 +68,7 @@
   in {
     # Add overlays
     overlays = import ./overlays {inherit inputs;};
-    formatter = eachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
+    formatter = eachSystem (pkgs: treefmtEval.${pkgs.stdenv.hostPlatform.system}.config.build.wrapper);
     nixosConfigurations =
       {
         # Configuration for the NixOS system

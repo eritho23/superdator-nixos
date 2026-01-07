@@ -317,7 +317,7 @@ in {
   };
 
   systemd.services.spetsctf = let
-    spetsCtfWebBundle = inputs.spetsctf.packages."${pkgs.system}".spetsctf;
+    spetsCtfWebBundle = inputs.spetsctf.packages."${pkgs.stdenv.hostPlatform.system}".spetsctf;
   in {
     after = ["postgresql.service"];
     requires = ["postgresql.service"];
@@ -374,6 +374,7 @@ in {
           shell = "/run/current-system/sw/bin/nologin";
           group = "chall-user";
           home = "/var/lib/chall-user";
+          linger = false;
           createHome = true;
           homeMode = "700";
           subUidRanges = [
@@ -478,7 +479,7 @@ in {
   };
 
   systemd.services.aulabokning = let
-    aulabokningPath = inputs.aulabokning.packages."${pkgs.system}".default;
+    aulabokningPath = inputs.aulabokning.packages."${pkgs.stdenv.hostPlatform.system}".default;
   in {
     environment = {
       PORT = "4041";
