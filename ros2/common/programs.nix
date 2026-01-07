@@ -13,6 +13,7 @@
   isaac = import ./isaac-sim.nix {inherit pkgs;};
 in {
   nixpkgs.config.allowUnfree = true;
+  programs.nix-ld.enable = true;
 
   # nixpkgs.config.allowUnfreePredicate = pkg:
   # builtins.elem (lib.getName pkg) [
