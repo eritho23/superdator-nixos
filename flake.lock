@@ -150,23 +150,6 @@
         "type": "github"
       }
     },
-    "justcountuf": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1767713840,
-        "narHash": "sha256-LP0OQ9SLOxJeQqDEN3E5bY2VjQQ9IacQg4RDt9TIpFU=",
-        "ref": "refs/heads/main",
-        "rev": "710d4bea0a9d8223ae994524fee4855df0a36a73",
-        "revCount": 68,
-        "type": "git",
-        "url": "ssh://git@github.com/JustCountUF/JustCount-UF"
-      },
-      "original": {
-        "rev": "710d4bea0a9d8223ae994524fee4855df0a36a73",
-        "type": "git",
-        "url": "ssh://git@github.com/JustCountUF/JustCount-UF"
-      }
-    },
     "lanzaboote": {
       "inputs": {
         "crane": "crane",
@@ -332,7 +315,6 @@
         "aulabokning": "aulabokning",
         "disko": "disko",
         "echoloungeuf": "echoloungeuf",
-        "justcountuf": "justcountuf",
         "lanzaboote": "lanzaboote",
         "microvm": "microvm",
         "nix-ros-overlay": "nix-ros-overlay",
