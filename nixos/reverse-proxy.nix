@@ -10,8 +10,7 @@
       };
       "ctf.spetsen.net" = {
         extraConfig = ''
-                respond "Down for maintenance"
-                # reverse_proxy 127.0.0.1:3333
+                reverse_proxy unix//run/spetsctf/http.sock
 
                 header {
           # CSP is managed fully by SvelteKit.
