@@ -316,33 +316,20 @@ in {
     group = "spetsctf";
   };
 
-  systemd.services.spetsctf = let
-    spetsCtfWebBundle = inputs.spetsctf.packages."${pkgs.stdenv.hostPlatform.system}".spetsctf;
-  in {
-    after = ["postgresql.service"];
-    requires = ["postgresql.service"];
-    environment = {
-      ADDRESS_HEADER = "X-Forwarded-For";
-      HOST_HEADER = "X-Forwarded-Host";
-      NODE_ENV = "production";
-      ORIGIN = "https://ctf.spetsen.net";
-      PORT = "3333";
-      PROTOCOL_HEADER = "X-Forwarded-Proto";
+  services.spetsctf = {
+    # TODO: CHANGEME!
+    enable = false;
+    httpOrigin = "https://ctf.spetsen.net";
+
+    postgresConnectionStringFile = config.sops.secrets."spetsctf/database_url".path;
+
+    github = {
+      clientIdFile = config.sops.secrets."spetsctf/github_client_id".path;
+      clientSecretFile = config.sops.secrets."spetsctf/github_client_secret".path;
     };
-    serviceConfig = {
-      EnvironmentFile = "${config.sops.secrets."spetsctf/environment_file".path}";
-      ExecStart = "${pkgs.nodejs_22}/bin/node ${spetsCtfWebBundle}";
-      Group = "spetsctf";
-      NoNewPrivileges = "yes";
-      ProcSubset = "pid";
-      ProtectSystem = "yes";
-      ReadWritePaths = "/var/lib/spetsctf";
-      Restart = "no";
-      Type = "simple";
-      User = "spetsctf";
-      WorkingDirectory = "/var/lib/spetsctf";
-    };
-    wantedBy = ["multi-user.target"];
+
+    # We leave the socketPath default.
+    # socketPath = ...;
   };
 
   sops.secrets."aulabokning/environment_file".sopsFile = ../secrets/secrets.yaml;

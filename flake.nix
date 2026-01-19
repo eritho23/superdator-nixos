@@ -27,7 +27,7 @@
 
     ### FLAKE INPUTS FOR DEPLOYMENTS BELOW ###
     spetsctf = {
-      url = "github:fdABB-Gym-Samuel/SpetsCTF/d45aa5f9d5c2b95238c208d45a40cf4a934c100c";
+      url = "github:fdABB-Gym-Samuel/SpetsCTF/5422cef00295ee948b1a41d7161384c9ec4cfda1";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     spetsctf-services = {
@@ -48,13 +48,14 @@
 
   outputs = {
     self,
-    nixpkgs,
-    systems,
     disko,
-    sops-nix,
     lanzaboote,
-    treefmt-nix,
     microvm,
+    nixpkgs,
+    sops-nix,
+    spetsctf,
+    systems,
+    treefmt-nix,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -76,6 +77,7 @@
             # add sops secrets
             sops-nix.nixosModules.sops
             microvm.nixosModules.host
+            spetsctf.nixosModules.spetsctf
           ];
         };
       }
