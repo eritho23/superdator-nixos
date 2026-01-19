@@ -27,7 +27,7 @@
 
     ### FLAKE INPUTS FOR DEPLOYMENTS BELOW ###
     spetsctf = {
-      url = "github:fdABB-Gym-Samuel/SpetsCTF/5a929516f3ad37b4cc53fdd0a63ab2c06670f275";
+      url = "github:fdABB-Gym-Samuel/SpetsCTF/ba36ddbab796d9f240d06e13126d03cd56217ae5";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     spetsctf-services = {
