@@ -316,7 +316,7 @@ in {
       clientSecretFile = config.sops.secrets."spetsctf/github_client_secret".path;
     };
 
-    # We leave the socketPath default.
+    # We leave the socketPath as the default.
     # socketPath = ...;
   };
 
