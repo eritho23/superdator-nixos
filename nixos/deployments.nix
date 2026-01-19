@@ -320,7 +320,10 @@ in {
     # socketPath = ...;
   };
 
-  systemd.services.caddy.serviceConfig.SupplementaryGroups = ["spetsctf"];
+  systemd.services.caddy = {
+    after = [config.systemd.services.spetsctf.name];
+    serviceConfig = {SupplementaryGroups = ["spetsctf"];};
+  };
 
   sops.secrets."aulabokning/environment_file".sopsFile = ../secrets/secrets.yaml;
 
