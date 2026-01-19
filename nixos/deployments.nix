@@ -306,8 +306,7 @@ in {
   };
 
   services.spetsctf = {
-    # TODO: CHANGEME!
-    enable = false;
+    enable = true;
     httpOrigin = "https://ctf.spetsen.net";
 
     postgresConnectionStringFile = config.sops.secrets."spetsctf/database_url".path;
