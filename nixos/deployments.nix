@@ -320,6 +320,8 @@ in {
     # socketPath = ...;
   };
 
+  systemd.services.caddy.serviceConfig.SupplementaryGroups = ["spetsctf"];
+
   sops.secrets."aulabokning/environment_file".sopsFile = ../secrets/secrets.yaml;
 
   microvm.vms = {
