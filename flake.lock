@@ -451,17 +451,17 @@
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
-        "lastModified": 1768853792,
-        "narHash": "sha256-fzjsx7DMDSbXDM2QtpjSQgbGCCa/2qEq8ZxrzIoDQLM=",
+        "lastModified": 1768922668,
+        "narHash": "sha256-bRREHEQ+9aJJoCx+mr0DM+luBnU3y8tiHKJNv/pD9R0=",
         "owner": "fdABB-Gym-Samuel",
         "repo": "SpetsCTF",
-        "rev": "ba36ddbab796d9f240d06e13126d03cd56217ae5",
+        "rev": "988a2c63879c562a9e1523ceeac4459132c69395",
         "type": "github"
       },
       "original": {
         "owner": "fdABB-Gym-Samuel",
+        "ref": "main",
         "repo": "SpetsCTF",
-        "rev": "ba36ddbab796d9f240d06e13126d03cd56217ae5",
         "type": "github"
       }
     },
@@ -593,11 +593,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1758206697,
-        "narHash": "sha256-/DbPkh6PZOgfueCbs3uzlk4ASU2nPPsiVWhpMCNkAd0=",
+        "lastModified": 1768158989,
+        "narHash": "sha256-67vyT1+xClLldnumAzCTBvU0jLZ1YBcf4vANRWP3+Ak=",
         "owner": "numtide",
         "repo": "treefmt-nix",
-        "rev": "128222dc911b8e2e18939537bed1762b7f3a04aa",
+        "rev": "e96d59dff5c0d7fddb9d113ba108f03c3ef99eca",
         "type": "github"
       },
       "original": {
