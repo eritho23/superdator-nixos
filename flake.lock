@@ -451,11 +451,11 @@
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
-        "lastModified": 1769070788,
-        "narHash": "sha256-NXoV7VXxXv6N6vgn0zo1tzahqWBu7GcPiuvmRIhJ6WU=",
+        "lastModified": 1769084071,
+        "narHash": "sha256-jJUQhBlAQkG9hOfCFHhzSEn9WKD1BBuQ00cqcDRlNk4=",
         "owner": "fdABB-Gym-Samuel",
         "repo": "SpetsCTF",
-        "rev": "eebee2e19b47a61d62c7b86cd29da1d0be70d86b",
+        "rev": "6c974f9dbb9d89a78f434a7c33f2d105a81d7429",
         "type": "github"
       },
       "original": {
