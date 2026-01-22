@@ -99,10 +99,16 @@
           reverse_proxy 127.0.0.1:5000
         '';
       };
+      # SvelteKit Node app.
       "justcount.app" = {
         extraConfig = ''
           reverse_proxy 127.0.0.1:5066
-          reverse_proxy /api/* 127.0.0.1:5065
+        '';
+      };
+      # Bun API.
+      "api.justcount.app" = {
+        extraConfig = ''
+          reverse_proxy 127.0.0.1:5065
         '';
       };
     };
