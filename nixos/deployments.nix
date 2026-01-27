@@ -429,6 +429,19 @@ in {
               hostname = "chall";
               podman.user = "chall-user";
             };
+            "kramers_pictures" = {
+              image = "kramers_pictures:1";
+              imageStream = inputs.spetsctf-services.packages.x86_64-linux.kramers_pictures;
+              ports = [
+                "44931:5000"
+              ];
+              extraOptions = [
+                "--read-only=true"
+                "--tmpfs=/tmp:rw"
+              ];
+              hostname = "chall";
+              podman.user = "chall-user";
+            };
           };
         };
 
