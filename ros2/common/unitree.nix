@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   environment.systemPackages = [
     (pkgs.stdenv.mkDerivation {
       pname = "unitree_sdk2";

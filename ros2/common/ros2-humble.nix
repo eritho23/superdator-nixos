@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   rosEnv = with pkgs.rosPackages.humble;
     buildEnv {
       name = "ros2-humble-env";
@@ -10,7 +7,7 @@
       ];
     };
 in {
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = [
     rosEnv
   ];
 
