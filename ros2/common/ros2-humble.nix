@@ -1,6 +1,5 @@
 {
   pkgs,
-  lib,
   ...
 }: let
   rosEnv = with pkgs.rosPackages.humble;

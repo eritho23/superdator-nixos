@@ -6,7 +6,7 @@
   inputs,
   ...
 }: let
-  pbPackage = pkgs.pocketbase.overrideAttrs (f: rec {
+  pbPackage = pkgs.pocketbase.overrideAttrs (_f: rec {
     version = "v0.34.2";
     src = pkgs.fetchFromGitHub {
       owner = "pocketbase";

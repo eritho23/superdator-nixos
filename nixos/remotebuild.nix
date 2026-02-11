@@ -1,4 +1,4 @@
-{...}: {
+_: {
   users.groups."remotebuild" = {};
 
   users.users.remotebuild = {

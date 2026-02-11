@@ -1,4 +1,4 @@
-{...}: let
+_: let
   # These options are used by the host when running a virtualized (VM) build of
   # the system.
   virtualisation = {

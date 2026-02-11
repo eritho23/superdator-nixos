@@ -1,8 +1,4 @@
-{
-  # config,
-  # lib,
-  ...
-}: {
+_: {
   hardware.graphics.enable = true;
 
   services.xserver.videoDrivers = ["nvidia"];

@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+_: {
   # Locale default as US English.
   i18n.defaultLocale = "en_US.UTF-8";
   # TTY localization.
