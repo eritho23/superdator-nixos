@@ -205,7 +205,6 @@ in {
               "--cap-add=SYS_TIME"
               "--hostname=freeipa.internal.superdator"
               "--network=host"
-              "--sysctl=net.ipv6.conf.all.disable_ipv6=0"
               "--tmpfs=/run"
               "--tmpfs=/tmp"
             ];
