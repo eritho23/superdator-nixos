@@ -503,11 +503,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1772548303,
-        "narHash": "sha256-eZqGSD8aM9BJz6OStmGGUj+zbLEtwFgj3alORn8dQJs=",
+        "lastModified": 1772548867,
+        "narHash": "sha256-q+9fRlZF5cthLPjdWNMN4R9g7G1cgdZzUTCvBDWsReo=",
         "ref": "refs/heads/main",
-        "rev": "57da4d058b129570cae38d14336ce0987647151e",
-        "revCount": 50,
+        "rev": "dd1b434efd503d7e722e979d2e4bd34dc0ec9c0a",
+        "revCount": 51,
         "type": "git",
         "url": "ssh://git@github.com/fdABB-Gym-Samuel/SpetsCTF-services"
       },
