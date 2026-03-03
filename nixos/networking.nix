@@ -69,22 +69,17 @@
     enable = true;
     internalInterfaces = ["br-freeipa"];
     externalInterface = "br0";
-    # Forward FreeIPA LDAP and Kerberos ports from the LAN to the FreeIPA VM.
-    # HTTPS (443) is handled by Caddy. HTTP (80) is not needed.
-    forwardPorts = [
-      {destination = "10.30.0.2:389"; proto = "tcp"; sourcePort = 389;}
-      {destination = "10.30.0.2:636"; proto = "tcp"; sourcePort = 636;}
-      {destination = "10.30.0.2:88"; proto = "tcp"; sourcePort = 88;}
-      {destination = "10.30.0.2:464"; proto = "tcp"; sourcePort = 464;}
-      {destination = "10.30.0.2:88"; proto = "udp"; sourcePort = 88;}
-      {destination = "10.30.0.2:464"; proto = "udp"; sourcePort = 464;}
-    ];
   };
 
-  # Allow FreeIPA LDAP/Kerberos ports through the host firewall from the LAN.
-  # HTTP/HTTPS are already handled by Caddy.
-  networking.firewall.allowedTCPPorts = [88 389 464 636];
-  networking.firewall.allowedUDPPorts = [88 464];
+  # LAN access to br-freeipa
+  networking.firewall.extraCommands = ''
+    iptables -A FORWARD -i br0 -o br-freeipa -j ACCEPT
+    iptables -A FORWARD -i br-freeipa -o br0 -j ACCEPT
+  '';
+  networking.firewall.extraStopCommands = ''
+    iptables -D FORWARD -i br0 -o br-freeipa -j ACCEPT || true
+    iptables -D FORWARD -i br-freeipa -o br0 -j ACCEPT || true
+  '';
 
   systemd.network.networks."11-lan" = {
     matchConfig.Name = ["eno1" "vm-*"];

@@ -75,16 +75,6 @@
           reverse_proxy 127.0.0.1:5000
         '';
       };
-      "freeipa.internal.superdator" = {
-        extraConfig = ''
-          tls internal
-          reverse_proxy https://10.30.0.2 {
-            transport http {
-              tls_insecure_skip_verify
-            }
-          }
-        '';
-      };
     };
   };
 }
