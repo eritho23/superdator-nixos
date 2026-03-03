@@ -192,6 +192,10 @@ in {
         system.switch.enable = false;
         system.etc.overlay.mutable = false;
 
+        systemd.tmpfiles.rules = [
+          "d /var/lib/freeipa 0755 root root -"
+        ];
+
         virtualisation.podman.enable = true;
         virtualisation.oci-containers = {
           backend = "podman";
