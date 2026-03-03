@@ -147,23 +147,25 @@ in {
 
   microvm.vms = {
     spetsctf-services = {
-      config =
-        {
-          microvm = {
-            hypervisor = "qemu";
-            mem = 8192;
-            vcpu = 4;
+      config = {
+        imports = [
+          inputs."spetsctf-services".nixosModules."spetsctf-services"
+        ];
 
-            interfaces = [
-              {
-                type = "tap";
-                id = "vm-spetsctf";
-                mac = "02:00:00:00:00:01";
-              }
-            ];
-          };
-        }
-        // inputs.spetsctf-services.nixosConfigurations."spetsctf-services";
+        microvm = {
+          hypervisor = "qemu";
+          mem = 8192;
+          vcpu = 4;
+
+          interfaces = [
+            {
+              type = "tap";
+              id = "vm-spetsctf";
+              mac = "02:00:00:00:00:01";
+            }
+          ];
+        };
+      };
     };
   };
 

@@ -498,19 +498,16 @@
     "spetsctf-services": {
       "inputs": {
         "calculator": "calculator",
-        "microvm": [
-          "microvm"
-        ],
         "nixpkgs": [
           "nixpkgs-unstable"
         ]
       },
       "locked": {
-        "lastModified": 1772545175,
-        "narHash": "sha256-9gTEgi/tS7EQegijk1+LQ4mALEJr8LjaNNLOGUAhWm0=",
+        "lastModified": 1772548303,
+        "narHash": "sha256-eZqGSD8aM9BJz6OStmGGUj+zbLEtwFgj3alORn8dQJs=",
         "ref": "refs/heads/main",
-        "rev": "1164e89c826ec45d65ce98afac1e34729f50e36d",
-        "revCount": 41,
+        "rev": "57da4d058b129570cae38d14336ce0987647151e",
+        "revCount": 50,
         "type": "git",
         "url": "ssh://git@github.com/fdABB-Gym-Samuel/SpetsCTF-services"
       },

@@ -32,7 +32,6 @@
     spetsctf-services = {
       url = "git+ssh://git@github.com/fdABB-Gym-Samuel/SpetsCTF-services";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
-      inputs.microvm.follows = "microvm";
     };
     aulabokning = {
       url = "git+ssh://git@github.com/eritho23/aulabokning?rev=716c1d93b55a7a1aa530c2f3491b1038861facf5";
