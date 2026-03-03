@@ -242,6 +242,7 @@ in {
               "--cap-add=SYS_TIME"
               "--hostname=freeipa.internal.superdator"
               "--network=host"
+              "--no-hosts"
               "--tmpfs=/run"
               "--tmpfs=/tmp"
             ];
