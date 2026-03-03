@@ -49,21 +49,6 @@
           reverse_proxy 127.0.0.1:9091
         '';
       };
-      "justcount-pb.superdator.spetsen.net" = {
-        extraConfig = ''
-          reverse_proxy 127.0.0.1:8092
-        '';
-      };
-      "behealthy-pb.superdator.spetsen.net" = {
-        extraConfig = ''
-          reverse_proxy 127.0.0.1:8093
-        '';
-      };
-      "ai-project-adam-pb.superdator.spetsen.net" = {
-        extraConfig = ''
-          reverse_proxy 127.0.0.1:8094
-        '';
-      };
       "echoloungeuf.spetsen.net" = {
         extraConfig = ''
           root * ${inputs.echoloungeuf}/Reklamhemsida
@@ -88,12 +73,6 @@
                   }
           reverse_proxy @websockets 127.0.0.1:5001
           reverse_proxy 127.0.0.1:5000
-        '';
-      };
-      "justcount.app" = {
-        extraConfig = ''
-          reverse_proxy 127.0.0.1:5066
-          reverse_proxy /api/* 127.0.0.1:5065
         '';
       };
     };

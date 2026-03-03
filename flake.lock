@@ -47,6 +47,22 @@
         "type": "github"
       }
     },
+    "calculator": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1772529774,
+        "narHash": "sha256-/2yDRMohhQ6dQyLzF30pBtJrFJTZmnVflHvaz9y4n9Q=",
+        "ref": "refs/heads/main",
+        "rev": "fc6c629c235a3fc7a7d1b34c5c89b2e7f69f3f5a",
+        "revCount": 11,
+        "type": "git",
+        "url": "ssh://git@github.com/Miraengel/CyberSecurity-CTF.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/Miraengel/CyberSecurity-CTF.git"
+      }
+    },
     "crane": {
       "locked": {
         "lastModified": 1731098351,
@@ -481,6 +497,7 @@
     },
     "spetsctf-services": {
       "inputs": {
+        "calculator": "calculator",
         "microvm": [
           "microvm"
         ],
@@ -489,11 +506,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1769531165,
-        "narHash": "sha256-8Rt7U9Lf9B+h318h8CZ5NSfTOvrfBCDXiDJ5U4m3aZ8=",
+        "lastModified": 1772545175,
+        "narHash": "sha256-9gTEgi/tS7EQegijk1+LQ4mALEJr8LjaNNLOGUAhWm0=",
         "ref": "refs/heads/main",
-        "rev": "5d349607ba71efb30654924b341aa1e9d7bc51dc",
-        "revCount": 28,
+        "rev": "1164e89c826ec45d65ce98afac1e34729f50e36d",
+        "revCount": 41,
         "type": "git",
         "url": "ssh://git@github.com/fdABB-Gym-Samuel/SpetsCTF-services"
       },
