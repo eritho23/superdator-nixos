@@ -167,6 +167,72 @@ in {
         };
       };
     };
+
+    freeipa = {
+      config = {
+        microvm = {
+          hypervisor = "qemu";
+          mem = 8192;
+          vcpu = 4;
+
+          interfaces = [
+            {
+              type = "tap";
+              id = "vm-freeipa";
+              mac = "02:00:00:00:00:02";
+            }
+          ];
+        };
+
+        users.users."root".openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAVQjtd/jEPI3IgWyKiwvBD9S2hbLEZ249tOy8HpN2Ci gustav.pettersson2@outlook.com"];
+        services.openssh.enable = true;
+        services.openssh.openFirewall = true;
+
+        users.mutableUsers = false;
+        system.switch.enable = false;
+        system.etc.overlay.mutable = false;
+
+        virtualisation.podman.enable = true;
+        virtualisation.oci-containers = {
+          backend = "podman";
+          containers.freeipa = {
+            autoStart = true;
+            image = "quay.io/freeipa/freeipa-server:rocky-9-4.12.2";
+            volumes = [
+              "/var/lib/freeipa:/data:Z"
+            ];
+            extraOptions = [
+              "--cap-add=SYS_TIME"
+              "--hostname=freeipa.internal.superdator"
+              "--network=host"
+              "--sysctl=net.ipv6.conf.all.disable_ipv6=0"
+              "--tmpfs=/run"
+              "--tmpfs=/tmp"
+            ];
+          };
+        };
+
+        networking.firewall = {
+          enable = true;
+          allowedTCPPorts = [53 80 88 389 443 464 636];
+          allowedUDPPorts = [53 88 123 464];
+        };
+
+        systemd.network.enable = true;
+        systemd.network.networks."10-lan" = {
+          matchConfig.Type = "ether";
+          networkConfig = {
+            Address = ["10.30.0.2/24"];
+            Gateway = "10.30.0.1";
+            DHCP = "no";
+          };
+          linkConfig.RequiredForOnline = "routable";
+        };
+
+        networking.hostName = "freeipa";
+        system.stateVersion = "25.05";
+      };
+    };
   };
 
   systemd.services.aulabokning = let
