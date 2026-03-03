@@ -163,7 +163,7 @@ in {
         mkdir -p /var/lib/microvms/freeipa
         {
           printf 'PASSWORD=%s\n' "$(cat ${config.sops.secrets."freeipa/password".path})"
-          printf 'IPA_SERVER_INSTALL_OPTS=--unattended --realm=INTERNAL.SUPERDATOR --domain=internal.superdator --no-ntp\n'
+          printf 'IPA_SERVER_INSTALL_OPTS=--unattended --realm=INTERNAL.SUPERDATOR --domain=internal.superdator --no-ntp --ip-address=10.30.0.2\n'
         } > /var/lib/microvms/freeipa/freeipa.env
         chmod 600 /var/lib/microvms/freeipa/freeipa.env
       '';
@@ -267,6 +267,10 @@ in {
         };
 
         networking.hostName = "freeipa";
+        # FreeIPA needs to resolve its own FQDN during install.
+        networking.hosts = {
+          "10.30.0.2" = ["freeipa.internal.superdator" "freeipa"];
+        };
         system.stateVersion = "25.05";
       };
     };
