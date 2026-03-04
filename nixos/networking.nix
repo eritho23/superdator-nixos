@@ -59,7 +59,7 @@
   systemd.network.networks."10-freeipa-bridge" = {
     matchConfig.Name = "br-freeipa";
     networkConfig = {
-      Address = ["10.30.0.1/24"];
+      Address = ["10.22.255.1/24"];
       DHCP = "no";
     };
     linkConfig.RequiredForOnline = "no";
