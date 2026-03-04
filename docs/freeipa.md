@@ -3,8 +3,8 @@
 ## Architecture
 
 - **Host**: `superdator` at `10.22.1.100/16` on `br0` (company LAN)
-- **FreeIPA VM**: microvm at `10.30.0.2/24` on isolated bridge `br-freeipa`
-- **Host bridge IP**: `10.30.0.1/24` (gateway for the VM)
+- **FreeIPA VM**: microvm at `10.22.255.2/24` on isolated bridge `br-freeipa`
+- **Host bridge IP**: `10.22.255.1/24` (gateway for the VM)
 - **Realm**: `INTERNAL.SUPERDATOR`
 - **Domain**: `internal.superdator`
 - **Hostname**: `freeipa.internal.superdator`
@@ -13,8 +13,8 @@
 
 - `br-freeipa` is an isolated bridge — the VM is not directly on the company LAN
 - NAT is enabled (`br-freeipa` → `br0`) so the VM can reach the internet
-- FORWARD rules allow LAN clients routed via `superdator` to reach `10.30.0.0/24` directly
-- LAN clients must add a static route: `10.30.0.0/24 via 10.22.1.100`
+- FORWARD rules allow LAN clients routed via `superdator` to reach `10.22.255.0/24` directly
+- LAN clients must add a static route: `10.22.255.0/24 via 10.22.1.100`
 
 ## Persistence
 
@@ -39,10 +39,10 @@ sops exec-file secrets/secrets.yaml 'grep -A1 freeipa {}'
 ### From a LAN machine (Linux)
 ```bash
 # Add route (persist in netplan for Ubuntu)
-sudo ip route add 10.30.0.0/24 via 10.22.1.100
+sudo ip route add 10.22.255.0/24 via 10.22.1.100
 
 # Add hosts entry
-echo "10.30.0.2 freeipa.internal.superdator" | sudo tee -a /etc/hosts
+echo "10.22.255.2 freeipa.internal.superdator" | sudo tee -a /etc/hosts
 ```
 
 Open `https://freeipa.internal.superdator` — accept the self-signed cert warning.
@@ -50,13 +50,13 @@ Open `https://freeipa.internal.superdator` — accept the self-signed cert warni
 ### From Windows
 Admin PowerShell:
 ```powershell
-route add 10.30.0.0 mask 255.255.255.0 10.22.1.100
-Add-Content -Path "C:\Windows\System32\drivers\etc\hosts" -Value "10.30.0.2 freeipa.internal.superdator"
+route add 10.22.255.0 mask 255.255.255.0 10.22.1.100
+Add-Content -Path "C:\Windows\System32\drivers\etc\hosts" -Value "10.22.255.2 freeipa.internal.superdator"
 ipconfig /flushdns
 ```
 
 To trust the cert, install the FreeIPA CA:
-1. Open `http://10.30.0.2/ipa/config/ca.crt`
+1. Open `http://10.22.255.2/ipa/config/ca.crt`
 2. Double-click → Install Certificate → Local Machine → Trusted Root Certification Authorities
 
 ## Enrolling a Linux Client
@@ -67,8 +67,8 @@ sudo mkdir -p /etc/ipa
 ssh <user>@<superdator-ip> "cat /var/lib/microvms/freeipa/etc/ipa/ca.crt" | sudo tee /etc/ipa/ca.crt
 
 # Add route and hosts entry
-sudo ip route add 10.30.0.0/24 via 10.22.1.100
-echo "10.30.0.2 freeipa.internal.superdator" | sudo tee -a /etc/hosts
+sudo ip route add 10.22.255.0/24 via 10.22.1.100
+echo "10.22.255.2 freeipa.internal.superdator" | sudo tee -a /etc/hosts
 
 # Set FQDN hostname
 sudo hostnamectl set-hostname <machine>.internal.superdator
@@ -92,7 +92,7 @@ Answer the prompts:
 
 SSH into the VM and exec into the container:
 ```bash
-ssh -J <user>@<superdator-ip>r root@10.30.0.2
+ssh -J <user>@<superdator-ip>r root@10.22.255.2
 podman exec -it freeipa bash
 kinit admin
 ipa user-add username --first=First --last=Last --password
@@ -118,4 +118,4 @@ sudo systemctl restart microvm@freeipa.service
 | `/etc/hosts` conflict with `host.containers.internal` | Podman injects hosts | Add `--no-hosts` to container extraOptions |
 | Installer fails at client step with hostname error | Not FQDN | Run `hostnamectl set-hostname <name>.internal.superdator` |
 | `Kerberos authentication failed: Password incorrect` | Wrong admin password | Check sops secret or reset via `ipa user-mod admin --password` inside container |
-| `JSON-RPC call failed: SSL ... not OK` | Enrollment hitting wrong TLS cert | Ensure client routes directly to `10.30.0.2`, not through a proxy |
+| `JSON-RPC call failed: SSL ... not OK` | Enrollment hitting wrong TLS cert | Ensure client routes directly to `10.22.255.2`, not through a proxy |
