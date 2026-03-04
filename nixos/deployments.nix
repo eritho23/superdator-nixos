@@ -145,6 +145,31 @@ in {
 
   sops.secrets."aulabokning/environment_file".sopsFile = ../secrets/secrets.yaml;
 
+  sops.secrets."freeipa/password" = {
+    sopsFile = ../secrets/secrets.yaml;
+    owner = "root";
+    mode = "0400";
+  };
+
+  # Write the FreeIPA env file to the virtiofs share before the VM starts.
+  # The file contains PASSWORD and IPA_SERVER_INSTALL_OPTS for the container.
+  systemd.services.freeipa-env = {
+    before = ["microvm@freeipa.service"];
+    requiredBy = ["microvm@freeipa.service"];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStart = pkgs.writeShellScript "freeipa-env-setup" ''
+        mkdir -p /var/lib/microvms/freeipa
+        {
+          printf 'PASSWORD=%s\n' "$(cat ${config.sops.secrets."freeipa/password".path})"
+          printf 'IPA_SERVER_INSTALL_OPTS=--unattended --realm=INTERNAL.SUPERDATOR --domain=internal.superdator --no-ntp --ip-address=10.30.0.2\n'
+        } > /var/lib/microvms/freeipa/freeipa.env
+        chmod 600 /var/lib/microvms/freeipa/freeipa.env
+      '';
+    };
+  };
+
   microvm.vms = {
     spetsctf-services = {
       config = {
@@ -165,6 +190,88 @@ in {
             }
           ];
         };
+      };
+    };
+
+    freeipa = {
+      config = {
+        microvm = {
+          hypervisor = "qemu";
+          mem = 8192;
+          vcpu = 4;
+
+          interfaces = [
+            {
+              type = "tap";
+              id = "vm-freeipa";
+              mac = "02:00:00:00:00:02";
+            }
+          ];
+
+          # Persist FreeIPA data on the host
+          shares = [
+            {
+              source = "/var/lib/microvms/freeipa";
+              mountPoint = "/var/lib/freeipa";
+              tag = "freeipa-data";
+              proto = "virtiofs";
+            }
+          ];
+        };
+
+        users.users."root".openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAVQjtd/jEPI3IgWyKiwvBD9S2hbLEZ249tOy8HpN2Ci gustav.pettersson2@outlook.com"];
+        services.openssh.enable = true;
+        services.openssh.openFirewall = true;
+
+        users.mutableUsers = false;
+        system.switch.enable = false;
+        system.etc.overlay.mutable = false;
+
+        virtualisation.podman.enable = true;
+        virtualisation.oci-containers = {
+          backend = "podman";
+          containers.freeipa = {
+            autoStart = true;
+            image = "quay.io/freeipa/freeipa-server:rocky-9-4.12.2";
+            volumes = [
+              "/var/lib/freeipa:/data:Z"
+            ];
+            # Contains PASSWORD and IPA_SERVER_INSTALL_OPTS.
+            environmentFiles = ["/var/lib/freeipa/freeipa.env"];
+            extraOptions = [
+              "--cap-add=SYS_TIME"
+              "--hostname=freeipa.internal.superdator"
+              "--network=host"
+              "--no-hosts"
+              "--tmpfs=/run"
+              "--tmpfs=/tmp"
+            ];
+          };
+        };
+
+        networking.firewall = {
+          enable = true;
+          allowedTCPPorts = [53 80 88 389 443 464 636];
+          allowedUDPPorts = [53 88 123 464];
+        };
+
+        systemd.network.enable = true;
+        systemd.network.networks."10-lan" = {
+          matchConfig.Type = "ether";
+          networkConfig = {
+            Address = ["10.30.0.2/24"];
+            Gateway = "10.30.0.1";
+            DHCP = "no";
+          };
+          linkConfig.RequiredForOnline = "routable";
+        };
+
+        networking.hostName = "freeipa";
+        # FreeIPA needs to resolve its own FQDN during install.
+        networking.hosts = {
+          "10.30.0.2" = ["freeipa.internal.superdator" "freeipa"];
+        };
+        system.stateVersion = "25.05";
       };
     };
   };

@@ -40,6 +40,47 @@
     };
   };
 
+  # Dedicated bridge for the FreeIPA microVM.
+  systemd.network.netdevs."br-freeipa" = {
+    netdevConfig = {
+      Kind = "bridge";
+      Name = "br-freeipa";
+    };
+  };
+
+  systemd.network.networks."10-freeipa-vm" = {
+    matchConfig.Name = "vm-freeipa";
+    networkConfig = {
+      Bridge = "br-freeipa";
+    };
+    linkConfig.RequiredForOnline = "no";
+  };
+
+  systemd.network.networks."10-freeipa-bridge" = {
+    matchConfig.Name = "br-freeipa";
+    networkConfig = {
+      Address = ["10.30.0.1/24"];
+      DHCP = "no";
+    };
+    linkConfig.RequiredForOnline = "no";
+  };
+
+  networking.nat = {
+    enable = true;
+    internalInterfaces = ["br-freeipa"];
+    externalInterface = "br0";
+  };
+
+  # LAN access to br-freeipa
+  networking.firewall.extraCommands = ''
+    iptables -A FORWARD -i br0 -o br-freeipa -j ACCEPT
+    iptables -A FORWARD -i br-freeipa -o br0 -j ACCEPT
+  '';
+  networking.firewall.extraStopCommands = ''
+    iptables -D FORWARD -i br0 -o br-freeipa -j ACCEPT || true
+    iptables -D FORWARD -i br-freeipa -o br0 -j ACCEPT || true
+  '';
+
   systemd.network.networks."11-lan" = {
     matchConfig.Name = ["eno1" "vm-*"];
     networkConfig = {
