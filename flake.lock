@@ -78,6 +78,22 @@
         "type": "github"
       }
     },
+    "ctf_reversing": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1772695273,
+        "narHash": "sha256-kzv2sUJvURgzZgYBc30An9hOTvFKv7R/opm92HwJ038=",
+        "ref": "refs/heads/master",
+        "rev": "8d5a8db171e2ff337f2e6c5c0907757d504f0196",
+        "revCount": 4,
+        "type": "git",
+        "url": "ssh://git@github.com/OsLjIoVdEaRhl/CTFReversing.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/OsLjIoVdEaRhl/CTFReversing.git"
+      }
+    },
     "disko": {
       "inputs": {
         "nixpkgs": [
@@ -370,6 +386,22 @@
         "type": "github"
       }
     },
+    "pollos_hermanos": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1772703435,
+        "narHash": "sha256-qg43XxoZcw5PST0mwm6Vk7fwXOZLdbMZTRclLAnEdzY=",
+        "ref": "refs/heads/main",
+        "rev": "d81c92cbe8da3311220a04cfef1072439b10a1ee",
+        "revCount": 17,
+        "type": "git",
+        "url": "ssh://git@github.com/vidarmorin/CTFHemsida2026.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/vidarmorin/CTFHemsida2026.git"
+      }
+    },
     "pre-commit-hooks-nix": {
       "inputs": {
         "flake-compat": [
@@ -498,16 +530,18 @@
     "spetsctf-services": {
       "inputs": {
         "calculator": "calculator",
+        "ctf_reversing": "ctf_reversing",
         "nixpkgs": [
           "nixpkgs-unstable"
-        ]
+        ],
+        "pollos_hermanos": "pollos_hermanos"
       },
       "locked": {
-        "lastModified": 1772549144,
-        "narHash": "sha256-sDCOQcUlFXcOkS8ys7rtbmJpUmOzVqkotxqJ8FShwRA=",
+        "lastModified": 1772736566,
+        "narHash": "sha256-PWSLyLBk9H8hWjpvwLBr73Cp0mRQkNlzi7TGf3oq8DA=",
         "ref": "refs/heads/main",
-        "rev": "cc216d26d56ec01de47ca74be391ab9ebd274c00",
-        "revCount": 52,
+        "rev": "56ed88041a2cb937f933551dfca102aded014a38",
+        "revCount": 81,
         "type": "git",
         "url": "ssh://git@github.com/fdABB-Gym-Samuel/SpetsCTF-services"
       },
