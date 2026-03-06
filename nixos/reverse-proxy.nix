@@ -75,6 +75,11 @@
           reverse_proxy 127.0.0.1:5000
         '';
       };
+      "justcount-pb.superdator.spetsen.net" = {
+        extraConfig = ''
+          reverse_proxy 127.0.0.1:8092
+        '';
+      };
     };
   };
 }
