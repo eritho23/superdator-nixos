@@ -537,11 +537,11 @@
         "pollos_hermanos": "pollos_hermanos"
       },
       "locked": {
-        "lastModified": 1772804162,
-        "narHash": "sha256-3fA7Qn3wrH+NtLiV+cJWV8EmDbTky3jSnEAlR6W9sBU=",
+        "lastModified": 1772804861,
+        "narHash": "sha256-HzZJ4UmX1yf3DvurGiS1upt0eVcWVkllH77Qd5d/Sm0=",
         "ref": "refs/heads/main",
-        "rev": "699185a6da96a87a06e47f74f8ffe7eada1dee53",
-        "revCount": 92,
+        "rev": "362a59f01accae6cede2d056da349a955b2df0db",
+        "revCount": 93,
         "type": "git",
         "url": "ssh://git@github.com/fdABB-Gym-Samuel/SpetsCTF-services"
       },
