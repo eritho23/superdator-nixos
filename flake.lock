@@ -513,11 +513,11 @@
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
-        "lastModified": 1772524178,
-        "narHash": "sha256-a2SUPPyp65hv7v9auREaESmwKWz/y1QxbnOHQcH/ioU=",
+        "lastModified": 1773042128,
+        "narHash": "sha256-/iyCAqebSg4Sq6upbPaYjkQ79hMlGx2SaGLlSh/MO0U=",
         "owner": "fdABB-Gym-Samuel",
         "repo": "SpetsCTF",
-        "rev": "1bfc55b37248461438b39a6e02cdb9df08011d78",
+        "rev": "bd2533280802da9ecbf47647629d237f889e90b0",
         "type": "github"
       },
       "original": {
@@ -537,11 +537,11 @@
         "pollos_hermanos": "pollos_hermanos"
       },
       "locked": {
-        "lastModified": 1772808459,
-        "narHash": "sha256-iBkRZoqcewcGwjdcqk7elU2RCv9hHwba0Y1n08aLUh0=",
+        "lastModified": 1773042252,
+        "narHash": "sha256-pEG0W3l6z34KpVgPbinAunqCvv5xqIjJKlkz9UfRO8k=",
         "ref": "refs/heads/main",
-        "rev": "152a36f0e3ab7ebfc218accd7350d6a0ea1c64e1",
-        "revCount": 95,
+        "rev": "a4e4828ff66112f10656532279e66d84fb640175",
+        "revCount": 98,
         "type": "git",
         "url": "ssh://git@github.com/fdABB-Gym-Samuel/SpetsCTF-services"
       },
