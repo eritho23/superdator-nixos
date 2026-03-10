@@ -240,6 +240,22 @@
         "type": "github"
       }
     },
+    "jik": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1773135224,
+        "narHash": "sha256-1WN9zHVvfZrr5XNZwsFOKdXK813iNh9AYLIoNW1oxvA=",
+        "ref": "refs/heads/main",
+        "rev": "c6d0d1bfa9907596677fe779fbc6f6f534544d69",
+        "revCount": 76,
+        "type": "git",
+        "url": "ssh://git@github.com/Alexander-Kaipainen/God-Did-Server.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/Alexander-Kaipainen/God-Did-Server.git"
+      }
+    },
     "lanzaboote": {
       "inputs": {
         "crane": "crane",
@@ -531,17 +547,18 @@
       "inputs": {
         "calculator": "calculator",
         "ctf_reversing": "ctf_reversing",
+        "jik": "jik",
         "nixpkgs": [
           "nixpkgs-unstable"
         ],
         "pollos_hermanos": "pollos_hermanos"
       },
       "locked": {
-        "lastModified": 1773128789,
-        "narHash": "sha256-oMXa2JZrJxJWGv61Ou8JAfYmkYewxJZ3MyXrmcFmlB8=",
+        "lastModified": 1773135759,
+        "narHash": "sha256-T4IJDARCeavPNLGiqOomvLNgXs8I2caMD/h8k2bCeGs=",
         "ref": "refs/heads/main",
-        "rev": "ceaf80e4b843171c5c2303651d152c721ed3ec22",
-        "revCount": 100,
+        "rev": "18823c095ab841a25f48e8324629657a9f27be46",
+        "revCount": 103,
         "type": "git",
         "url": "ssh://git@github.com/fdABB-Gym-Samuel/SpetsCTF-services"
       },
