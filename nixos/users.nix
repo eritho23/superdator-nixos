@@ -82,6 +82,16 @@
     ];
   };
 
+  users.users."elliot" = {
+    isNormalUser = true;
+    uid = 1022;
+    hashedPasswordFile = config.sops.secrets."elliot_hashed_password".path;
+    extraGroups = ["ssh-access"];
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICXcevFa7E+To/EM/JY5G7V77q2jilRzAFTiAE3iINfi abbindgym\25elllof@SW2511"
+    ];
+  };
+
   users.groups."ssh-access" = {};
   users.groups."jupyter-access" = {};
 }
