@@ -119,3 +119,49 @@ sudo systemctl restart microvm@freeipa.service
 | Installer fails at client step with hostname error | Not FQDN | Run `hostnamectl set-hostname <name>.internal.superdator` |
 | `Kerberos authentication failed: Password incorrect` | Wrong admin password | Check sops secret or reset via `ipa user-mod admin --password` inside container |
 | `JSON-RPC call failed: SSL ... not OK` | Enrollment hitting wrong TLS cert | Ensure client routes directly to `10.22.255.2`, not through a proxy |
+
+## Creating a New User
+
+To create a new user, use the web UI available at `freeipa.internal.superdator`. Create the user and optionally assign appropriate group memberships (e.g. `isaac` for access to robot dev resources under `/opt/`).
+
+### Filling in the Details
+
+| Field | Value |
+|---|---|
+| User Login | Standard naming convention, e.g. `24guspet` |
+| First Name | `<Name>` |
+| Last Name | `<Surname>` |
+| Password | Set a temporary password, e.g. `1234` |
+| Verify Password | Same as above |
+
+> **Note:** The **Class** field is unused — leave it blank.
+
+### Initializing the User
+
+After creating the user in FreeIPA, it should be initialized by an `admins` group member SSHing into `dunning` (`10.22.2.100`) or `kruger` (`10.22.3.100`) and running:
+
+```bash
+# Prompts for the temporary password, then forces the user to set a new one
+kinit <username>
+sudo systemctl restart sssd
+```
+
+To inspect a user's details on any enrolled machine:
+
+```bash
+ipa user-show <username> --all --raw
+```
+
+To check SSH keys registered for a user:
+
+```bash
+sss_ssh_authorizedkeys <username>
+```
+
+To clear the local SSSD cache (only if `systemctl restart sssd` does not resolve the issue):
+
+```bash
+sss_cache -E
+```
+
+> **Note:** `sss_cache` is not included in the default FreeIPA client installation. Install it with `sudo apt install sssd-tools` if needed.
