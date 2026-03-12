@@ -52,6 +52,7 @@
   sops.secrets."gustav_hashed_password".neededForUsers = true;
   sops.secrets."hannes_hashed_password".neededForUsers = true;
   sops.secrets."elliot_hashed_password".neededForUsers = true;
+  sops.secrets."sofahl_hashed_password".neededForUsers = true;
 
   # Authelia
   sops.secrets = {
