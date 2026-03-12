@@ -92,6 +92,16 @@
     ];
   };
 
+  users.users."sofahl" = {
+    isNormalUser = true;
+    uid = 1023;
+    hashedPasswordFile = config.sops.secrets."sofahl_hashed_password".path;
+    extraGroups = ["ssh-access" "wheel"];
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDaFvZAUyaCbXWdl9ylsxCsPfRv0yG7+y9jT/uHcQ7oW sofahl"
+    ];
+  };
+
   users.groups."ssh-access" = {};
   users.groups."jupyter-access" = {};
 }
