@@ -25,6 +25,34 @@ FreeIPA data is stored on the host via virtiofs:
 The `freeipa-env` systemd service on the host writes `/var/lib/microvms/freeipa/freeipa.env`
 before the VM starts. This file contains `PASSWORD` and `IPA_SERVER_INSTALL_OPTS`.
 
+## Persistent Route on NetworkManager Clients
+
+On Linux machines managed by NetworkManager, `ip route add ...` is not persistent and will be lost after reboot or reconnect.
+
+To make the route to the FreeIPA subnet persistent for a specific Wi-Fi connection:
+
+```bash
+sudo nmcli connection modify 'Hitachigymnasiet' +ipv4.routes "10.22.255.0/24 10.22.1.100"
+sudo nmcli connection up 'Hitachigymnasiet'
+```
+
+To verify:
+
+```bash
+nmcli connection show 'Hitachigymnasiet' | rg '^ipv4.routes'
+ip route get 10.22.255.2
+```
+
+Expected result: traffic to 10.22.255.0/24 should go via 10.22.1.100 instead of being treated as directly reachable on the local LAN.
+
+To remove the persistent route later:
+
+```bash
+sudo nmcli connection modify 'Hitachigymnasiet' -ipv4.routes "10.22.255.0/24 10.22.1.100"
+sudo nmcli connection up 'Hitachigymnasiet'
+```
+
+
 ## Secrets
 
 Password is managed via sops at `freeipa/password` in `secrets/secrets.yaml`.
