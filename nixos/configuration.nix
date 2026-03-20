@@ -20,6 +20,7 @@
     ./services.nix
     ./users.nix
     ./vm.nix
+    ./wireguard.nix
   ];
 
   nixpkgs.overlays = [outputs.overlays.unstable-packages];
