@@ -68,5 +68,8 @@
   sops.secrets."spetsctf/github_client_id" = {};
   sops.secrets."spetsctf/github_client_secret" = {};
 
+  sops.secrets."classy/postgres_password" = {};
+  sops.secrets."classy/database_url" = {};
+
   system.stateVersion = "23.11";
 }
