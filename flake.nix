@@ -41,11 +41,16 @@
       url = "git+ssh://git@github.com/Miraengel/GYARTE";
       flake = false;
     };
+    classy = {
+      url = "github:eritho23/classy";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     ### END FLAKE INPUTS FOR DEPLOYMENTS ###
   };
 
   outputs = {
     self,
+    classy,
     disko,
     lanzaboote,
     microvm,
@@ -76,6 +81,7 @@
             sops-nix.nixosModules.sops
             microvm.nixosModules.host
             spetsctf.nixosModules.spetsctf
+            classy.nixosModules.classy
           ];
         };
       }

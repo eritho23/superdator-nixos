@@ -31,7 +31,7 @@
           "nixpkgs"
         ],
         "systems": "systems_3",
-        "treefmt-nix": "treefmt-nix"
+        "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
         "lastModified": 1770895533,
@@ -61,6 +61,27 @@
       "original": {
         "type": "git",
         "url": "ssh://git@github.com/Miraengel/CyberSecurity-CTF.git"
+      }
+    },
+    "classy": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "treefmt-nix": "treefmt-nix"
+      },
+      "locked": {
+        "lastModified": 1774435303,
+        "narHash": "sha256-mWZ+Mu4qNYcIxlpcY4ujtZXqu4yM9S2LTrlC79mOGVs=",
+        "owner": "eritho23",
+        "repo": "classy",
+        "rev": "6c0f20d5cf0b31797b0d9ca885dcbdc742d75ecf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "eritho23",
+        "repo": "classy",
+        "type": "github"
       }
     },
     "crane": {
@@ -448,6 +469,7 @@
     "root": {
       "inputs": {
         "aulabokning": "aulabokning",
+        "classy": "classy",
         "disko": "disko",
         "echoloungeuf": "echoloungeuf",
         "lanzaboote": "lanzaboote",
@@ -459,7 +481,7 @@
         "spetsctf": "spetsctf",
         "spetsctf-services": "spetsctf-services",
         "systems": "systems_5",
-        "treefmt-nix": "treefmt-nix_3"
+        "treefmt-nix": "treefmt-nix_4"
       }
     },
     "rust-overlay": {
@@ -526,7 +548,7 @@
           "nixpkgs-unstable"
         ],
         "systems": "systems_4",
-        "treefmt-nix": "treefmt-nix_2"
+        "treefmt-nix": "treefmt-nix_3"
       },
       "locked": {
         "lastModified": 1773148884,
@@ -644,6 +666,27 @@
     "treefmt-nix": {
       "inputs": {
         "nixpkgs": [
+          "classy",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1772660329,
+        "narHash": "sha256-IjU1FxYqm+VDe5qIOxoW+pISBlGvVApRjiw/Y/ttJzY=",
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "rev": "3710e0e1218041bbad640352a0440114b1e10428",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "treefmt-nix_2": {
+      "inputs": {
+        "nixpkgs": [
           "spetsctf",
           "bun2nix",
           "nixpkgs"
@@ -663,7 +706,7 @@
         "type": "github"
       }
     },
-    "treefmt-nix_2": {
+    "treefmt-nix_3": {
       "inputs": {
         "nixpkgs": [
           "spetsctf",
@@ -684,7 +727,7 @@
         "type": "github"
       }
     },
-    "treefmt-nix_3": {
+    "treefmt-nix_4": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
