@@ -140,7 +140,7 @@ in {
 
   systemd.services.caddy = {
     after = [config.systemd.services.spetsctf.name];
-    serviceConfig = {SupplementaryGroups = ["spetsctf"];};
+    serviceConfig = {SupplementaryGroups = ["spetsctf" "classy"];};
   };
 
   sops.secrets."aulabokning/environment_file".sopsFile = ../secrets/secrets.yaml;
@@ -321,5 +321,12 @@ in {
     unitConfig = {
       JoinsNamespaceOf = "aulabokning.service";
     };
+  };
+
+  services.classy = {
+    enable = true;
+
+    # databaseUrlPath =
+    httpOrigin = "https://klassens.spetsen.net";
   };
 }

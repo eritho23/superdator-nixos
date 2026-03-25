@@ -17,7 +17,6 @@
   # - 30000: Gustav Random Stuff Port
   # - 30001: Elliot Random Stuff Port
 
-
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [22 80 443 5883 8000 11434 30000 30001];

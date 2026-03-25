@@ -27,6 +27,19 @@
                 header @fonts Cache-Control "public, max-age=31536000, immutable"
         '';
       };
+      "klassens.spetsen.net" = {
+        extraConfig = ''
+          reverse_proxy unix//run/classy/http.sock
+
+          header {
+          	Strict-Transport-Security "max-age=31536000; includeSubDomains"
+          	X-Frame-Options "SAMEORIGIN"
+          	X-Content-Type-Options "nosniff"
+          	Referrer-Policy "no-referrer"
+          	Permissions-Policy "geolocation=(), camera=(), microphone=()"
+          }
+        '';
+      };
       "aula.spetsen.net" = {
         extraConfig = ''
           header {
