@@ -326,7 +326,7 @@ in {
   services.classy = {
     enable = true;
 
-    # databaseUrlPath =
+    databaseUrlPath = config.sops.secrets."classy/database_url".path;
     httpOrigin = "https://klassens.spetsen.net";
   };
 }
