@@ -67,6 +67,7 @@ in {
 
         systemd = {
           timers.justcount-pb-backup = {
+            enable = false;
             timerConfig = {
               RandomizedDelaySec = "15min";
               OnCalendar = "02:00:00";
@@ -92,6 +93,7 @@ in {
               wantedBy = ["multi-user.target"];
             };
             justcount-pb-backup = {
+              enable = false;
               wantedBy = ["multi-user.target"];
               path = with pkgs; [
                 coreutils
