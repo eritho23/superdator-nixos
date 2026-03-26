@@ -33,18 +33,19 @@
       };
       "klassens.spetsen.net" = {
         extraConfig = ''
-                 reverse_proxy unix//run/classy/http.sock
-
           root /static/* ${inputs.classy.packages.${pkgs.stdenv.hostPlatform.system}.classy}/static
           file_server /static/*
 
-                 header {
-                 	Strict-Transport-Security "max-age=31536000; includeSubDomains"
-                 	X-Frame-Options "SAMEORIGIN"
-                 	X-Content-Type-Options "nosniff"
-                 	Referrer-Policy "no-referrer"
-                 	Permissions-Policy "geolocation=(), camera=(), microphone=()"
-                 }
+                        reverse_proxy unix//run/classy/http.sock
+
+
+                        header {
+                        	Strict-Transport-Security "max-age=31536000; includeSubDomains"
+                        	X-Frame-Options "SAMEORIGIN"
+                        	X-Content-Type-Options "nosniff"
+                        	Referrer-Policy "no-referrer"
+                        	Permissions-Policy "geolocation=(), camera=(), microphone=()"
+                        }
         '';
       };
       "aula.spetsen.net" = {
