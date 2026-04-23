@@ -484,7 +484,7 @@ in {
   services.classy = {
     enable = true;
 
-    csrfAuthKeyPath = config.sops.secrets."classy/csrf_auth_token".path;
+    csrfAuthKeyPath = config.sops.secrets."classy/csrf_auth_key".path;
     databaseUrlPath = config.sops.secrets."classy/database_url".path;
     httpOrigin = "https://klassens.spetsen.net";
   };
