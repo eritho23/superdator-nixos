@@ -295,21 +295,6 @@ in {
       #cloud-config
       hostname: ${name}
       manage_etc_hosts: true
-      network:
-        version: 2
-        ethernets:
-          all:
-            match:
-              name: en*
-            addresses:
-              - 10.22.254.2/24
-            routes:
-              - to: default
-                via: 10.22.254.1
-            nameservers:
-              addresses:
-                - 10.21.1.2
-                - 10.21.1.3
       users:
         - name: gustav
           groups: [adm, sudo]
@@ -324,8 +309,25 @@ in {
       runcmd:
         - [systemctl, enable, --now, qemu-guest-agent]
     '';
+    networkConfig = pkgs.writeText "${name}-network-config" ''
+      version: 2
+      ethernets:
+        default:
+          match:
+            macaddress: "02:00:00:00:00:03"
+          set-name: ens3
+          addresses:
+            - 10.22.254.2/24
+          routes:
+            - to: default
+              via: 10.22.254.1
+          nameservers:
+            addresses:
+              - 10.21.1.2
+              - 10.21.1.3
+    '';
     metaData = pkgs.writeText "${name}-meta-data" ''
-      instance-id: ${name}-10-22-254-2
+      instance-id: ${name}-10-22-254-2-v2
       local-hostname: ${name}
     '';
     domainXml = pkgs.writeText "${name}.xml" ''
@@ -405,9 +407,11 @@ in {
         seedDir="$(mktemp -d)"
         cp ${userData} "$seedDir/user-data"
         cp ${metaData} "$seedDir/meta-data"
+        cp ${networkConfig} "$seedDir/network-config"
         genisoimage -quiet -output ${seed}.tmp -volid cidata -joliet -rock -graft-points \
           user-data="$seedDir/user-data" \
-          meta-data="$seedDir/meta-data"
+          meta-data="$seedDir/meta-data" \
+          network-config="$seedDir/network-config"
         mv ${seed}.tmp ${seed}
         rm -rf "$seedDir"
 
