@@ -70,6 +70,7 @@
 
   sops.secrets."classy/postgres_password" = {};
   sops.secrets."classy/database_url" = {};
+  sops.secrets."classy/csrf_auth_token" = {};
 
   system.stateVersion = "23.11";
 }
