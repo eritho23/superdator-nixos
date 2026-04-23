@@ -295,6 +295,21 @@ in {
       #cloud-config
       hostname: ${name}
       manage_etc_hosts: true
+      network:
+        version: 2
+        ethernets:
+          all:
+            match:
+              name: en*
+            addresses:
+              - 10.22.254.2/24
+            routes:
+              - to: default
+                via: 10.22.254.1
+            nameservers:
+              addresses:
+                - 10.21.1.2
+                - 10.21.1.3
       users:
         - name: gustav
           groups: [adm, sudo]
@@ -310,7 +325,7 @@ in {
         - [systemctl, enable, --now, qemu-guest-agent]
     '';
     metaData = pkgs.writeText "${name}-meta-data" ''
-      instance-id: ${name}
+      instance-id: ${name}-10-22-254-2
       local-hostname: ${name}
     '';
     domainXml = pkgs.writeText "${name}.xml" ''
@@ -343,7 +358,7 @@ in {
           </disk>
           <interface type='bridge'>
             <mac address='02:00:00:00:00:03'/>
-            <source bridge='br0'/>
+            <source bridge='br-gustav-vm'/>
             <model type='virtio'/>
           </interface>
           <console type='pty'/>
@@ -387,15 +402,14 @@ in {
           qemu-img create -f qcow2 -F qcow2 -b ${cloudImage} ${disk} 80G
         fi
 
-        if [ ! -f ${seed} ]; then
-          seedDir="$(mktemp -d)"
-          cp ${userData} "$seedDir/user-data"
-          cp ${metaData} "$seedDir/meta-data"
-          genisoimage -quiet -output ${seed} -volid cidata -joliet -rock -graft-points \
-            user-data="$seedDir/user-data" \
-            meta-data="$seedDir/meta-data"
-          rm -rf "$seedDir"
-        fi
+        seedDir="$(mktemp -d)"
+        cp ${userData} "$seedDir/user-data"
+        cp ${metaData} "$seedDir/meta-data"
+        genisoimage -quiet -output ${seed}.tmp -volid cidata -joliet -rock -graft-points \
+          user-data="$seedDir/user-data" \
+          meta-data="$seedDir/meta-data"
+        mv ${seed}.tmp ${seed}
+        rm -rf "$seedDir"
 
         chown qemu-libvirtd:qemu-libvirtd ${cloudImage} ${disk} ${seed}
 
