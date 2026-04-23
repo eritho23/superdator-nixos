@@ -281,6 +281,159 @@ in {
     };
   };
 
+  systemd.services.gustav-vm = let
+    name = "gustav-vm";
+    imageDir = "/var/lib/libvirt/images";
+    disk = "${imageDir}/${name}.qcow2";
+    seed = "${imageDir}/${name}-seed.iso";
+    cloudImage = "${imageDir}/ubuntu-24.04-server-cloudimg-amd64.img";
+    ubuntuImageUrl = "https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img";
+    sshKeys =
+      lib.concatMapStringsSep "\n" (key: "      - ${key}")
+      config.users.users.gustav.openssh.authorizedKeys.keys;
+    userData = pkgs.writeText "${name}-user-data" ''
+      #cloud-config
+      hostname: ${name}
+      manage_etc_hosts: true
+      users:
+        - name: gustav
+          groups: [adm, sudo]
+          shell: /bin/bash
+          sudo: ALL=(ALL) NOPASSWD:ALL
+          lock_passwd: true
+          ssh_authorized_keys:
+      ${sshKeys}
+      package_update: true
+      packages:
+        - qemu-guest-agent
+      runcmd:
+        - [systemctl, enable, --now, qemu-guest-agent]
+    '';
+    networkConfig = pkgs.writeText "${name}-network-config" ''
+      version: 2
+      ethernets:
+        default:
+          match:
+            macaddress: "02:00:00:00:00:03"
+          set-name: ens3
+          addresses:
+            - 10.22.254.2/24
+          routes:
+            - to: default
+              via: 10.22.254.1
+          nameservers:
+            addresses:
+              - 10.21.1.2
+              - 10.21.1.3
+    '';
+    metaData = pkgs.writeText "${name}-meta-data" ''
+      instance-id: ${name}-10-22-254-2-v2
+      local-hostname: ${name}
+    '';
+    domainXml = pkgs.writeText "${name}.xml" ''
+      <domain type='kvm'>
+        <name>${name}</name>
+        <memory unit='MiB'>8192</memory>
+        <currentMemory unit='MiB'>8192</currentMemory>
+        <vcpu placement='static'>4</vcpu>
+        <os>
+          <type arch='x86_64'>hvm</type>
+          <boot dev='hd'/>
+        </os>
+        <features>
+          <acpi/>
+          <apic/>
+        </features>
+        <cpu mode='host-passthrough' check='none'/>
+        <devices>
+          <emulator>${pkgs.qemu_kvm}/bin/qemu-system-x86_64</emulator>
+          <disk type='file' device='disk'>
+            <driver name='qemu' type='qcow2'/>
+            <source file='${disk}'/>
+            <target dev='vda' bus='virtio'/>
+          </disk>
+          <disk type='file' device='cdrom'>
+            <driver name='qemu' type='raw'/>
+            <source file='${seed}'/>
+            <target dev='sda' bus='sata'/>
+            <readonly/>
+          </disk>
+          <interface type='bridge'>
+            <mac address='02:00:00:00:00:03'/>
+            <source bridge='br-gustav-vm'/>
+            <model type='virtio'/>
+          </interface>
+          <console type='pty'/>
+          <channel type='unix'>
+            <target type='virtio' name='org.qemu.guest_agent.0'/>
+          </channel>
+          <graphics type='spice' autoport='yes'/>
+          <video>
+            <model type='virtio'/>
+          </video>
+        </devices>
+      </domain>
+    '';
+  in {
+    description = "Create and start the Ubuntu 24.04 LTS libvirt VM ${name}";
+    after = ["libvirtd.service" "network-online.target"];
+    wants = ["network-online.target"];
+    wantedBy = ["multi-user.target"];
+    path = with pkgs; [
+      cdrkit
+      coreutils
+      curl
+      gnugrep
+      libvirt
+      qemu_kvm
+    ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStart = pkgs.writeShellScript "setup-${name}" ''
+        set -eu
+
+        mkdir -p ${imageDir}
+
+        if [ ! -f ${cloudImage} ]; then
+          curl --fail --location --output ${cloudImage}.tmp ${ubuntuImageUrl}
+          mv ${cloudImage}.tmp ${cloudImage}
+        fi
+
+        if [ ! -f ${disk} ]; then
+          qemu-img create -f qcow2 -F qcow2 -b ${cloudImage} ${disk} 80G
+        fi
+
+        seedDir="$(mktemp -d)"
+        cp ${userData} "$seedDir/user-data"
+        cp ${metaData} "$seedDir/meta-data"
+        cp ${networkConfig} "$seedDir/network-config"
+        genisoimage -quiet -output ${seed}.tmp -volid cidata -joliet -rock -graft-points \
+          user-data="$seedDir/user-data" \
+          meta-data="$seedDir/meta-data" \
+          network-config="$seedDir/network-config"
+        mv ${seed}.tmp ${seed}
+        rm -rf "$seedDir"
+
+        chown qemu-libvirtd:qemu-libvirtd ${cloudImage} ${disk} ${seed}
+
+        if virsh --connect qemu:///system dominfo ${name} >/dev/null 2>&1; then
+          if virsh --connect qemu:///system domstate ${name} | grep -q running; then
+            virsh --connect qemu:///system destroy ${name}
+          fi
+          virsh --connect qemu:///system undefine ${name} --nvram || \
+            virsh --connect qemu:///system undefine ${name}
+        fi
+
+        virsh --connect qemu:///system define ${domainXml}
+        virsh --connect qemu:///system autostart ${name}
+        if ! virsh --connect qemu:///system domstate ${name} | grep -q running; then
+          virsh --connect qemu:///system start ${name}
+        fi
+      '';
+    };
+  };
+
   systemd.services.aulabokning = let
     aulabokningPath = inputs.aulabokning.packages."${pkgs.stdenv.hostPlatform.system}".default;
   in {

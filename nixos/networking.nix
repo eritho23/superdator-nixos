@@ -48,6 +48,14 @@
     };
   };
 
+  # Dedicated bridge for the Gustav Ubuntu VM.
+  systemd.network.netdevs."br-gustav-vm" = {
+    netdevConfig = {
+      Kind = "bridge";
+      Name = "br-gustav-vm";
+    };
+  };
+
   systemd.network.networks."10-freeipa-vm" = {
     matchConfig.Name = "vm-freeipa";
     networkConfig = {
@@ -65,20 +73,33 @@
     linkConfig.RequiredForOnline = "no";
   };
 
+  systemd.network.networks."10-gustav-vm-bridge" = {
+    matchConfig.Name = "br-gustav-vm";
+    networkConfig = {
+      Address = ["10.22.254.1/24"];
+      DHCP = "no";
+    };
+    linkConfig.RequiredForOnline = "no";
+  };
+
   networking.nat = {
     enable = true;
-    internalInterfaces = ["br-freeipa"];
+    internalInterfaces = ["br-freeipa" "br-gustav-vm"];
     externalInterface = "br0";
   };
 
-  # LAN access to br-freeipa
+  # LAN access to isolated VM bridges.
   networking.firewall.extraCommands = ''
     iptables -A FORWARD -i br0 -o br-freeipa -j ACCEPT
     iptables -A FORWARD -i br-freeipa -o br0 -j ACCEPT
+    iptables -A FORWARD -i br0 -o br-gustav-vm -j ACCEPT
+    iptables -A FORWARD -i br-gustav-vm -o br0 -j ACCEPT
   '';
   networking.firewall.extraStopCommands = ''
     iptables -D FORWARD -i br0 -o br-freeipa -j ACCEPT || true
     iptables -D FORWARD -i br-freeipa -o br0 -j ACCEPT || true
+    iptables -D FORWARD -i br0 -o br-gustav-vm -j ACCEPT || true
+    iptables -D FORWARD -i br-gustav-vm -o br0 -j ACCEPT || true
   '';
 
   systemd.network.networks."11-lan" = {
