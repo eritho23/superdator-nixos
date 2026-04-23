@@ -413,6 +413,14 @@ in {
 
         chown qemu-libvirtd:qemu-libvirtd ${cloudImage} ${disk} ${seed}
 
+        if virsh --connect qemu:///system dominfo ${name} >/dev/null 2>&1; then
+          if virsh --connect qemu:///system domstate ${name} | grep -q running; then
+            virsh --connect qemu:///system destroy ${name}
+          fi
+          virsh --connect qemu:///system undefine ${name} --nvram || \
+            virsh --connect qemu:///system undefine ${name}
+        fi
+
         virsh --connect qemu:///system define ${domainXml}
         virsh --connect qemu:///system autostart ${name}
         if ! virsh --connect qemu:///system domstate ${name} | grep -q running; then
