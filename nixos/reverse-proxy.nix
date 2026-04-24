@@ -41,6 +41,8 @@
                        	Permissions-Policy "geolocation=(), camera=(), microphone=()"
                        }
 
+                     	 import ${inputs.classy.packages.${pkgs.stdenv.hostPlatform.system}.classy}/caddy_csp_config_snippet
+
                        handle /static/* {
           uri strip_prefix /static
                        	root * ${inputs.classy.packages.${pkgs.stdenv.hostPlatform.system}.classy}/static
