@@ -41,10 +41,7 @@
       url = "git+ssh://git@github.com/Miraengel/GYARTE";
       flake = false;
     };
-    classy = {
-      url = "github:eritho23/classy";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    classy.url = "github:eritho23/classy";
     ### END FLAKE INPUTS FOR DEPLOYMENTS ###
   };
 
