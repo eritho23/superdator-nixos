@@ -115,7 +115,6 @@
           	X-Content-Type-Options "nosniff"
           	Referrer-Policy "no-referrer"
           	Permissions-Policy "geolocation=(), camera=(), microphone=()"
-          	Content-Security-Policy "default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.dzcdn.net; media-src 'self'; font-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'self'; frame-ancestors 'self'; object-src 'none'; manifest-src 'self'"
           }
 
           @backend path /auth* /me* /spotify* /health* /rooms*
