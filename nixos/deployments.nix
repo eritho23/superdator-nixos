@@ -488,4 +488,12 @@ in {
     databaseUrlPath = config.sops.secrets."classy/database_url".path;
     httpOrigin = "https://klassens.spetsen.net";
   };
+
+  services.slomp = {
+    enable = true;
+    # The bundled module ships an nginx vhost; this host fronts everything
+    # through Caddy in nixos/reverse-proxy.nix instead.
+    nginx.enable = false;
+    backend.port = 4042;
+  };
 }

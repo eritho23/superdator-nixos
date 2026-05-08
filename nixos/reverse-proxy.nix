@@ -107,6 +107,29 @@
           reverse_proxy 127.0.0.1:8092
         '';
       };
+      "slomp.spetsen.net" = {
+        extraConfig = ''
+          header {
+          	Strict-Transport-Security "max-age=31536000; includeSubDomains"
+          	X-Frame-Options "SAMEORIGIN"
+          	X-Content-Type-Options "nosniff"
+          	Referrer-Policy "no-referrer"
+          	Permissions-Policy "geolocation=(), camera=(), microphone=()"
+          	Content-Security-Policy "default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.dzcdn.net; media-src 'self'; font-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'self'; frame-ancestors 'self'; object-src 'none'; manifest-src 'self'"
+          }
+
+          @backend path /auth* /me* /spotify* /health* /rooms*
+          handle @backend {
+          	reverse_proxy 127.0.0.1:4042
+          }
+
+          handle {
+          	root * ${inputs.slomp.packages.${pkgs.stdenv.hostPlatform.system}.slomp-frontend}/share/slomp-frontend
+          	try_files {path} /index.html
+          	file_server
+          }
+        '';
+      };
     };
   };
 }

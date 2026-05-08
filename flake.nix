@@ -42,6 +42,10 @@
       flake = false;
     };
     classy.url = "github:eritho23/classy";
+    slomp = {
+      url = "github:fdABB-Gym-Samuel/slomp";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
     ### END FLAKE INPUTS FOR DEPLOYMENTS ###
   };
 
@@ -54,6 +58,7 @@
     nixpkgs,
     sops-nix,
     spetsctf,
+    slomp,
     systems,
     treefmt-nix,
     ...
@@ -79,6 +84,7 @@
             microvm.nixosModules.host
             spetsctf.nixosModules.spetsctf
             classy.nixosModules.classy
+            slomp.nixosModules.slomp
           ];
         };
       }
