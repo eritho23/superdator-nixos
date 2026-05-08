@@ -2,7 +2,7 @@
   services.postgresql = {
     enable = true;
     package = pkgs.postgresql_16;
-    ensureDatabases = ["spetsctf" "classy"];
+    ensureDatabases = ["spetsctf" "classy" "slomp"];
     ensureUsers = [
       {
         name = "spetsctf";
@@ -11,6 +11,11 @@
       }
       {
         name = "classy";
+        ensureClauses.login = true;
+        ensureDBOwnership = true;
+      }
+      {
+        name = "slomp";
         ensureClauses.login = true;
         ensureDBOwnership = true;
       }
