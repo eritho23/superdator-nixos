@@ -547,11 +547,11 @@
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
-        "lastModified": 1778232896,
-        "narHash": "sha256-EVf5bUNoeIVqSEIe01mg+d6wCrTRufttwdXWXFGTkBk=",
+        "lastModified": 1778235554,
+        "narHash": "sha256-hIJhhcVIGkRmYIfgWluas+8BqTWZj3nGnJl8+NNBMXI=",
         "owner": "fdABB-Gym-Samuel",
         "repo": "slomp",
-        "rev": "a70b27cc10a09bd0fc00800e04a0e5fbe3c66373",
+        "rev": "a362ff167cc6271e6027b7d6057154d61c940f8a",
         "type": "github"
       },
       "original": {
