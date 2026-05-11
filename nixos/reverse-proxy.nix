@@ -117,7 +117,7 @@
           	Permissions-Policy "geolocation=(), camera=(), microphone=()"
           }
 
-          @backend path /auth* /me* /spotify* /health* /rooms*
+          @backend path /me* /health* /rooms* /lobby*
           handle @backend {
           	reverse_proxy 127.0.0.1:4042
           }
