@@ -494,6 +494,10 @@ in {
     # The bundled module ships an nginx vhost; this host fronts everything
     # through Caddy in nixos/reverse-proxy.nix instead.
     nginx.enable = false;
-    backend.port = 4042;
+    backend = {
+      port = 4042;
+      # Backend's WS routes reject handshakes whose Origin isn't in this list.
+      corsOrigins = ["https://slomp.spetsen.net"];
+    };
   };
 }
